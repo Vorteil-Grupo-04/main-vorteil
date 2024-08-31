@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redefinir Senha</title>
+    <script>
+        async function enviarEmail() {
+            const email = document.getElementById('email').value;
+
+            try {
+                const response = await fetch('http://localhost:3000/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                });
+
+                const data = await response.json();
+                alert(data.message);
+
+            } catch (error) {
+                console.error('Erro ao enviar o e-mail:', error);
+                alert('Erro ao enviar e-mail.');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Redefinir Senha</h1>
+    <input type="email" id="email" placeholder="Digite seu e-mail" required>
+    <button onclick="enviarEmail()">Enviar Token</button>
+</body>
+</html>
