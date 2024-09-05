@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="styleCadastro.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Asap+Condensed:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gloock&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gloock&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <div class="fundo">
+    </div>
+
+        <div class="container">
+            <div class="login"  id="logi">
+            <h1 class="titulo">Login</h1>
+            <div class="align">
+                <div class="alignForm">
+                    <p>E-mail</p>
+                    <input type="text" class="ipt">
+                </div>
+                <div class="alignForm">
+                    <p>Senha</p>
+                    <input type="text" class="ipt">
+                </div>
+                <div class="align">
+                    <div class="btn"><p>Enviar</p></div>
+                    <p onclick="change()">Não possui uma conta</p>
+                </div>
+            </div>
+        </div>
+            <div class="cadastro" id="cad">
+            <h1 class="titulo">Cadastro</h1>
+            <div class="align">
+                <div class="alignForm">
+                    <p>Nome</p>
+                    <input type="text" class="ipt">
+                </div>
+                <div class="alignForm">
+                    <p>Empresa</p>
+                    <select name="" id="" class="sel">
+                        <option value=""></option>
+                        <option value="">Empresa 1</option>
+                        <option value="">Empresa 2</option>
+                        <option value="">Empresa 3</option>
+                    </select>
+                </div>
+                <div class="alignForm">
+                    <p>E-mail</p>
+                    <input type="text" class="ipt">
+                </div>
+                <div class="alignForm">
+                    <p>Senha</p>
+                    <input type="text" class="ipt">
+                </div>
+                <div class="align">
+                    <div class="btn"><p>Enviar</p></div>
+                    <div class="align" style="flex-direction: row;">
+                        <p  onclick="changeDois()">Ja tenho uma conta &nbsp; &nbsp; |</p>
+                        <p  onclick="changeTres()">Cadastrar empresa</p>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="cadastroEmp" id="cadEmp">
+            <h1 class="titulo">Cadastro empresa</h1>
+            <div class="align">
+                <div class="alignForm">
+                    <p>Nome fantasia</p>
+                    <input type="text" class="ipt">
+                </div>
+                <div class="alignForm">
+                    <p>CNPJ</p>
+                   <input type="text" class="ipt">
+                </div>
+                <div class="alignForm">
+                    <p>E-mail</p>
+                    <input type="text" class="ipt">
+                </div>
+                <div class="alignForm">
+                    <p>Senha</p>
+                    <input type="text" class="ipt">
+                </div>
+                <div class="align">
+                    <div class="btn"><p>Enviar</p></div>
+                    <div class="align" style="flex-direction: row;">
+                        <p  onclick="changeReset()">Não possui uma conta?</p>
+                   
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="lado"></div>
+        </div>
+    
+</body>
+</html>
+<script>
+    cads = document.getElementById("cad")
+    login = document.getElementById("logi")
+    cadEmp = document.getElementById("cadEmp")
+    console.log("oi")
+
+
+    function change() {
+        cads.style.left = "50%"
+        login.style.top = "150%"
+        console.log("um")
+  
+    }
+    function changeDois() {
+        cads.style.left = "150%"
+        login.style.top = "50%"
+        console.log("dois")
+  
+    }
+    function changeTres() {
+        cads.style.top = "-200%"
+        cadEmp.style.top = "50%"
+  
+    }
+    function changeReset() {
+        cads.style.top = "50%"
+        cadEmp.style.top = "150%"
+  
+    }
+
+
+</script>

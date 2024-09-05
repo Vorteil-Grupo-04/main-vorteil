@@ -1,0 +1,185 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+@keyframes mudar {
+    0%{
+
+        
+    }
+    25%{
+        background-image: url(./assets/great-wall-of-china-3022907_1280.jpg);
+
+    }
+
+    50%{
+
+        background-image: url(./assets/pexels-athena-6580703.jpg);
+
+
+    }
+ 
+    75%{
+
+        background-image: url(./assets/peru-2135770_1280.jpg);
+
+
+    }
+
+    100%{
+
+        background-image: url(./assets/alps-4549188_1920.jpg);
+
+    }
+    
+}
+p {
+    font-family: "Noto Sans", sans-serif;
+    color: #fff;
+    cursor: pointer;
+
+}
+.ipt {
+    width: calc(90% - 20px);
+    border: none;
+    border-radius: 5px;
+    height: 15px;
+    color: #000;
+    padding: 8px;
+
+}
+.sel {
+    width: calc(90%);
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    color: #000;
+    padding: 8px;
+
+}
+body {
+    background-color: #000;
+}
+option {
+    color: #000;
+}
+.ipt:focus {
+    border: none;
+}
+.btn {
+    width: 150px;
+    height: 25px;
+    border: 1px solid #d4d4d4;
+    padding: 1rem;
+    color: #ffff;
+    font-size: 20px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 300;
+    opacity: 0.8;
+    letter-spacing: 5px;
+    transition: 0.3s;
+    cursor: pointer;
+
+}
+.btn:hover {
+    background-color: #ffffff3f;
+    color: #1d1d1d !important;
+
+}
+.btn:hover {
+    color: #1d1d1d !important;
+
+
+}
+.btn:active {
+    background-color: #fff;
+    color: #1d1d1d !important;
+    font-weight: 500;
+}
+.alignForm {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.align {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.container {
+    width: 40%;
+    height: 80vh;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1d1d1d98;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0 2rem;
+    overflow: hidden;
+}
+.titulo {
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 52px;
+    letter-spacing: 4px;
+    color: #fff;
+
+
+}
+.login {
+    position: absolute;
+    z-index: 100;
+    width: 80%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.7s;
+}
+
+.cadastro {
+    position: absolute;
+    z-index: 100;
+
+    width: 80%;
+    top: 50%;
+    left: 150%;
+    transform: translate(-50%, -50%);
+    transition: 0.7s;
+
+
+}
+.cadastroEmp {
+    position: absolute;
+    z-index: 100;
+
+    width: 80%;
+    top: 150%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.7s;
+
+
+}
+.fundo {
+    background-color: #1d1d1d;
+
+}
+@media (max-width: 450px){
+    .container {
+        width: 80%;
+        height: 90%;
+    }
+    .ipt, .sel {
+        width: 95%;
+    }
+    p{
+        font-size: 12px;
+    }
+}
