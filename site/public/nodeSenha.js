@@ -14,13 +14,14 @@ function gerarToken(numCaracteres) {
 const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com', port: 465, secure: true,
     auth: {
-        user: 'vorteilsptech@gmail.com', // Seu e-mail do Gmail
-        pass: 'crfodnfhtwbnshpw' // Sua senha ou senha de app gerada
+        user: 'vorteilsptech@gmail.com',
+        pass: 'crfodnfhtwbnshpw'
     }
 });
 
+
+let token = gerarToken(7);
 app.post('/send-email', (req, res) => {
-    const token = gerarToken(7);
     const destinatario = req.body.email;
 
     const mailOptions = {
@@ -37,6 +38,10 @@ app.post('/send-email', (req, res) => {
         }
         res.status(200).json({ message: 'E-mail enviado com sucesso!' });
     });
+});
+
+app.get('/get-token', (req, res) => {
+    res.json({ token });
 });
 
 const PORT = process.env.PORT || 3000;

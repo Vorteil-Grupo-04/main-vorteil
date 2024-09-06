@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redefinir Senha</title>
+    <style>
+        .input-block {
+            width: 40px;
+            height: 40px;
+            font-size: 24px;
+            text-align: center;
+            margin-right: 5px;
+        }
+        .container {
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <h1>Redefinir Senha</h1>
+    <div id="div1">
+        <input type="email" id="email" placeholder="Digite seu e-mail" required>
+        <button onclick="enviarEmail()">Enviar Token</button>
+    </div>
+    <div>
+        <div id="div2" class="container" style="display: none;">
+            <h2>Codigo enviado no email: Usuario</h2>
+            <input type="text" maxlength="1" class="input-block" id="block1">
+            <input type="text" maxlength="1" class="input-block" id="block2">
+            <input type="text" maxlength="1" class="input-block" id="block3">
+            <input type="text" maxlength="1" class="input-block" id="block4">
+            <input type="text" maxlength="1" class="input-block" id="block5">
+            <input type="text" maxlength="1" class="input-block" id="block6">
+            <input type="text" maxlength="1" class="input-block" id="block7">
+        </div>
+        <div>
+            <div id="div3" style="display: none;">
+                senha : <input type="password">
+                confirmar: <input type="password">
+            </div>
+        </div>
+    </div>
+    <script src="redefinirJuan.js"></script>
+</body>
+</html>
