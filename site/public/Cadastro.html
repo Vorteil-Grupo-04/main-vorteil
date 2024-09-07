@@ -49,14 +49,14 @@
             <div class="align">
                 <div class="alignForm">
                     <p>E-mail</p>
-                    <input type="text" class="ipt">
+                    <input type="text" class="ipt" id="input_log_email">
                 </div>
                 <div class="alignForm">
                     <p>Senha</p>
-                    <input type="text" class="ipt">
+                    <input type="text" class="ipt" id="input_log_senha">
                 </div>
                 <div class="align">
-                    <div class="btn"><p>Enviar</p></div>
+                    <div class="btn" onclick="entrarLogin()"><p>Enviar</p></div>
                     <p onclick="change()">Não possui uma conta</p>
                 </div>
             </div>
@@ -66,27 +66,31 @@
             <div class="align">
                 <div class="alignForm">
                     <p>Nome</p>
-                    <input type="text" class="ipt">
+                    <input type="text" class="ipt" id="input_nome">
                 </div>
                 <div class="alignForm">
                     <p>Empresa</p>
-                    <select name="" id="" class="sel">
+                    <select name="" id="input_empresa" class="sel">
                         <option value=""></option>
-                        <option value="">Empresa 1</option>
-                        <option value="">Empresa 2</option>
-                        <option value="">Empresa 3</option>
+                        <option value="1">Empresa 1</option>
+                        <option value="2">Empresa 2</option>
+                        <option value="3">Empresa 3</option>
                     </select>
                 </div>
                 <div class="alignForm">
                     <p>E-mail</p>
-                    <input type="text" class="ipt">
+                    <input type="text" class="ipt" id="input_email">
                 </div>
                 <div class="alignForm">
                     <p>Senha</p>
-                    <input type="text" class="ipt">
+                    <input type="text" class="ipt" id="input_senha">
+                </div>
+                <div class="alignForm">
+                    <p>Confirmar Senha</p>
+                    <input type="text" class="ipt" id="input_confirmar_senha">
                 </div>
                 <div class="align">
-                    <div class="btn"><p>Enviar</p></div>
+                    <div class="btn" onclick="btnCadastro()"><p>Enviar</p></div>
                     <div class="align" style="flex-direction: row;">
                         <p  onclick="changeDois()">Ja tenho uma conta &nbsp; &nbsp; |</p>
                         <p  onclick="changeTres()">Cadastrar empresa</p>
@@ -100,22 +104,26 @@
             <div class="align">
                 <div class="alignForm">
                     <p>Nome fantasia</p>
-                    <input type="text" class="ipt">
+                    <input type="text" class="ipt" id="input_nome_empresa">
                 </div>
                 <div class="alignForm">
                     <p>CNPJ</p>
-                   <input type="text" class="ipt">
+                   <input type="text" class="ipt" id="input_cnpj" maxlength="18" oninput="formatarCNPJ(this)">
                 </div>
                 <div class="alignForm">
                     <p>E-mail</p>
-                    <input type="text" class="ipt">
+                    <input type="text" id="input_email_empresa" class="ipt">
                 </div>
                 <div class="alignForm">
                     <p>Senha</p>
-                    <input type="text" class="ipt">
+                    <input type="text" id="input_senha_empresa" class="ipt">
+                </div>
+                <div class="alignForm">
+                    <p>Confirmar Senha</p>
+                    <input type="text" id="input_confirmar_senha_empresa" class="ipt">
                 </div>
                 <div class="align">
-                    <div class="btn"><p>Enviar</p></div>
+                    <div class="btn" onclick="btnCadastroEmpresa()"><p>Enviar</p></div>
                     <div class="align" style="flex-direction: row;">
                         <p  onclick="changeReset()">Não possui uma conta?</p>
                    

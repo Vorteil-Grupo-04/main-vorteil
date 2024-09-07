@@ -12,4 +12,16 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.post("/cadastrarEmpresa", function (req, res) {
+    usuarioController.cadastrarEmpresa(req, res);
+});
+
+
+router.put("/atualizarSenha", function (req, res) {
+    usuarioController.atualizarSenha(req, res);
+});
+
+
+
+
 module.exports = router;

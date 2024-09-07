@@ -4,22 +4,23 @@ function btnRedefinirSenha(params) {
 
   
 
-  function formatarCPF(cpfInput) {
-            let cpf = cpfInput.value;
+  function formatarCNPJ(input_cpnj) {
+   let cnpj = input_cpnj.value
 
+    cnpj = cnpj.replace(/\D/g, '');
+ 
+    if (cnpj.length > 12) {
+        cnpj = cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, "$1.$2.$3/$4-$5");
+    } else if (cnpj.length > 8) {
+        cnpj = cnpj.replace(/(\d{2})(\d{3})(\d{3})(\d{1,4})/, "$1.$2.$3/$4");
+    } else if (cnpj.length > 5) {
+        cnpj = cnpj.replace(/(\d{2})(\d{3})(\d{1,3})/, "$1.$2.$3");
+    } else if (cnpj.length > 2) {
+        cnpj = cnpj.replace(/(\d{2})(\d{1,3})/, "$1.$2");
+    }
 
-            cpf = cpf.replace(/\D/g, '');
-
-            if (cpf.length > 9) {
-                cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-            } else if (cpf.length > 6) {
-                cpf = cpf.replace(/(\d{3})(\d{3})(\d{1,3})/, "$1.$2.$3");
-            } else if (cpf.length > 3) {
-                cpf = cpf.replace(/(\d{3})(\d{1,3})/, "$1.$2");
-            }
-
-            cpfInput.value = cpf;
-        }
+    input_cpnj.value = cnpj;;
+}
 
   
 
@@ -124,7 +125,7 @@ function validarEmail() {
               
                 setTimeout(function () {
                   alert("login realizado com sucesso");
-                }, 1000); // apenas para exibir o loading
+                }, 1000);
             });
     
         } else {
@@ -142,23 +143,22 @@ function validarEmail() {
     }
 
   function btnCadastro() {
+    let nomeValido = validarNome();
     let emailValido = validarEmail();
     let senhaValida = validarSenha();
-    let nomeValido = validarNome()
 
     if (!emailValido || !senhaValida || !nomeValido) {
       return false;
   }
 
     const nome_input  = input_nome.value;
-    const cpf_input = input_cpf.value;
     const email_input = input_email.value;
     const senha_input = input_senha.value;
     const confirmacao_senha_input = input_confirmar_senha.value;
+    const empresa_input = input_empresa.value
 
           
     console.log(nome_input)
-    console.log(cpf_input)
     console.log(email_input)
     console.log(senha_input)
     console.log(confirmacao_senha_input)
@@ -167,9 +167,9 @@ function validarEmail() {
     if (
       nome_input == "" ||
       email_input == "" ||
-      cpf_input == "" ||
       senha_input == "" ||
-      confirmacao_senha_input == "" 
+      confirmacao_senha_input == "" ||
+      empresa_input == ""
     ) {
       return false;
     }
@@ -181,7 +181,7 @@ function validarEmail() {
       },
       body: JSON.stringify({
         nomeServer: nome_input,
-        cpfServer: cpf_input,
+        empresaServer: empresa_input,
         emailServer: email_input,
         senhaServer: senha_input,
       }),
@@ -191,9 +191,8 @@ function validarEmail() {
   
         if (resposta.ok) {
           setTimeout(() => {
-            alert("Sucesso")
-            div_login.style.display = "flex"
-             div_cadastro.style.display = "none"
+            alert("Usuário Cadastrado!")
+           
           }, "2000");
   
   
@@ -210,6 +209,62 @@ function validarEmail() {
     }
 
 
+    function btnCadastroEmpresa() {
+      const nome_empresa_input  = input_nome_empresa.value;
+      const cnpj_input = input_cnpj.value
+      const email_empresa_input = input_email_empresa.value;
+      const senha_empresa_input = input_senha_empresa.value;
+      const confirmacao_senha_empresa_input = input_confirmar_senha_empresa.value;
 
-  
+            
+      console.log(nome_empresa_input)
+      console.log(cnpj_input)
+      console.log(email_empresa_input)
+      console.log(senha_empresa_input)
+      console.log(confirmacao_senha_empresa_input)
+    
+    
+      if (
+        nome_empresa_input == "" ||
+        email_empresa_input == "" ||
+        senha_empresa_input == "" ||
+        confirmacao_senha_empresa_input == "" ||
+        cnpj_input == ""
+      ) {
+        alert("Nenhum campo pode estar vazio")
+        return false;
+      }
+    
+      fetch("../usuarios/cadastrarEmpresa", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nomeEmpresaServer: nome_empresa_input,
+          emailEmpresaServer: email_empresa_input,
+          senhaEmpresaServer: senha_empresa_input,
+          cnpjServer: cnpj_input
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+    
+          if (resposta.ok) {
+            setTimeout(() => {
+              alert("Empresa Cadastrada!")
+            }, "2000");
+    
+    
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
+    
+      return false;
+    
+    }
 

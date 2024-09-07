@@ -1,8 +1,8 @@
 
 let token = '';  
-
+let emailUsuarioTrocaDeSenha = ''
 async function enviarEmail() {
-    const email = document.getElementById('email').value;
+    emailUsuarioTrocaDeSenha = document.getElementById('email').value;
     const div1 = document.getElementById('div1');
     const div2 = document.getElementById('div2');
 
@@ -16,7 +16,7 @@ async function enviarEmail() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ email })
+            body: JSON.stringify({ emailUsuarioTrocaDeSenha })
             
             
         });
@@ -79,5 +79,39 @@ async function receberToken() {
     }
 }
 
+
+function atualizarSenha(params) {
+    const senha = new_senha_input.value
+    const confirmar_senha = new_confirmar_senha_input.value
+    if (senha != confirmar_senha) {
+       return alert("As senhas não são iguais")
+    }
+
+    fetch("../usuarios/atualizarSenha", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          senhaServer: senha,
+          emailServer: emailUsuarioTrocaDeSenha,
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+    
+          if (resposta.ok) {
+            setTimeout(() => {
+              alert("Senha trocada com sucesso")
+            }, 1000);
+          } else {
+            throw new Error("Houve um erro ao tentar realizar a troca de avatar!");
+          }
+        })
+        .catch(function (erro) {
+          console.error("#ERRO: ", erro);
+        });
+  
+}
 
 

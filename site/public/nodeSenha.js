@@ -22,7 +22,7 @@ const transporter = nodemailer.createTransport({
 
 let token = gerarToken(7);
 app.post('/send-email', (req, res) => {
-    const destinatario = req.body.email;
+    const destinatario = req.body.emailUsuarioTrocaDeSenha;
 
     const mailOptions = {
         from: 'vorteilsptech@gmail.com',
