@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleCadastro.css">
+
     <title>Redefinir Senha</title>
     <style>
         .input-block {
@@ -18,14 +20,19 @@
     </style>
 </head>
 <body>
-    <h1>Redefinir Senha</h1>
-    <div id="div1">
-        <input type="email" id="email" placeholder="Digite seu e-mail" required>
-        <button onclick="enviarEmail()">Enviar Token</button>
+    <div class="container">
+        <div class="login">
+    <h1 class="titulo">Redefinir Senha</h1>
+    <div class="align" id="div1">
+
+        <input type="email" id="email" class="ipt" placeholder="Digite seu e-mail" required>
+        <div  style="width: 50%;" class="btn" onclick="enviarEmail()">Enviar Token</div>
     </div>
     <div>
-        <div id="div2" class="container" style="display: none;">
-            <h2>Codigo enviado no email: Usuario</h2>
+        <div id="div2" class="align" style="display: none; ">
+            <div class="align">
+            <p>Codigo enviado no email: Usuario</p>
+            <div class="align" style="flex-direction: row;">
             <input type="text" maxlength="1" class="input-block" id="block1">
             <input type="text" maxlength="1" class="input-block" id="block2">
             <input type="text" maxlength="1" class="input-block" id="block3">
@@ -34,14 +41,25 @@
             <input type="text" maxlength="1" class="input-block" id="block6">
             <input type="text" maxlength="1" class="input-block" id="block7">
         </div>
+        </div>
+        </div>
         <div>
             <div id="div3" style="display: none;">
-                senha : <input type="password" id="new_senha_input">
-                confirmar: <input type="password" id="new_confirmar_senha_input">
-                <button onclick="atualizarSenha()"></button>
+                <div class="align">
+                    <p>Nova senha</p>
+               <input class="ipt" type="password" id="new_senha_input">
+                </div>
+                <div class="align">
+               <p>Confirmar</p>
+
+               <input class="ipt" type="password" id="new_confirmar_senha_input">
+            </div>
+                <div  style="width: 50%;" class="btn" onclick="atualizarSenha()"></div>
             </div>
         </div>
     </div>
+</div>
+</div>
     <script src="redefinirJuan.js"></script>
 </body>
 </html>

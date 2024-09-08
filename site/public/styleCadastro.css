@@ -33,11 +33,15 @@
     }
     
 }
-p {
+p, a {
     font-family: "Noto Sans", sans-serif;
     color: #fff;
     cursor: pointer;
+    text-decoration: none;
 
+}
+a {
+    font-size: 18px;
 }
 .ipt {
     width: calc(90% - 20px);
@@ -109,9 +113,12 @@ option {
     flex-direction: column;
     gap: 1rem;
 }
+input:focus {
+    outline: none;
+}
 .container {
     width: 40%;
-    height: 80vh;
+    height: 90vh;
     position: absolute;
     z-index: 2;
     top: 50%;
@@ -124,6 +131,19 @@ option {
     justify-content: center;
     padding: 0 2rem;
     overflow: hidden;
+}
+.input-block {
+    width: 50px;
+    height: 50px;
+    background-color: #00000000;
+    border: 2px solid #fff;
+    display: flex;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 28px;
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
 }
 .titulo {
     font-family: "Bebas Neue", sans-serif;
