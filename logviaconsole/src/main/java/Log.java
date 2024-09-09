@@ -8,7 +8,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Log {
     public static void main(String[] args) {
-
+        static String VERMELHO = "\u001B[31m";
+        static String RESET = "\u001B[0m";
         Timer temporizador = new Timer();
         TimerTask tarefa = new TimerTask() {
             @Override
@@ -21,8 +22,8 @@ public class Log {
                 String usuarioCadastrado = listaUsuarios.get(ThreadLocalRandom.current().nextInt(listaUsuarios.size()));
 
                 System.out.println("""
-                %s - Usuário %s Cadastrado no sistema com sucesso.
-                """.formatted(horarioFormatado, usuarioCadastrado));
+                %s - Usuário %s %s %s Cadastrado no sistema com sucesso.
+                """.formatted(horarioFormatado,VERMELHO, usuarioCadastrado, RESET));
             }
             };
 
