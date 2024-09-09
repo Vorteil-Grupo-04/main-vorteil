@@ -307,6 +307,7 @@ background: linear-gradient(180deg, rgba(34, 34, 34, 0.555) 0%, rgba(0, 0, 0, 0.
 }
 .sec.five.dois {
     background-color: #0e0e0e;
+    
 }
 .containerOneAlt {
     width: 100%;
@@ -784,6 +785,7 @@ flex-direction: column;
     border-radius: 50px;
 
 }
+
 .centro {
     width: 60px;
     height: 60px;
@@ -828,15 +830,27 @@ flex-direction: column;
         
     }
     #vaiSumir {
-        display: none;
     }
     .grid .align {
         width: 100%;
     }
     .grid h1 {
-        display: none;
         
     }
+    .sec.five.dois {
+        height: 200vh;    
+        }
+        .containerOne {
+            flex-direction: column;
+            padding: 8px;
+            gap: 0;
+        }
+        .containerOne .align {
+            gap: 1rem;
+        }
+        .grid .title.padrao{
+            font-size: 52px !important ;
+        }
     .logo p {
         font-size: 26px !important;
     }
@@ -854,10 +868,11 @@ flex-direction: column;
         "itemAlt item2"
         !important;
     grid-template-columns: 150px 150px;
-    grid-template-rows: 300px 200px 75px;
+    grid-template-rows: 1000px 250px 75px;
     align-content: center;
     justify-items: center;
     gap: 2rem;
+    
     }
     .circles {
         width: 70px;
