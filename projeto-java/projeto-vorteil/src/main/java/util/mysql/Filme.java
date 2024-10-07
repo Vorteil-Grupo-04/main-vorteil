@@ -1,3 +1,4 @@
+package util.mysql;
 public class Filme {
     private Integer id;
     private String nome;
