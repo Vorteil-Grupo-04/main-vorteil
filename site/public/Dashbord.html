@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="StyleDashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gloock&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gloock&display=swap" rel="stylesheet">
+    <title>Dashbord</title>
+</head>
+<body>
+    <div class="container" id="pai">
+        <div class="lateral">
+            <div class="userCont">
+                <div class="profilePai">
+                    <img src="./assets/gray-user-profile-icon-png-fP8Q1P.png" alt="" class="profile">
+                </div>
+                <p class="textoDefault">Olá, usuario</p>
+            </div>
+            <div  onclick="modalUm()" class="botaoAcesso" id="botaoUm"><p class="textoDefault">Estisticas de cancelamentos</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
+            <div  onclick="modalDois()" class="botaoAcesso" id="botaoDois"><p class="textoDefault">Clima e tempo</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
+            <div  onclick="modalTres()" class="botaoAcesso"><p class="textoDefault" id="botaoTres">Dados de atrasos</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
+            <div onclick="modalQuatro()" class="botaoAcesso"><p class="textoDefault" id="botaoQuatro">Feedback IA</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
+            <div class="botaoAcesso"><p class="textoDefault" id="botaoQuatro">Configurações</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
+            <div class="botaoAcesso"><p class="textoDefault" id="botaoQuatro">Sair</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
+
+        </div>
+        <div class="conteudo" id="conteudoUm">
+            <div class="conjuntoKPI">
+                <div class="kpi"><h1>Kpi 1</h1></div>
+                <div class="kpi"><h1>Kpi 2</h1></div>
+                <div class="kpi"><h1>Kpi 3</h1></div>
+                <div class="kpi"><h1>Kpi 4</h1></div>
+               
+            </div>
+           <div class="conjuntoFinal">
+            <div class="conjuntoDashboard">
+                <div class="dashAreas">
+                    <div>
+                        <canvas class="grafic" id="myChart"></canvas>
+                      </div>
+                </div>
+                <div class="dashAreasDois">
+                    <div>
+                        <canvas class="grafic" id="myChartDois"></canvas>
+                      </div>
+                </div>
+            </div>
+            <div class="kpiTotal">
+              <table>
+  <tr>
+    <th class="titulos">dados 1</th>
+    <th class="titulos">dados 2</th>
+  </tr>
+  <tr>
+    <td>Exemplo</td>
+    <td>Exemplo</td>
+  </tr>
+  <tr>
+    <td>exemplo</td>
+    <td>exemplo</td>
+  </tr>
+  <tr>
+    <td>exemplo</td>
+    <td>exemplo</td>
+  </tr>
+  <tr>
+    <td>exemplo</td>
+    <td>exemplo</td>
+  </tr>
+  <tr>
+    <td>exemplo</td>
+    <td>exemplo</td>
+  </tr>
+ 
+</table>
+                
+            </div>
+           </div>
+        </div>
+        <div class="conteudo dis" id="conteudoDois">
+            <div class="conjuntoKPI" style="justify-content: space-between;">
+                <div class="kpi" style="width: 215px;"><h1>Kpi 1</h1></div>
+                <div class="kpi" style="width: 215px;"><h1>Kpi 1</h1></div>
+                <div class="kpi" style="width: 215px;"><h1>Kpi 1</h1></div>
+            </div>
+           <div class="conjuntoFinal modify">
+            <div class="conjuntoDashboard alt">
+                <div style="align-items: start;" class="dashAreas codUm">
+                    <div>
+                        <canvas class="grafic" id="myChartTres"></canvas>
+                      </div>
+                </div>
+            <div class="kpiTotal">
+              <table>
+                <tr>
+                  <th class="titulos">dados 1</th>
+                  <th class="titulos">dados 2</th>
+                </tr>
+                <tr>
+                  <td>Exemplo</td>
+                  <td>Exemplo</td>
+                </tr>
+                <tr>
+                  <td>exemplo</td>
+                  <td>exemplo</td>
+                </tr>
+                <tr>
+                  <td>exemplo</td>
+                  <td>exemplo</td>
+                </tr>
+               
+              </table>
+            </div>
+            </div>
+            <div class="dashAreasDois" style="align-items: start;">
+                <div>
+                    <canvas class="grafic" id="myChartQuatro"></canvas>
+                  </div>
+            </div>
+
+           </div>
+        </div>
+        <div class="conteudo dis" id="conteudoTres">
+           
+           <div class="conjuntoFinal">
+            <div class="kpiTotal">
+              <table>
+                <tr>
+                  <th class="titulos">dados 1</th>
+                  <th class="titulos">dados 2</th>
+                </tr>
+                <tr>
+                  <td>Exemplo</td>
+                  <td>Exemplo</td>
+                </tr>
+                <tr>
+                  <td>exemplo</td>
+                  <td>exemplo</td>
+                </tr>
+                <tr>
+                  <td>exemplo</td>
+                  <td>exemplo</td>
+                </tr>
+                <tr>
+                  <td>exemplo</td>
+                  <td>exemplo</td>
+                </tr>
+                <tr>
+                  <td>exemplo</td>
+                  <td>exemplo</td>
+                </tr>
+               
+              </table>
+            </div>
+            <div class="conjuntoDashboard">
+                <div class="dashAreas">
+                    <div>
+                        <canvas class="grafic" id="myChartCinco"></canvas>
+                      </div>
+                </div>
+                <div class="dashAreasDois">
+                    <div>
+                        <canvas class="grafic" id="myChartSeis"></canvas>
+                      </div>
+                </div>
+            </div>
+           </div>
+           <div class="conjuntoKPI">
+            <div class="kpi"><h1>Kpi 1</h1></div>
+            <div class="kpi"><h1>Kpi 1</h1></div>
+            <div class="kpi"><h1>Kpi 1</h1></div>
+            <div class="kpi"><h1>Kpi 1</h1></div>
+          
+        </div>
+
+        </div>
+        <div class="conteudo dis" id="conteudoQuatro" style="flex-direction: row;">
+          
+           <div class="conjuntoFinal">
+            <div class="conjuntoDashboard">
+                <div class="dashAreas" style="align-items: start; padding-left: 2rem;">
+                  <h1 class="titulin">Conselho da IA</h1>
+                  <p class="titulinho">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, ullam incidunt dolor vero corrupti eius modi ipsum tenetur iste ad eum veniam sint cupiditate adipisci libero fugiat consequuntur cumque. Velit?</p>
+                  <p class="titulinho">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, ullam incidunt dolor vero corrupti eius modi ipsum tenetur iste ad eum veniam sint cupiditate adipisci libero fugiat consequuntur cumque. Velit?</p>
+                </div>
+                <div class="dashAreasDois" style="align-items: start; padding-left: 2rem;">
+                  <h1 class="titulin">Consideações finais</h1>
+                  <p class="titulinho">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, ullam incidunt dolor vero corrupti eius modi ipsum tenetur iste ad eum veniam sint cupiditate adipisci libero fugiat consequuntur cumque. Velit?</p>
+
+                </div>
+            </div>
+            <div class="kpiTotal" style="flex-direction: column; gap: 0.5rem; " >
+              <div class="kpi" style="width: 100%; height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px; font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
+              <div class="kpi" style="width: 100%; height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px;font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
+              <div class="kpi" style="width: 100%; height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px;font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
+              <div class="kpi" style="width: 100%; height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px;font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
+            </div>
+           </div>
+        </div>
+        <div class="conteudo dis" id="conteudoCinco">
+            <div class="conjuntoKPI" style="flex-direction: column;">
+                <div class="kpi"></div>
+                <div class="kpi"></div>
+                <div class="kpi"></div>
+                <div class="kpi"></div>
+
+        
+            </div>
+           <div class="conjuntoFinal">
+            <div class="conjuntoDashboard">
+                <div class="dashAreas" style="background-color: blue;"></div>
+                <div class="dashAreasDois"></div>
+            </div>
+            <div class="kpiTotal"></div>
+           </div>
+        </div>
+        <div class="lateralDireita">
+            <div class="formContent">
+                <label for="" class="informativo">Local de saida</label>
+                <input type="text" placeholder="Digite aqui">
+            </div>
+
+            <div class="formContent">
+                <label for="" class="informativo">Local de destino</label>
+                <input type="text" placeholder="Digite aqui">
+            </div>
+
+            <div class="formContent">
+                <label for="" class="informativo">Horário de partida</label>
+                <input type="text" placeholder="Digite aqui">
+            </div>
+
+            <div class="formContent">
+                <label for="" class="informativo">Previsâo de chegada</label>
+                <input type="text" placeholder="Digite aqui">
+            </div>
+
+            <div class="formContent">
+                <label for="" class="informativo">Media de passageiros</label>
+                <select name="" id="">
+                    <option value="">Um</option>
+                    <option value="">Um</option>
+                    <option value="">Um</option>
+                    <option value="">Um</option>
+                </select>
+            </div>
+
+            
+            <div class="formContent">
+                <label for="" class="informativo">Modelo da aeronave</label>
+                <input type="text" placeholder="Digite aqui">
+            </div>
+
+            <div class="formContent">
+                <label for="" class="informativo">Aeroporto de saida</label>
+                <input type="text" placeholder="Digite aqui">
+            </div>
+            <div class="formContent">
+                <label for="" class="informativo">Deseja a ajuda de inteligencia artifical?</label>
+                <div class="formContentAlt">
+                    <label for="" class="informativo">Sim
+                        <input
+                        type="checkbox"
+                        id="subscribeNews"
+                        name="subscribe"
+                        value="newsletter" />
+                    </label>
+                    <label for="" class="informativo">Nâo
+                        <input
+                        type="checkbox"
+                        id="subscribeNews"
+                        name="subscribe"
+                        value="newsletter" />
+                    </label>
+              
+            </div>
+      
+           
+         
+            </div>
+            <div class="formContent">
+                <div class="btnConfirmar"><p>Confirmar</p></div>
+            </div>
+            
+
+        </div>
+    </div>
+    
+</body>
+</html>
+
+<script>
+        var contUm = document.getElementById('conteudoUm')
+        var contTres = document.getElementById('conteudoTres')
+        var contQuatro = document.getElementById('conteudoQuatro')
+        var contDois = document.getElementById('conteudoDois')
+    
+        var contUm = document.getElementById('conteudoUm');
+var contDois = document.getElementById('conteudoDois');
+var contTres = document.getElementById('conteudoTres');
+var contQuatro = document.getElementById('conteudoQuatro');
+
+function mostrarModal(modal) {
+    // Oculta todos os modais
+    contUm.classList.add('dis');
+    contDois.classList.add('dis');
+    contTres.classList.add('dis');
+    contQuatro.classList.add('dis');
+    
+    // Mostra apenas o modal escolhido
+    if (modal === 1) {
+        contUm.classList.remove('dis');
+        const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+const ctxDois = document.getElementById('myChartDois');
+
+new Chart(ctxDois, {
+  type: 'bar',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+    } else if (modal === 2) {
+        contDois.classList.remove('dis');
+        const ctxTres = document.getElementById('myChartTres');
+
+new Chart(ctxTres, {
+  type: 'bar',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+const ctxQuatro = document.getElementById('myChartQuatro');
+
+new Chart(ctxQuatro, {
+  type: 'bar',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+        
+
+    } else if (modal === 3) {
+        contTres.classList.remove('dis');
+        const ctxCinco = document.getElementById('myChartCinco');
+
+new Chart(ctxCinco, {
+  type: 'bar',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+const ctxSeis = document.getElementById('myChartSeis');
+
+new Chart(ctxSeis, {
+  type: 'bar',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+
+
+    } else if (modal === 4) {
+        contQuatro.classList.remove('dis');
+    }
+}
+
+// Funções específicas para chamar o modal
+function modalUm() {
+    mostrarModal(1);
+}
+
+function modalDois() {
+    mostrarModal(2);
+}
+
+function modalTres() {
+    mostrarModal(3);
+}
+
+function modalQuatro() {
+    mostrarModal(4);
+}
+
+
+    
+</script>
