@@ -20,7 +20,7 @@
                 </div>
                 <p class="textoDefault">Olá, usuario</p>
             </div>
-            <div  onclick="modalUm()" class="botaoAcesso" id="botaoUm"><p class="textoDefault">Estisticas de cancelamentos</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
+            <div  onclick="modalUm()" class="botaoAcesso" id="botaoUm"><p class="textoDefault">cancelamentos</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
             <div  onclick="modalDois()" class="botaoAcesso" id="botaoDois"><p class="textoDefault">Clima e tempo</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
             <div  onclick="modalTres()" class="botaoAcesso"><p class="textoDefault" id="botaoTres">Dados de atrasos</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
             <div onclick="modalQuatro()" class="botaoAcesso"><p class="textoDefault" id="botaoQuatro">Feedback IA</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
@@ -83,9 +83,9 @@
         </div>
         <div class="conteudo dis" id="conteudoDois">
             <div class="conjuntoKPI" style="justify-content: space-between;">
-                <div class="kpi" style="width: 215px;"><h1>Kpi 1</h1></div>
-                <div class="kpi" style="width: 215px;"><h1>Kpi 1</h1></div>
-                <div class="kpi" style="width: 215px;"><h1>Kpi 1</h1></div>
+                <div class="kpi" style="width:calc((100% / 3 ) - 0.5rem);"><h1>Kpi 1</h1></div>
+                <div class="kpi" style="width:calc((100% / 3 ) - 0.5rem);"><h1>Kpi 1</h1></div>
+                <div class="kpi" style="width:calc((100% / 3 ) - 0.5rem);"><h1>Kpi 1</h1></div>
             </div>
            <div class="conjuntoFinal modify">
             <div class="conjuntoDashboard alt">
@@ -218,7 +218,7 @@
             <div class="kpiTotal"></div>
            </div>
         </div>
-        <div class="lateralDireita">
+        <div class="lateralDireita" id="latDir">
             <div class="formContent">
                 <label for="" class="informativo">Local de saida</label>
                 <input type="text" placeholder="Digite aqui">
@@ -247,12 +247,6 @@
                     <option value="">Um</option>
                     <option value="">Um</option>
                 </select>
-            </div>
-
-            
-            <div class="formContent">
-                <label for="" class="informativo">Modelo da aeronave</label>
-                <input type="text" placeholder="Digite aqui">
             </div>
 
             <div class="formContent">
@@ -289,11 +283,22 @@
 
         </div>
     </div>
+    <div class="close" id="closeIcon" onclick="closeMod()">   <nav id="nav" class="lateralNav">
+      <div onclick="modalNav()" class="hamburger"></div>
+  </nav></div>
+
     
 </body>
 </html>
 
 <script>
+  function closeMod() {
+    var lateral = document.getElementById('latDir')
+    var clos = document.getElementById('closeIcon')
+    lateral.classList.toggle('hidden')
+    clos.classList.toggle('active')
+    console.log(lateral)
+  }
         var contUm = document.getElementById('conteudoUm')
         var contTres = document.getElementById('conteudoTres')
         var contQuatro = document.getElementById('conteudoQuatro')
@@ -304,6 +309,7 @@ var contDois = document.getElementById('conteudoDois');
 var contTres = document.getElementById('conteudoTres');
 var contQuatro = document.getElementById('conteudoQuatro');
 
+mostrarModal(1)
 function mostrarModal(modal) {
     // Oculta todos os modais
     contUm.classList.add('dis');
