@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão do Tempo</title>
+</head>
+<body>
+    <div id="divJ"></div>
+
+    <script>
+        const chaveApi = '61a63f60759671b91f52c72ecfa66019'; 
+        const cidade = 'Amapa, BR'; 
+
+        const traducoesTempo = {
+            "clear sky": "céu limpo",
+            "few clouds": "poucas nuvens",
+            "scattered clouds": "nuvens dispersas",
+            "broken clouds": "nuvens quebradas",
+            "shower rain": "chuva rápida",
+            "rain": "chuva",
+            "thunderstorm": "tempestade",
+            "snow": "neve",
+            "mist": "neblina",
+            "drizzle": "chuvisco",
+            "light rain": "chuva leve", 
+            "overcast clouds": "nuvens cobertas", 
+        };
+
+      
+        const obterPrevisao = () => {
+            const urlPrevisao = `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&appid=${chaveApi}&units=metric`;
+
+            return fetch(urlPrevisao)
+                .then(resposta => {
+                    if (!resposta.ok) {
+                        throw new Error('Erro na requisição da previsão: ' + resposta.status);
+                    }
+                    return resposta.json();
+                });
+        };
+
+
+        const obterClimaAtual = () => {
+            const urlClimaAtual = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${chaveApi}&units=metric`;
+
+            return fetch(urlClimaAtual)
+                .then(resposta => {
+                    if (!resposta.ok) {
+                        throw new Error('Erro na requisição do clima atual: ' + resposta.status);
+                    }
+                    return resposta.json();
+                });
+        };
+
+   
+        Promise.all([obterPrevisao(), obterClimaAtual()])
+            .then(([dadosPrevisao, dadosClimaAtual]) => {
+                let resultado = `<h2>Previsão do Tempo em ${cidade}</h2>`;
+                const previsoesDiarias = dadosPrevisao.list.filter(item => item.dt_txt.endsWith('15:00:00')).slice(0, 5);
+
+       
+                const visibilidade = dadosClimaAtual.visibility; 
+
+                previsoesDiarias.forEach(dia => {
+                    const data = new Date(dia.dt * 1000).toLocaleDateString(); 
+                    const temperatura = dia.main.temp;
+                    const descricaoTempo = dia.weather[0].description;
+                    const descricaoTraduzida = traducoesTempo[descricaoTempo] || descricaoTempo; 
+                    const velocidadeVento = (dia.wind.speed * 3.6).toFixed(2);
+                    const icone = dia.weather[0].icon;
+
+                    resultado += `
+                        <div>
+                            <h4>${data}</h4>
+                            <p>Temperatura: ${temperatura}°C</p>
+                            <p>Condição: ${descricaoTraduzida}</p>
+                            <p>Velocidade do Vento: ${velocidadeVento} km/h</p>
+                            <p>Visibilidade: ${visibilidade} metros</p>
+                            <img src="https://openweathermap.org/img/wn/${icone}.png" alt="Ícone do tempo">
+                        </div>
+                    `;
+                });
+
+                document.getElementById('divJ').innerHTML = resultado;
+            })
+            .catch(erro => {
+                console.error('Erro:', erro);
+                document.getElementById('divJ').innerHTML = 'Erro ao buscar dados do tempo.';
+            });
+    </script>
+</body>
+</html>
