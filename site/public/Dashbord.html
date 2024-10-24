@@ -23,8 +23,8 @@
             <div  onclick="modalUm()" class="botaoAcesso" id="botaoUm"><p class="textoDefault">cancelamentos</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
             <div  onclick="modalDois()" class="botaoAcesso" id="botaoDois"><p class="textoDefault">Clima e tempo</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
             <div  onclick="modalTres()" class="botaoAcesso"><p class="textoDefault" id="botaoTres">Dados de atrasos</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
-            <div onclick="modalQuatro()" class="botaoAcesso"><p class="textoDefault" id="botaoQuatro">Feedback IA</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
-            <div class="botaoAcesso"><p class="textoDefault" id="botaoQuatro">Configurações</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
+            <div onclick="modalQuatro()" class="botaoAcesso ia"><p class="textoDefault " id="botaoQuatro">Feedback IA</p> <p>(new)</p></div>
+            <div onclick="modalCinco()" class="botaoAcesso"><p class="textoDefault" id="botaoQuatro">Configurações</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
             <div class="botaoAcesso"><p class="textoDefault" id="botaoQuatro">Sair</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
 
         </div>
@@ -218,74 +218,188 @@
             <div class="kpiTotal"></div>
            </div>
         </div>
-        <div class="lateralDireita" id="latDir">
-            <div class="formContent">
-                <label for="" class="informativo">Local de saida</label>
-                <input type="text" placeholder="Digite aqui">
-            </div>
-
-            <div class="formContent">
-                <label for="" class="informativo">Local de destino</label>
-                <input type="text" placeholder="Digite aqui">
-            </div>
-
-            <div class="formContent">
-                <label for="" class="informativo">Horário de partida</label>
-                <input type="text" placeholder="Digite aqui">
-            </div>
-
-            <div class="formContent">
-                <label for="" class="informativo">Previsâo de chegada</label>
-                <input type="text" placeholder="Digite aqui">
-            </div>
-
-            <div class="formContent">
-                <label for="" class="informativo">Media de passageiros</label>
-                <select name="" id="">
-                    <option value="">Um</option>
-                    <option value="">Um</option>
-                    <option value="">Um</option>
-                    <option value="">Um</option>
-                </select>
-            </div>
-
-            <div class="formContent">
-                <label for="" class="informativo">Aeroporto de saida</label>
-                <input type="text" placeholder="Digite aqui">
-            </div>
-            <div class="formContent">
-                <label for="" class="informativo">Deseja a ajuda de inteligencia artifical?</label>
-                <div class="formContentAlt">
-                    <label for="" class="informativo">Sim
-                        <input
-                        type="checkbox"
-                        id="subscribeNews"
-                        name="subscribe"
-                        value="newsletter" />
-                    </label>
-                    <label for="" class="informativo">Nâo
-                        <input
-                        type="checkbox"
-                        id="subscribeNews"
-                        name="subscribe"
-                        value="newsletter" />
-                    </label>
-              
-            </div>
-      
-           
-         
-            </div>
-            <div class="formContent">
-                <div class="btnConfirmar"><p>Confirmar</p></div>
-            </div>
+        <div class="conteudo dis" id="conteudoSeis">
             
-
+           <div class="conjuntoFinal">
+            <div class="conjuntoDashboard">
+                <div class="dashAreas" style="background-color: rgba(0, 0, 255, 0); padding: 0; gap: 0.5rem; justify-content: start; width: 100%;">
+                  <div class="changeMode"><p class="textoDefault" onclick="addEmp()">Adicionar empresa</p></div>
+                  <div class="changeMode"><p class="textoDefault" onclick="ediEmp()">editar empresa</p></div>
+                  <div class="changeMode"><p class="textoDefault" onclick="delEmp()">excluir empresa</p></div>
+                  <div class="changeMode"><p class="textoDefault" onclick="editUser()">editar usuario</p></div>
+                  <div class="changeMode"><p class="textoDefault" onclick="delUser()">excluir usuario</p></div>
+                </div>
+                <div class="dashAreasDois" style="color: #ffff;">
+                  <div class="cadastroEmp" id="cadEmp">
+                    <h1 class="titulo">Cadastro empresa</h1>
+                    <div class="align">
+                        <div class="alignForm">
+                            <p></p>
+                            <input type="text" class="ipt" id="input_nome_empresa">
+                        </div>
+                        <div class="alignForm">
+                            <p>CNPJ</p>
+                           <input type="text" class="ipt" id="input_cnpj" maxlength="18" oninput="formatarCNPJ(this)">
+                        </div>
+                        <div class="alignForm">
+                            <p>E-mail</p>
+                            <input type="text" id="input_email_empresa" class="ipt">
+                        </div>
+                        <div class="alignForm">
+                            <p>Senha</p>
+                            <input type="text" id="input_senha_empresa" class="ipt">
+                        </div>
+                        <div class="alignForm">
+                            <p>Confirmar Senha</p>
+                            <input type="text" id="input_confirmar_senha_empresa" class="ipt">
+                        </div>
+                        <div class="align">
+                            <div class="btn" onclick="btnCadastroEmpresa()"><p>Enviar</p></div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="cadastroEmp" id="editUser">
+                  <h1 class="titulo">Editar usuario</h1>
+                  <div class="align">
+                      <div class="alignForm">
+                          <p></p>
+                          <input type="text" class="ipt" id="input_nome_empresa">
+                      </div>
+                      <div class="alignForm">
+                          <p>CNPJ</p>
+                         <input type="text" class="ipt" id="input_cnpj" maxlength="18" oninput="formatarCNPJ(this)">
+                      </div>
+                      <div class="alignForm">
+                          <p>E-mail</p>
+                          <input type="text" id="input_email_empresa" class="ipt">
+                      </div>
+                      <div class="alignForm">
+                          <p>Senha</p>
+                          <input type="text" id="input_senha_empresa" class="ipt">
+                      </div>
+                      <div class="alignForm">
+                          <p>Confirmar Senha</p>
+                          <input type="text" id="input_confirmar_senha_empresa" class="ipt">
+                      </div>
+                      <div class="align">
+                          <div class="btn" onclick="btnCadastroEmpresa()"><p>Enviar</p></div>
+                          
+                      </div>
+                  </div>
+              </div>
+                <div class="cadastroEmp" id="editEmp">
+                    <h1 class="titulo">Editar empresa</h1>
+                    <div class="align">
+                        <div class="alignForm">
+                            <p></p>
+                            <input type="text" class="ipt" id="input_nome_empresa">
+                        </div>
+                        <div class="alignForm">
+                            <p>CNPJ</p>
+                           <input type="text" class="ipt" id="input_cnpj" maxlength="18" oninput="formatarCNPJ(this)">
+                        </div>
+                        <div class="alignForm">
+                            <p>E-mail</p>
+                            <input type="text" id="input_email_empresa" class="ipt">
+                        </div>
+                        <div class="alignForm">
+                            <p>Senha</p>
+                            <input type="text" id="input_senha_empresa" class="ipt">
+                        </div>
+                        <div class="alignForm">
+                            <p>Confirmar Senha</p>
+                            <input type="text" id="input_confirmar_senha_empresa" class="ipt">
+                        </div>
+                        <div class="align">
+                            <div class="btn" onclick="btnCadastroEmpresa()"><p>Enviar</p></div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="cadastroEmp" id="delEmp">
+                  <h1 class="titulo">Deletar empresa</h1>
+                  <button class="btn">excluir</button>
+                </div>
+                <div class="cadastroEmp" id="delUser">
+                  <h1 class="titulo">Deletar usuário</h1>
+                  <button class="btn">excluir</button>
+                </div>
+            </div>
+                  
+            </div>
+            <div class="kpiTotal"></div>
+           </div>
         </div>
+     
     </div>
     <div class="close" id="closeIcon" onclick="closeMod()">   <nav id="nav" class="lateralNav">
-      <div onclick="modalNav()" class="hamburger"></div>
+      <div class="hamburger"></div>
   </nav></div>
+  <div class="lateralDireita hidden" id="latDir">
+    <div class="formContent">
+        <label for="" class="informativo">Local de saida</label>
+        <input type="text" placeholder="Digite aqui">
+    </div>
+
+    <div class="formContent">
+        <label for="" class="informativo">Local de destino</label>
+        <input type="text" placeholder="Digite aqui">
+    </div>
+
+    <div class="formContent">
+        <label for="" class="informativo">Horário de partida</label>
+        <input type="text" placeholder="Digite aqui">
+    </div>
+
+    <div class="formContent">
+        <label for="" class="informativo">Previsâo de chegada</label>
+        <input type="text" placeholder="Digite aqui">
+    </div>
+
+    <div class="formContent">
+        <label for="" class="informativo">Media de passageiros</label>
+        <select name="" id="">
+            <option value="">Um</option>
+            <option value="">Um</option>
+            <option value="">Um</option>
+            <option value="">Um</option>
+        </select>
+    </div>
+
+    <div class="formContent">
+        <label for="" class="informativo">Aeroporto de saida</label>
+        <input type="text" placeholder="Digite aqui">
+    </div>
+    <div class="formContent">
+        <label for="" class="informativo">Deseja a ajuda de inteligencia artifical?</label>
+        <div class="formContentAlt">
+            <label for="" class="informativo">Sim
+                <input
+                type="checkbox"
+                id="subscribeNews"
+                name="subscribe"
+                value="newsletter" />
+            </label>
+            <label for="" class="informativo">Nâo
+                <input
+                type="checkbox"
+                id="subscribeNews"
+                name="subscribe"
+                value="newsletter" />
+            </label>
+      
+    </div>
+
+   
+ 
+    </div>
+    <div class="formContent">
+        <div class="btnConfirmar"><p>Confirmar</p></div>
+    </div>
+    
+
+</div>
 
     
 </body>
@@ -303,11 +417,53 @@
         var contTres = document.getElementById('conteudoTres')
         var contQuatro = document.getElementById('conteudoQuatro')
         var contDois = document.getElementById('conteudoDois')
+        var contEmpAdd = document.getElementById('cadEmp')
+        var contEmpEdit = document.getElementById('editEmp')
+        var contEmpDel = document.getElementById('delEmp')
+        var contUserEdit = document.getElementById('editUser')
+        var contUserDel = document.getElementById('delUser')
+
+
+
+
     
         var contUm = document.getElementById('conteudoUm');
 var contDois = document.getElementById('conteudoDois');
 var contTres = document.getElementById('conteudoTres');
 var contQuatro = document.getElementById('conteudoQuatro');
+var contCinco = document.getElementById('conteudoSeis');
+
+mostrarModal(1)
+mostrarModalCrud(0)
+function mostrarModalCrud(modal) {
+    // Oculta todos os modais
+    contEmpAdd.classList.add('dis')
+    contEmpEdit.classList.add('dis')
+    contEmpDel.classList.add('dis')
+    contUserDel.classList.add('dis')
+    contUserEdit.classList.add('dis')
+    console.log(modal);
+    
+
+
+
+    // Mostra apenas o modal escolhido
+    if (modal === 1) {
+        contEmpAdd.classList.remove('dis');
+  }
+  if (modal === 2) {
+        contEmpEdit.classList.remove('dis');
+  }
+  if (modal === 3) {
+        contEmpDel.classList.remove('dis');
+  }
+  if (modal === 4) {
+        contUserEdit.classList.remove('dis');
+  }
+  if (modal === 5) {
+        contUserDel.classList.remove('dis');
+  }
+}
 
 mostrarModal(1)
 function mostrarModal(modal) {
@@ -316,6 +472,8 @@ function mostrarModal(modal) {
     contDois.classList.add('dis');
     contTres.classList.add('dis');
     contQuatro.classList.add('dis');
+    contCinco.classList.add('dis');
+
     
     // Mostra apenas o modal escolhido
     if (modal === 1) {
@@ -452,6 +610,9 @@ new Chart(ctxSeis, {
     } else if (modal === 4) {
         contQuatro.classList.remove('dis');
     }
+    else if (modal === 5) {
+        contCinco.classList.remove('dis');
+    }
 }
 
 // Funções específicas para chamar o modal
@@ -470,6 +631,34 @@ function modalTres() {
 function modalQuatro() {
     mostrarModal(4);
 }
+function modalCinco() {
+    mostrarModal(5);
+}
+function addEmp() {
+    mostrarModalCrud(1);
+    console.log('addEmp')
+
+}
+function ediEmp() {
+    mostrarModalCrud(2);
+    console.log('ediEMp')
+
+}
+function delEmp() {
+    mostrarModalCrud(3);
+    console.log('delEMp')
+}
+function editUser() {
+    mostrarModalCrud(4);
+    console.log('ediUser')
+
+}
+function delUser() {
+    mostrarModalCrud(5);
+    console.log('delUser')
+
+}
+
 
 
     
