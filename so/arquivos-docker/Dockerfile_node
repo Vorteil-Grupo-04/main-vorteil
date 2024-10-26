@@ -1,0 +1,39 @@
+#Selecionando a imagem oficial do NodeJS em sua última versão 
+
+FROM node:latest 
+
+ 
+
+#Atualização do sistema e instalaçao do git 
+
+RUN apt-get update && apt-get upgrade -y 
+
+ 
+
+#Clona o repositório do projeto 
+
+RUN git clone https://github.com/Vorteil-Grupo-04/main-vorteil.git 
+
+ 
+
+#entra no diretorio de trabalho que é onde esta o package.json do web-data-viz 
+
+WORKDIR /main-vorteil/site 
+
+ 
+
+#instala as dependencias e pacotes do npm 
+
+RUN npm install 
+
+ 
+
+#define a porta 3333 como acesso à aplicação 
+
+EXPOSE 3333 
+
+ 
+
+#logo que o container for iniciado será startado a api web-data-viz 
+
+CMD ["npm","start"] 

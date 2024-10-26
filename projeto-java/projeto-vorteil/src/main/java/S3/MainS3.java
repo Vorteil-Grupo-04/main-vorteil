@@ -17,7 +17,7 @@ public class MainS3 {
     public static void main(String[] args) {
         // Instanciando o cliente S3 via S3Provider
         S3Client s3Client = new S3Provider().getS3Client();
-        String bucketName = "vorteil-teste";
+        String bucketName = "bucket-vorteil";
 
         // Criando um novo bucket no S3
         try {
