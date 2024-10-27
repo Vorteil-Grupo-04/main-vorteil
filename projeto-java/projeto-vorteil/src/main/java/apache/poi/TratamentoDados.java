@@ -14,40 +14,9 @@ import java.util.logging.Logger;
 
 public class TratamentoDados {
     static Logger logger = Logger.getLogger(TratamentoDados.class.getName());
-    public static class Voo {
-        String nome;
-        String empresaAerea;
-        String siglaAeroportoSaida;
-        String nomeAeroportoSaida;
-        String siglaAeroportoDestino;
-        String nomeAeroportoDestino;
-        String cidadeSaida;
-        String ufSaida;
-        String cidadeDestino;
-        String ufDestino;
-        Double porcentCancelamentos;
-        Double porcentAtrasoSuperior30;
 
-        @Override
-        public String toString() {
-            return "Voo{" +
-                    "nome='" + nome + '\'' +
-                    ", empresaAerea='" + empresaAerea + '\'' +
-                    ", siglaAeroportoSaida='" + siglaAeroportoSaida + '\'' +
-                    ", nomeAeroportoSaida='" + nomeAeroportoSaida + '\'' +
-                    ", siglaAeroportoDestino='" + siglaAeroportoDestino + '\'' +
-                    ", nomeAeroportoDestino='" + nomeAeroportoDestino + '\'' +
-                    ", cidadeSaida='" + cidadeSaida + '\'' +
-                    ", ufSaida='" + ufSaida + '\'' +
-                    ", cidadeDestino='" + cidadeDestino + '\'' +
-                    ", ufDestino='" + ufDestino + '\'' +
-                    ", porcentCancelamentos=" + porcentCancelamentos +
-                    ", porcentAtrasoSuperior30=" + porcentAtrasoSuperior30 +
-                    '}';
-        }
-    }
 
-    public void lerXls(String caminhoArquivo) throws FileNotFoundException {
+    public List<Voo> lerXls(String caminhoArquivo) throws FileNotFoundException {
         try (FileInputStream arquivoAberto = new FileInputStream(caminhoArquivo);
              HSSFWorkbook workbook = new HSSFWorkbook(arquivoAberto)) {
             System.out.println("Arquivo Excel foi aberto.");
@@ -59,74 +28,44 @@ public class TratamentoDados {
             DecimalFormat decimal = new DecimalFormat("#,00");
 
             for (Row currentRow : sheet) {
-                Voo voo = new Voo();
                 boolean isBrasil = false;
+                        Voo voo = new Voo();
 
                 for (Cell celula : currentRow) {
-                    System.out.println(celula);
-                    if (celula != null) {
-                        switch (celula.getColumnIndex()) {
-                            case 0:
-                                voo.empresaAerea = getCellValueAsString(celula);
-                                break;
-                            case 1:
-                                voo.nome = getCellValueAsString(celula);
-                                break;
-                            case 2:
-                                voo.siglaAeroportoSaida = getCellValueAsString(celula);
-                                break;
-                            case 3:
-                                voo.nomeAeroportoSaida = getCellValueAsString(celula);
-                                if (voo.nomeAeroportoSaida.contains("Brasil")) {
-                                    isBrasil = true;
-                                }
-                                break;
-                            case 4:
-                                voo.siglaAeroportoDestino = getCellValueAsString(celula);
-                                break;
-                            case 5:
-                                voo.nomeAeroportoDestino = getCellValueAsString(celula);
-                                if (voo.nomeAeroportoDestino.contains("Brasil")) {
-                                    isBrasil = true;
-                                }
-                                break;
-                            case 6:
-                                voo.cidadeSaida = getCellValueAsString(celula);
-                                break;
-                            case 7:
-                                voo.ufSaida = getCellValueAsString(celula);
-                                break;
-                            case 8:
-                                voo.cidadeDestino = getCellValueAsString(celula);
-                                break;
-                            case 9:
-                                voo.ufDestino = getCellValueAsString(celula);
-                                break;
-                            case 10:
-                                if (celula.getCellType() == CellType.NUMERIC) {
-                                    voo.porcentCancelamentos = celula.getNumericCellValue();
-                                }
-                                break;
-                            case 11:
-                                if (celula.getCellType() == CellType.NUMERIC) {
-                                    voo.porcentAtrasoSuperior30 = celula.getNumericCellValue();
-                                }
-                                break;
+                    if (celula != null && !getCellValueAsString(celula).isBlank()) {
+//                        System.out.println(getCellValueAsString(celula));
+//                        System.out.println("Index da celula: " + celula.getColumnIndex() + " ");
+//                        System.out.println("valor da celula: " + getCellValueAsString(celula));
+                        if(celula.getColumnIndex() == 0 && !getCellValueAsString(celula).isEmpty())
+                        {
+                            voo.setEmpresaAerea(getCellValueAsString(celula));
+                        }else if(celula.getColumnIndex() == 2 && !getCellValueAsString(celula).isEmpty()){
+                            voo.setSiglaAeroportoSaida(getCellValueAsString(celula));
+                        }else if(celula.getColumnIndex() == 3 && !getCellValueAsString(celula).isEmpty()){
+                            voo.setNomeAeroportoSaida(getCellValueAsString(celula));
+                        }else if(celula.getColumnIndex() == 4 && !getCellValueAsString(celula).isEmpty()){
+                            voo.setSiglaAeroportoDestino(getCellValueAsString(celula));
+                        }else if(celula.getColumnIndex() == 5 && !getCellValueAsString(celula).isEmpty()){
+                            voo.setNomeAeroportoDestino(getCellValueAsString(celula));
+                        }else if(celula.getColumnIndex() == 7 && !getCellValueAsString(celula).isEmpty() && !getCellValueAsString(celula).contains("% de Cancelamento")){
+                            voo.setPorcentCancelamentos(Double.parseDouble(getCellValueAsString(celula)));
+                        }else if(celula.getColumnIndex() == 8 && !getCellValueAsString(celula).isEmpty() && !getCellValueAsString(celula).contains("Superiores a 30 min.") && !getCellValueAsString(celula).contains("% de Atrasos")){
+                            voo.setPorcentAtrasoSuperior30(Double.parseDouble(getCellValueAsString(celula)));
+                        }else if(celula.getColumnIndex() == 9 && !getCellValueAsString(celula).isEmpty() && !getCellValueAsString(celula).contains("Superiores a 60 min.") && !getCellValueAsString(celula).contains("% de Atrasos")){
+                            voo.setPorcentAtrasoSuperior60(Double.parseDouble(getCellValueAsString(celula)));
                         }
+
                     }
-                }
 
-                if (isBrasil) {
-                    voos.add(voo);
                 }
+                        if (voo.getEmpresaAerea() != null){
+                            voos.add(voo);
+                        }
             }
 
-            // Exibir os dados filtrados
-            for (Voo voo : voos) {
-                System.out.println(voo);
-            }
-
+//             Exibir os dados filtrados
             System.out.println("Todas as linhas foram processadas.");
+            return voos;
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -148,13 +87,13 @@ public class TratamentoDados {
         }
     }
 
-    public static void main(String[] args) {
+    public static List<Voo> converterBaseDeDados() {
         TratamentoDados tratamentoDados = new TratamentoDados();
         String path = System.getProperty("user.dir"); System.out.println("Working Directory = " + path);
         try {
-            tratamentoDados.lerXls("porcentuaisTeste.xls");
+           return tratamentoDados.lerXls("percentuaisTeste.xls");
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            throw new RuntimeException();
         }
     }
 }
