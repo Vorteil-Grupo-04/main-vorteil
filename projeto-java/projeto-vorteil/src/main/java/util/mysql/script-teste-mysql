@@ -1,7 +1,0 @@
-CREATE DATABASE vorteil;
-
-USE vorteil;
-
-SHOW TABLES;
-
-SELECT * FROM filme;

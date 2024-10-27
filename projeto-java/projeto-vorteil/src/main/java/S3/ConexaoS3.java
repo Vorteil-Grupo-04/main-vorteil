@@ -13,8 +13,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class MainS3 {
-    public static void main(String[] args) {
+public class ConexaoS3 {
+    public static void baixarBucket() {
         // Instanciando o cliente S3 via S3Provider
         S3Client s3Client = new S3Provider().getS3Client();
         String bucketName = "bucket-vorteil";
