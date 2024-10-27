@@ -11,6 +11,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class TratamentoDados {
     static Logger logger = Logger.getLogger(TratamentoDados.class.getName());
@@ -42,11 +44,34 @@ public class TratamentoDados {
                         }else if(celula.getColumnIndex() == 2 && !getCellValueAsString(celula).isEmpty()){
                             voo.setSiglaAeroportoSaida(getCellValueAsString(celula));
                         }else if(celula.getColumnIndex() == 3 && !getCellValueAsString(celula).isEmpty()){
-                            voo.setNomeAeroportoSaida(getCellValueAsString(celula));
+                            String regex = "(.*)\\((.*),(.*)\\)";
+                            Pattern pattern = Pattern.compile(regex);
+                            Matcher matcher = pattern.matcher(getCellValueAsString(celula));
+                            if (matcher.find()) {
+                                String nomeAeroporto = matcher.group(1);
+                                String uf = matcher.group(2);
+                                String pais = matcher.group(3).replace(" ", "");
+
+                                voo.setNomeAeroportoSaida(nomeAeroporto);
+                                voo.setUfSaida(uf);
+                                voo.setPaisSaida(pais);
+
+                            }
                         }else if(celula.getColumnIndex() == 4 && !getCellValueAsString(celula).isEmpty()){
                             voo.setSiglaAeroportoDestino(getCellValueAsString(celula));
                         }else if(celula.getColumnIndex() == 5 && !getCellValueAsString(celula).isEmpty()){
-                            voo.setNomeAeroportoDestino(getCellValueAsString(celula));
+                            String regex = "(.*)\\((.*),(.*)\\)";
+                            Pattern pattern = Pattern.compile(regex);
+                            Matcher matcher = pattern.matcher(getCellValueAsString(celula));
+                            if (matcher.find()) {
+                                String nomeAeroporto = matcher.group(1);
+                                String uf = matcher.group(2);
+                                String pais = matcher.group(3).replace(" ", "");
+
+                                voo.setNomeAeroportoDestino(nomeAeroporto);
+                                voo.setUfDestino(uf);
+                                voo.setPaisDestino(pais);
+                            }
                         }else if(celula.getColumnIndex() == 7 && !getCellValueAsString(celula).isEmpty() && !getCellValueAsString(celula).contains("% de Cancelamento")){
                             voo.setPorcentCancelamentos(Double.parseDouble(getCellValueAsString(celula)));
                         }else if(celula.getColumnIndex() == 8 && !getCellValueAsString(celula).isEmpty() && !getCellValueAsString(celula).contains("Superiores a 30 min.") && !getCellValueAsString(celula).contains("% de Atrasos")){
@@ -60,6 +85,7 @@ public class TratamentoDados {
                 }
                         if (voo.getEmpresaAerea() != null){
                             voos.add(voo);
+                            System.out.println(voo);
                         }
             }
 

@@ -7,9 +7,9 @@ public class Voo {
     private String nomeAeroportoSaida;
     private String siglaAeroportoDestino;
     private String nomeAeroportoDestino;
-    private String cidadeSaida;
+    private String paisSaida;
     private String ufSaida;
-    private String cidadeDestino;
+    private String paisDestino;
     private String ufDestino;
     private Double porcentCancelamentos;
     private Double porcentAtrasoSuperior30;
@@ -63,12 +63,12 @@ public class Voo {
         this.nomeAeroportoDestino = nomeAeroportoDestino;
     }
 
-    public String getCidadeSaida() {
-        return cidadeSaida;
+    public String getPaisSaida() {
+        return paisSaida;
     }
 
-    public void setCidadeSaida(String cidadeSaida) {
-        this.cidadeSaida = cidadeSaida;
+    public void setPaisSaida(String paisSaida) {
+        this.paisSaida = paisSaida;
     }
 
     public String getUfSaida() {
@@ -79,12 +79,12 @@ public class Voo {
         this.ufSaida = ufSaida;
     }
 
-    public String getCidadeDestino() {
-        return cidadeDestino;
+    public String getPaisDestino() {
+        return paisDestino;
     }
 
-    public void setCidadeDestino(String cidadeDestino) {
-        this.cidadeDestino = cidadeDestino;
+    public void setPaisDestino(String paisDestino) {
+        this.paisDestino = paisDestino;
     }
 
     public String getUfDestino() {
@@ -125,8 +125,12 @@ public class Voo {
                 "empresaAerea='" + empresaAerea + '\'' +
                 ", siglaAeroportoSaida='" + siglaAeroportoSaida + '\'' +
                 ", nomeAeroportoSaida='" + nomeAeroportoSaida + '\'' +
+                ", ufAeroportoSaida='" + ufSaida + '\'' +
+                ", paisAeroportoSaida='" + paisSaida + '\'' +
                 ", siglaAeroportoDestino='" + siglaAeroportoDestino + '\'' +
                 ", nomeAeroportoDestino='" + nomeAeroportoDestino + '\'' +
+                ", ufAeroportoDestino='" + ufDestino + '\'' +
+                ", paisAeroportoDestino='" + paisDestino + '\'' +
                 ", porcentCancelamentos=" + porcentCancelamentos +
                 ", porcentAtrasoSuperior30=" + porcentAtrasoSuperior30 +
                 ", porcentAtrasoSuperior60=" + porcentAtrasoSuperior60 +
