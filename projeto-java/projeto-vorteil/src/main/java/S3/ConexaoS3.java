@@ -23,7 +23,7 @@ public class ConexaoS3 {
         // Instanciando o cliente S3 via S3Provider
         S3Client s3Client = new S3Provider().getS3Client();
         String bucketName = "bucket-vorteil";
-//        Logv2 logv2 = new Logv2("LogsConexaoS3.log");
+        Logv2 logv2 = new Logv2("LogsConexaoS3.log");
 
         // Criando um novo bucket no S3
         try {
@@ -32,13 +32,12 @@ public class ConexaoS3 {
                     .build();
             s3Client.createBucket(createBucketRequest);
             System.out.println("Bucket criado com sucesso: " + bucketName);
-//            logv2.criarLog("Bucket criado com sucesso:" + bucketName);
+            logv2.criarLog("Bucket criado com sucesso:" + bucketName);
         } catch (S3Exception e) {
             // Ignorando erro ao criar o bucket, caso já exista
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-//         catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
 
         // Listando todos os buckets
         try {
@@ -61,7 +60,7 @@ public class ConexaoS3 {
 
 
             System.out.println("Objetos no bucket " + bucketName + ":");
-//            logv2.criarLog("Objeto no bucket " + bucketName + ":");
+            logv2.criarLog("Objeto no bucket " + bucketName + ":");
 
 
             for (S3Object object : objects) {
@@ -69,10 +68,9 @@ public class ConexaoS3 {
             }
         } catch (S3Exception e) {
             // Ignorando erro ao listar objetos no bucket
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-//        catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
 
         // Fazendo download de arquivos
         try {
