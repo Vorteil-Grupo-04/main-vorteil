@@ -23,7 +23,7 @@ public class ConexaoS3 {
         // Instanciando o cliente S3 via S3Provider
         S3Client s3Client = new S3Provider().getS3Client();
         String bucketName = "bucket-vorteil";
-        Logv2 logv2 = new Logv2("LogsConexaoS3");
+        Logv2 logv2 = new Logv2("LogsConexaoS3.log");
 
         // Criando um novo bucket no S3
         try {

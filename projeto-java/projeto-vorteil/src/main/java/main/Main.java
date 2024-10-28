@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Logv2 logv2 = new Logv2("LogsBD");
+        Logv2 logv2 = new Logv2("LogsBD.log");
         ConexaoS3 conexaoS3 = new ConexaoS3();
         conexaoS3.baixarBucket();
 

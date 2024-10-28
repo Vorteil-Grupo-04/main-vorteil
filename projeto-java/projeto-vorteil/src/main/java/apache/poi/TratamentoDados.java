@@ -21,7 +21,7 @@ public class TratamentoDados {
 
 
     public List<Voo> lerXls(String caminhoArquivo) throws FileNotFoundException {
-        Logv2 logv2 = new Logv2("LogsTratamentoDeDados");
+        Logv2 logv2 = new Logv2("LogsTratamentoDeDados.log");
         try (FileInputStream arquivoAberto = new FileInputStream(caminhoArquivo);
              HSSFWorkbook workbook = new HSSFWorkbook(arquivoAberto)) {
             System.out.println("Arquivo Excel foi aberto.");

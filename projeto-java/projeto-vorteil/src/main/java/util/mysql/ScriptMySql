@@ -1,0 +1,27 @@
+show databases;
+
+create database vorteil;
+
+use vorteil;
+show tables;
+
+create table vorteil(
+empresaAerea varchar(244),
+siglaAeroportoSaida varchar(244),
+nomeAeroportoSaida varchar(244),
+ufAeroportoSaida varchar(244),
+paisAeroportoSaida varchar(244),
+siglaAeroportoDestino varchar(244),
+nomeAeroportoDestino varchar(244),
+ufAeroportoDestino varchar(244),
+paisAeroportoDestino varchar(244),
+porcentCancelamentos float,
+porcentAtrasoSuperior30 float,
+porcentAtrasoSuperior60 float
+);
+
+select * from vorteil;
+
+select count(vorteil.empresaAerea) from vorteil;
+
+drop table vorteil;
