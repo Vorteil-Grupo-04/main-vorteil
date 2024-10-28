@@ -3,15 +3,19 @@ package util.classes;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 public class Logv2 {
     private LocalDateTime dataAtual;
-    private String repositorio = ".\\src\\main\\java\\util\\log/Logs.log";
+    private String repositorio = "src/main/java/util/logs";
+
+
+    //caminho ec2 /app/logs/Logs.log
 
     public Logv2(String nomeArquivo){
 
-        this.repositorio = ".\\src\\main\\java\\util\\logs/%s".formatted(nomeArquivo);
+        this.repositorio = "/app/logs/%s".formatted(nomeArquivo);
 
     }
 
@@ -20,7 +24,9 @@ public class Logv2 {
     }
 
     public Boolean criarLog(String mensagem) throws IOException {
-        this.dataAtual = LocalDateTime.now();
+        ZoneId fusoSp = ZoneId.of("America/Sao_Paulo");
+
+        this.dataAtual = LocalDateTime.now(fusoSp);
         DateTimeFormatter horarioFormato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
         String horarioFormatado = dataAtual.format(horarioFormato);

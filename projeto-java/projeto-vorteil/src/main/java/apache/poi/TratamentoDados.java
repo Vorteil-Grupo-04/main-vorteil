@@ -4,6 +4,8 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
+import util.classes.Logv2;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -19,11 +21,14 @@ public class TratamentoDados {
 
 
     public List<Voo> lerXls(String caminhoArquivo) throws FileNotFoundException {
+        Logv2 logv2 = new Logv2("LogsTratamentoDeDados");
         try (FileInputStream arquivoAberto = new FileInputStream(caminhoArquivo);
              HSSFWorkbook workbook = new HSSFWorkbook(arquivoAberto)) {
             System.out.println("Arquivo Excel foi aberto.");
+            logv2.criarLog("Arquivo Excel foi aberto.");
             HSSFSheet sheet = workbook.getSheetAt(0);
             System.out.println("Planilha acessada!");
+            logv2.criarLog("Planilha acessada!");
 
 
             List<Voo> voos = new ArrayList<>();
@@ -91,6 +96,7 @@ public class TratamentoDados {
 
 //             Exibir os dados filtrados
             System.out.println("Todas as linhas foram processadas.");
+            logv2.criarLog("Todas as linhas foram processadas.");
             return voos;
 
         } catch (IOException e) {

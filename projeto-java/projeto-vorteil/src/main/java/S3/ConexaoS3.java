@@ -1,9 +1,12 @@
 package S3;
 
 import S3.S3Provider;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import software.amazon.awssdk.core.sync.ResponseTransformer;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.*;
+import util.classes.Logv2;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,10 +17,13 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class ConexaoS3 {
+    private static final Logger log = LoggerFactory.getLogger(ConexaoS3.class);
+
     public static void baixarBucket() {
         // Instanciando o cliente S3 via S3Provider
         S3Client s3Client = new S3Provider().getS3Client();
         String bucketName = "bucket-vorteil";
+        Logv2 logv2 = new Logv2("LogsConexaoS3");
 
         // Criando um novo bucket no S3
         try {
@@ -26,8 +32,11 @@ public class ConexaoS3 {
                     .build();
             s3Client.createBucket(createBucketRequest);
             System.out.println("Bucket criado com sucesso: " + bucketName);
+            logv2.criarLog("Bucket criado com sucesso:" + bucketName);
         } catch (S3Exception e) {
             // Ignorando erro ao criar o bucket, caso já exista
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
         // Listando todos os buckets
@@ -48,12 +57,19 @@ public class ConexaoS3 {
                     .build();
 
             List<S3Object> objects = s3Client.listObjects(listObjects).contents();
+
+
             System.out.println("Objetos no bucket " + bucketName + ":");
+            logv2.criarLog("Objeto no bucket " + bucketName + ":");
+
+
             for (S3Object object : objects) {
                 System.out.println("- " + object.key());
             }
         } catch (S3Exception e) {
             // Ignorando erro ao listar objetos no bucket
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
         // Fazendo download de arquivos
