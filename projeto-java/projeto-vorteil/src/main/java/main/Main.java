@@ -12,22 +12,23 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-//        ConexaoS3 conexaoS3 = new ConexaoS3();
-//        conexaoS3.baixarBucket();
+        ConexaoS3 conexaoS3 = new ConexaoS3();
+        conexaoS3.baixarBucket();
 
         TratamentoDados tratamentoDados = new TratamentoDados();
         List <Voo> listaDeVoos;
 
             listaDeVoos = tratamentoDados.lerXls("percentuais.xls");
 
+        Conexao conexao = new Conexao();
+        JdbcTemplate conexaoDoBanco = conexao.getConexaoDoBanco();
+        System.out.println(listaDeVoos.size());
+        for (Voo vooAtual : listaDeVoos){
+        conexaoDoBanco.update("INSERT INTO vorteil (empresaAerea, siglaAeroportoSaida, nomeAeroportoSaida, ufAeroportoSaida, paisAeroportoSaida, siglaAeroportoDestino,  nomeAeroportoDestino, ufAeroportoDestino, paisAeroportoDestino, porcentCancelamentos, porcentAtrasoSuperior30, porcentAtrasoSuperior60) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)", vooAtual.getEmpresaAerea(), vooAtual.getSiglaAeroportoSaida(), vooAtual.getNomeAeroportoSaida(), vooAtual.getUfSaida(), vooAtual.getPaisSaida() , vooAtual.getSiglaAeroportoDestino(), vooAtual.getNomeAeroportoDestino(), vooAtual.getUfDestino(),  vooAtual.getPaisDestino(), vooAtual.getPorcentCancelamentos(), vooAtual.getPorcentAtrasoSuperior30(), vooAtual.getPorcentAtrasoSuperior60());
 
-//        Voo primeirovoo = listaDeVoos.get(2);
-//        Conexao conexao = new Conexao();
-//        JdbcTemplate conexaoDoBanco = conexao.getConexaoDoBanco();
-//
-//        conexaoDoBanco.update("INSERT INTO vorteil (empresaAerea, siglaAeroportoSaida, nomeAeroportoSaida, siglaAeroportoDestino, nomeAeroportoDestino, cidadeSaida, cidadeDestino, porcentCancelamentos, porcentAtrasoSuperior30, porcentAtrasoSuperior60) VALUES (?,?,?,?,?,?,?,?,?,?)", primeirovoo.getEmpresaAerea(), primeirovoo.getSiglaAeroportoSaida(), primeirovoo.getNomeAeroportoSaida(), primeirovoo.getSiglaAeroportoDestino(), primeirovoo.getNomeAeroportoDestino(), primeirovoo.getCidadeSaida(), primeirovoo.getCidadeDestino(), primeirovoo.getPorcentCancelamentos(), primeirovoo.getPorcentAtrasoSuperior30(), primeirovoo.getPorcentAtrasoSuperior60());
-//
-//        System.out.println("Todos os dados inseridos no BD");
+        
+        }
+        System.out.println("Todos os dados inseridos no BD");
     }
 
 

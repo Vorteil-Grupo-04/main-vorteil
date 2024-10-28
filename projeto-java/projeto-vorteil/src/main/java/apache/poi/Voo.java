@@ -119,6 +119,8 @@ public class Voo {
         this.porcentAtrasoSuperior60 = porcentAtrasoSuperior60;
     }
 
+
+
     @Override
     public String toString() {
         return "Voo{" +

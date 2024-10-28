@@ -83,9 +83,9 @@ public class TratamentoDados {
                     }
 
                 }
-                        if (voo.getEmpresaAerea() != null){
+                        if ((voo.getNomeAeroportoSaida() != null && voo.getUfSaida() != null && voo.getPaisSaida() != null) && (voo.getNomeAeroportoDestino() != null && voo.getUfDestino() != null && voo.getPaisDestino() != null) ){
                             voos.add(voo);
-                            System.out.println(voo);
+//                            System.out.println(voo);
                         }
             }
 
