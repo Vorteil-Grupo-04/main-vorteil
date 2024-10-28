@@ -20,7 +20,7 @@
                 </div>
                 <p class="textoDefault">Olá, usuario</p>
             </div>
-            <div  onclick="modalUm()" class="botaoAcesso" id="botaoUm"><p class="textoDefault">cancelamentos</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
+            <div  onclick="modalUm()"  class="botaoAcesso" id="botaoUm"><p class="textoDefault">cancelamentos</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
             <div  onclick="modalDois()" class="botaoAcesso" id="botaoDois"><p class="textoDefault">Clima e tempo</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
             <div  onclick="modalTres()" class="botaoAcesso"><p class="textoDefault" id="botaoTres">Dados de atrasos</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
             <div onclick="modalQuatro()" class="botaoAcesso ia"><p class="textoDefault " id="botaoQuatro">Feedback IA</p> <p>(new)</p></div>
@@ -28,12 +28,11 @@
             <div class="botaoAcesso"><p class="textoDefault" id="botaoQuatro">Sair</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
 
         </div>
-        <div class="conteudo" id="conteudoUm">
-            <div class="conjuntoKPI">
-                <div class="kpi"><h1>Kpi 1</h1></div>
-                <div class="kpi"><h1>Kpi 2</h1></div>
-                <div class="kpi"><h1>Kpi 3</h1></div>
-                <div class="kpi"><h1>Kpi 4</h1></div>
+        <div class="conteudo" id="conteudoUm" >
+            <div class="conjuntoKPI" style="font-size: 22px;">
+                <div class="kpi" style="width:calc((100% / 3 ))"><h2>TAM</h2><h1>Empresa com menor indice de cancelamento</h1></div>
+                <div class="kpi" style="width:calc((100% / 3 ))"><h2>GOL</h2><h1>Empresa com maior indice de cancelamento</h1></div>
+                <div class="kpi" style="width:calc((100% / 3 ))"><h2>20%</h2><h1>Porcentagem da media geral de cancelamento</h1></div>
                
             </div>
            <div class="conjuntoFinal">
@@ -45,35 +44,27 @@
                 </div>
                 <div class="dashAreasDois">
                     <div>
-                        <canvas class="grafic" id="myChartDois"></canvas>
+                        <canvas  class="grafic" id="myChartDois"></canvas>
                       </div>
                 </div>
             </div>
             <div class="kpiTotal">
               <table>
   <tr>
-    <th class="titulos">dados 1</th>
-    <th class="titulos">dados 2</th>
+    <th class="titulos">Melhores empresas da semana</th>
+    <th class="titulos">Melhores empresas da semana</th>
   </tr>
   <tr>
-    <td>Exemplo</td>
-    <td>Exemplo</td>
+    <td>1° TAM</td>
+    <td>1° GOL</td>
   </tr>
   <tr>
-    <td>exemplo</td>
-    <td>exemplo</td>
+    <td>2° GRU</td>
+    <td>2° ZLAT</td>
   </tr>
   <tr>
-    <td>exemplo</td>
-    <td>exemplo</td>
-  </tr>
-  <tr>
-    <td>exemplo</td>
-    <td>exemplo</td>
-  </tr>
-  <tr>
-    <td>exemplo</td>
-    <td>exemplo</td>
+    <td>3° SPT</td>
+    <td>3° BEB</td>
   </tr>
  
 </table>
@@ -194,10 +185,10 @@
                 </div>
             </div>
             <div class="kpiTotal" style="flex-direction: column; gap: 0.5rem; " >
-              <div class="kpi" style="width: 100%; height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px; font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
-              <div class="kpi" style="width: 100%; height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px;font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
-              <div class="kpi" style="width: 100%; height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px;font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
-              <div class="kpi" style="width: 100%; height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px;font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
+              <div class="kpi" style="width: calc(100% - 1rem); height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px; font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
+              <div class="kpi" style="width: calc(100% - 1rem); height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px;font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
+              <div class="kpi" style="width: calc(100% - 1rem); height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px;font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
+              <div class="kpi" style="width: calc(100% - 1rem); height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px;font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
             </div>
            </div>
         </div>
@@ -483,10 +474,10 @@ function mostrarModal(modal) {
 new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['TAM', 'GOL', 'AZUL', 'VOEPASS', 'VOEAKI', 'DRUMOND'],
     datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
+      label: 'Cancelamentos',
+      data: [750, 500, 250, 300, 720, 540, 20],
       borderWidth: 1
     }]
   },
@@ -503,10 +494,10 @@ const ctxDois = document.getElementById('myChartDois');
 new Chart(ctxDois, {
   type: 'bar',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['GRU', 'CONG', 'BSB', 'SBT', 'MPB', 'DRU'],
     datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
+      label: 'Cancelamentos',
+      data: [70, 400, 260, 200, 780, 140, 80],
       borderWidth: 1
     }]
   },
