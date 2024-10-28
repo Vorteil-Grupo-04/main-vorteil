@@ -73,36 +73,39 @@
            </div>
         </div>
         <div class="conteudo dis" id="conteudoDois">
-            <div class="conjuntoKPI" style="justify-content: space-between;">
-                <div class="kpi" style="width:calc((100% / 3 ) - 0.5rem);"><h1>Kpi 1</h1></div>
-                <div class="kpi" style="width:calc((100% / 3 ) - 0.5rem);"><h1>Kpi 1</h1></div>
-                <div class="kpi" style="width:calc((100% / 3 ) - 0.5rem);"><h1>Kpi 1</h1></div>
+          <div class="conjuntoKPI" style="justify-content: space-around;">
+            <div class="kpi" style="width:calc((100% / 3 ) - 0.5rem);"><h1>Clima São Paulo: <br>Tempestade</h1></div>
+            <div class="kpi" style="width:calc((100% / 3 ) - 0.5rem);"><h1>Clima Ceará: <br>Céu Limpo</h1></div>
+            
+        </div>
+       <div class="conjuntoFinal modify">
+        <div class="conjuntoDashboard alt">
+            <div style="align-items: start;" class="dashAreas codUm">
+                <div>
+                    <canvas class="grafic" id="myChartTres"></canvas>
+                  </div>
             </div>
-           <div class="conjuntoFinal modify">
-            <div class="conjuntoDashboard alt">
-                <div style="align-items: start;" class="dashAreas codUm">
-                    <div>
-                        <canvas class="grafic" id="myChartTres"></canvas>
-                      </div>
-                </div>
-            <div class="kpiTotal">
-              <table>
-                <tr>
-                  <th class="titulos">dados 1</th>
-                  <th class="titulos">dados 2</th>
-                </tr>
-                <tr>
-                  <td>Exemplo</td>
-                  <td>Exemplo</td>
-                </tr>
-                <tr>
-                  <td>exemplo</td>
-                  <td>exemplo</td>
-                </tr>
-                <tr>
-                  <td>exemplo</td>
-                  <td>exemplo</td>
-                </tr>
+        <div class="kpiTotal">
+          
+        <table>
+            <tr>
+              <th class="titulos">São Paulo</th>
+              <th class="titulos">Ceará</th>
+            </tr>
+            <tr>
+              <td>8.24 km/h</td>
+              <td>3.73 km/h</td>
+            </tr>
+            <tr>
+              <td>7.52 km/h</td>
+              <td>2.83 km/h</td>
+            </tr>
+            <tr>
+              <td>8.75 km/h</td>
+              <td>5.70 km/h</td>
+            </tr>
+           
+          
                
               </table>
             </div>
@@ -516,10 +519,10 @@ new Chart(ctxDois, {
 new Chart(ctxTres, {
   type: 'bar',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['25/10', '26/10', '27/10', '28/10', '29/10', '30/10'],
     datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
+      label: 'Temperatura São Paulo   13:30',
+      data: [12, 19, 22, 15, 12, 23],
       borderWidth: 1
     }]
   },
@@ -536,9 +539,9 @@ const ctxQuatro = document.getElementById('myChartQuatro');
 new Chart(ctxQuatro, {
   type: 'bar',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['25/10', '26/10', '27/10', '28/10', '29/10', '30/10'],
     datasets: [{
-      label: '# of Votes',
+      label: 'Temperatura Ceará      17:30',
       data: [12, 19, 3, 5, 2, 3],
       borderWidth: 1
     }]
@@ -650,7 +653,85 @@ function delUser() {
 
 }
 
+const chaveApi = '61a63f60759671b91f52c72ecfa66019'; 
+        const cidade = 'Amapa, BR'; 
 
+        const traducoesTempo = {
+            "clear sky": "céu limpo",
+            "few clouds": "poucas nuvens",
+            "scattered clouds": "nuvens dispersas",
+            "broken clouds": "nuvens quebradas",
+            "shower rain": "chuva rápida",
+            "rain": "chuva",
+            "thunderstorm": "tempestade",
+            "snow": "neve",
+            "mist": "neblina",
+            "drizzle": "chuvisco",
+            "light rain": "chuva leve", 
+            "overcast clouds": "nuvens cobertas", 
+        };
+
+      
+        const obterPrevisao = () => {
+            const urlPrevisao = `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&appid=${chaveApi}&units=metric`;
+
+            return fetch(urlPrevisao)
+                .then(resposta => {
+                    if (!resposta.ok) {
+                        throw new Error('Erro na requisição da previsão: ' + resposta.status);
+                    }
+                    return resposta.json();
+                });
+        };
+
+
+        const obterClimaAtual = () => {
+            const urlClimaAtual = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${chaveApi}&units=metric`;
+
+            return fetch(urlClimaAtual)
+                .then(resposta => {
+                    if (!resposta.ok) {
+                        throw new Error('Erro na requisição do clima atual: ' + resposta.status);
+                    }
+                    return resposta.json();
+                });
+        };
+
+   
+        Promise.all([obterPrevisao(), obterClimaAtual()])
+            .then(([dadosPrevisao, dadosClimaAtual]) => {
+                let resultado = `<h2>Previsão do Tempo em ${cidade}</h2>`;
+                const previsoesDiarias = dadosPrevisao.list.filter(item => item.dt_txt.endsWith('15:00:00')).slice(0, 5);
+
+       
+                const visibilidade = dadosClimaAtual.visibility; 
+
+                previsoesDiarias.forEach(dia => {
+                    const data = new Date(dia.dt * 1000).toLocaleDateString(); 
+                    const temperatura = dia.main.temp;
+                    const descricaoTempo = dia.weather[0].description;
+                    const descricaoTraduzida = traducoesTempo[descricaoTempo] || descricaoTempo; 
+                    const velocidadeVento = (dia.wind.speed * 3.6).toFixed(2);
+                    const icone = dia.weather[0].icon;
+
+                    resultado += `
+                        <div>
+                            <h4>${data}</h4>
+                            <p>Temperatura: ${temperatura}°C</p>
+                            <p>Condição: ${descricaoTraduzida}</p>
+                            <p>Velocidade do Vento: ${velocidadeVento} km/h</p>
+                            <p>Visibilidade: ${visibilidade} metros</p>
+                            <img src="https://openweathermap.org/img/wn/${icone}.png" alt="Ícone do tempo">
+                        </div>
+                    `;
+                });
+
+                document.getElementById('divJ').innerHTML = resultado;
+            })
+            .catch(erro => {
+                console.error('Erro:', erro);
+                document.getElementById('divJ').innerHTML = 'Erro ao buscar dados do tempo.';
+            });
 
     
 </script>
