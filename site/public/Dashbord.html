@@ -213,12 +213,12 @@
             
            <div class="conjuntoFinal">
             <div class="conjuntoDashboard">
-                <div class="dashAreas" style="background-color: rgba(0, 0, 255, 0); padding: 0; gap: 0.5rem; justify-content: start; width: 100%;">
-                  <div class="changeMode"><p class="textoDefault" onclick="addEmp()">Adicionar empresa</p></div>
-                  <div class="changeMode"><p class="textoDefault" onclick="ediEmp()">editar empresa</p></div>
-                  <div class="changeMode"><p class="textoDefault" onclick="delEmp()">excluir empresa</p></div>
-                  <div class="changeMode"><p class="textoDefault" onclick="editUser()">editar usuario</p></div>
-                  <div class="changeMode"><p class="textoDefault" onclick="delUser()">excluir usuario</p></div>
+                <div class="dashArea" style="background-color: rgba(0, 0, 255, 0); padding: 0; gap: 0.5rem; justify-content: start; width: 100%;">
+                  <div class="changeMode" style="border: 1px solid white;"><p class="textoDefault" onclick="addEmp()">Adicionar empresa</p></div>
+                  <div class="changeMode" style="border: 1px solid white;"><p class="textoDefault" onclick="ediEmp()">editar empresa</p></div>
+                  <div class="changeMode" style="border: 1px solid white;"><p class="textoDefault" onclick="delEmp()">excluir empresa</p></div>
+                  <div class="changeMode" style="border: 1px solid white;"><p class="textoDefault" onclick="editUser()">editar usuario</p></div>
+                  <div class="changeMode" style="border: 1px solid white;"><p class="textoDefault" onclick="delUser()">excluir usuario</p></div>
                 </div>
                 <div class="dashAreasDois" style="color: #ffff;">
                   <div class="cadastroEmp" id="cadEmp">
@@ -245,7 +245,7 @@
                             <input type="text" id="input_confirmar_senha_empresa" class="ipt">
                         </div>
                         <div class="align">
-                            <div class="btn" onclick="btnCadastroEmpresa()"><p>Enviar</p></div>
+                            <div class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="btnCadastroEmpresa()"><p>Enviar</p></div>
                             
                         </div>
                     </div>
@@ -274,7 +274,7 @@
                           <input type="text" id="input_confirmar_senha_empresa" class="ipt">
                       </div>
                       <div class="align">
-                          <div class="btn" onclick="btnCadastroEmpresa()"><p>Enviar</p></div>
+                          <div class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="btnCadastroEmpresa()"><p>Enviar</p></div>
                           
                       </div>
                   </div>
@@ -303,18 +303,18 @@
                             <input type="text" id="input_confirmar_senha_empresa" class="ipt">
                         </div>
                         <div class="align">
-                            <div class="btn" onclick="btnCadastroEmpresa()"><p>Enviar</p></div>
+                            <div class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="btnCadastroEmpresa()"><p>Enviar</p></div>
                             
                         </div>
                     </div>
                 </div>
                 <div class="cadastroEmp" id="delEmp">
                   <h1 class="titulo">Deletar empresa</h1>
-                  <button class="btn">excluir</button>
+                  <button class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;">excluir</button>
                 </div>
                 <div class="cadastroEmp" id="delUser">
                   <h1 class="titulo">Deletar usuário</h1>
-                  <button class="btn">excluir</button>
+                  <button class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;">excluir</button>
                 </div>
             </div>
                   
