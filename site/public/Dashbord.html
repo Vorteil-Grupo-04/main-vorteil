@@ -51,20 +51,29 @@
             <div class="kpiTotal">
               <table>
   <tr>
-    <th class="titulos">Melhores empresas da semana</th>
-    <th class="titulos">Melhores empresas da semana</th>
+    <th class="titulos">Empresa</th>
+    <th class="titulos">Atrasos Superiores a 30 min</th>
+    <th class="titulos">Atrasos Superiores a 60 min</th>
   </tr>
   <tr>
-    <td>1° TAM</td>
-    <td>1° GOL</td>
+    <td>TAM</td>
+    <td>25</td>
+    <td>33</td>
   </tr>
   <tr>
-    <td>2° GRU</td>
-    <td>2° ZLAT</td>
+    <td>GOL</td>
+    <td>29</td>
+    <td>9</td>
   </tr>
   <tr>
-    <td>3° SPT</td>
-    <td>3° BEB</td>
+    <td>AZUL</td>
+    <td>22</td>
+    <td>18</td>
+  </tr>
+  <tr>
+    <td>LATAM</td>
+    <td>10</td>
+    <td>9</td>
   </tr>
  
 </table>
@@ -74,8 +83,8 @@
         </div>
         <div class="conteudo dis" id="conteudoDois">
           <div class="conjuntoKPI" style="justify-content: space-around;">
-            <div class="kpi" style="width:calc((100% / 3 ) - 0.5rem);"><h1>Clima São Paulo: <br>Tempestade</h1></div>
-            <div class="kpi" style="width:calc((100% / 3 ) - 0.5rem);"><h1>Clima Ceará: <br>Céu Limpo</h1></div>
+            <div class="kpi" style="width:calc((100% / 2 ) - 0.5rem);"><h1>Clima São Paulo: <br>Tempestade</h1></div>
+            <div class="kpi" style="width:calc((100% / 2 ) - 0.5rem);"><h1>Clima Ceará: <br>Céu Limpo</h1></div>
             
         </div>
        <div class="conjuntoFinal modify">
@@ -89,18 +98,27 @@
           
         <table>
             <tr>
+              <th class="titulos">Velocida do Vento</th>
               <th class="titulos">São Paulo</th>
               <th class="titulos">Ceará</th>
             </tr>
             <tr>
+              <td>25/10</td>
               <td>8.24 km/h</td>
               <td>3.73 km/h</td>
             </tr>
             <tr>
+              <td>26/10</td>
+              <td>8.24 km/h</td>
+              <td>3.73 km/h</td>
+            </tr>
+            <tr>
+              <td>27/10</td>
               <td>7.52 km/h</td>
               <td>2.83 km/h</td>
             </tr>
             <tr>
+              <td>28/10</td>
               <td>8.75 km/h</td>
               <td>5.70 km/h</td>
             </tr>
@@ -178,8 +196,12 @@
             <div class="conjuntoDashboard">
                 <div class="dashAreas" style="align-items: start; padding-left: 2rem;">
                   <h1 class="titulin">Conselho da IA</h1>
-                  <p class="titulinho">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, ullam incidunt dolor vero corrupti eius modi ipsum tenetur iste ad eum veniam sint cupiditate adipisci libero fugiat consequuntur cumque. Velit?</p>
-                  <p class="titulinho">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, ullam incidunt dolor vero corrupti eius modi ipsum tenetur iste ad eum veniam sint cupiditate adipisci libero fugiat consequuntur cumque. Velit?</p>
+                  <p class="titulinho">A rota aérea São Paulo - Ceará conecta a capital paulista a Fortaleza, famosa por suas praias e cultura. O tempo de voo direto é de cerca de 3 horas e 30 minutos. Companhias como LATAM, Gol e Azul operam essa rota, partindo principalmente do Aeroporto Internacional de Guarulhos (GRU). O Aeroporto Pinto Martins (FOR) é o principal ponto de chegada em Fortaleza. A demanda é alta tanto para negócios quanto para turismo, especialmente na alta temporada. Reservas antecipadas e atenção às políticas de bagagem são recomendadas.
+
+
+
+                  </p>
+             
                 </div>
                 <div class="dashAreasDois" style="align-items: start; padding-left: 2rem;">
                   <h1 class="titulin">Consideações finais</h1>
@@ -479,8 +501,8 @@ new Chart(ctx, {
   data: {
     labels: ['TAM', 'GOL', 'AZUL', 'VOEPASS', 'VOEAKI', 'DRUMOND'],
     datasets: [{
-      label: 'Cancelamentos',
-      data: [750, 500, 250, 300, 720, 540, 20],
+      label: 'Cancelamentos de Companhias Aéreas (%)',
+      data: [3, 60, 10, 25, 7, 20, 100],
       borderWidth: 1
     }]
   },
@@ -499,8 +521,8 @@ new Chart(ctxDois, {
   data: {
     labels: ['GRU', 'CONG', 'BSB', 'SBT', 'MPB', 'DRU'],
     datasets: [{
-      label: 'Cancelamentos',
-      data: [70, 400, 260, 200, 780, 140, 80],
+      label: 'Cancelamentos por Aeroportos (%)',
+      data: [30, 6, 15, 45, 37, 24, 100],
       borderWidth: 1
     }]
   },
