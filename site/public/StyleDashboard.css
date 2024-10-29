@@ -141,6 +141,7 @@ padding: 8px;
     width: 25%;
     background-color: #111111;
     border-radius: 0px 20px 20px 0px;
+    border-left: 1px solid #d4d4d4;
 
 height: 100%;
 display: flex;
@@ -237,10 +238,20 @@ gap: 16px;
     border-radius: 100px;
     background-color: #000000;
 }
+.textoFlutuante {
+    font-size: 22px;
+    color: #fff;
+    top: 50px;
+    font-weight: 600;
+}
 .iconeAcesso {
     width: 20px;
     height: 20px;
     filter: invert(1);
+}
+
+.botaoAcesso:hover {
+    border: 2p solid red !important;
 }
 
 .dis {
