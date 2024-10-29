@@ -22,7 +22,6 @@
             </div>
             <div  onclick="modalUm()"  class="botaoAcesso" id="botaoUm"><p class="textoDefault">cancelamentos</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
             <div  onclick="modalDois()" class="botaoAcesso" id="botaoDois"><p class="textoDefault">Clima e tempo</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
-            <div  onclick="modalTres()" class="botaoAcesso"><p class="textoDefault" id="botaoTres">Dados de atrasos</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
             <div onclick="modalQuatro()" class="botaoAcesso ia"><p class="textoDefault " id="botaoQuatro">Feedback IA</p> <p>(new)</p></div>
             <div onclick="modalCinco()" class="botaoAcesso"><p class="textoDefault" id="botaoQuatro">Configurações</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
             <div class="botaoAcesso"><p class="textoDefault" id="botaoQuatro">Sair</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
@@ -48,7 +47,8 @@
                       </div>
                 </div>
             </div>
-            <div class="kpiTotal">
+            <div style="flex-direction: column; gap: 1rem;" class="kpiTotal">
+              <div class="textoFlutuante"><p>Dados de atrasos mensais</p></div>
               <table>
   <tr>
     <th class="titulos">Empresa</th>
@@ -91,7 +91,7 @@
         <div class="conjuntoDashboard alt">
             <div style="align-items: start;" class="dashAreas codUm">
                 <div>
-                    <canvas class="grafic" id="myChartTres"></canvas>
+                    <canvas style="width: 600px;" class="grafic" id="myChartTres"></canvas>
                   </div>
             </div>
         <div class="kpiTotal">
@@ -130,66 +130,13 @@
             </div>
             <div class="dashAreasDois" style="align-items: start;">
                 <div>
-                    <canvas class="grafic" id="myChartQuatro"></canvas>
+                    <canvas  style="width: 600px;" class="grafic" id="myChartQuatro"></canvas>
                   </div>
             </div>
 
            </div>
         </div>
-        <div class="conteudo dis" id="conteudoTres">
-           
-           <div class="conjuntoFinal">
-            <div class="kpiTotal">
-              <table>
-                <tr>
-                  <th class="titulos">dados 1</th>
-                  <th class="titulos">dados 2</th>
-                </tr>
-                <tr>
-                  <td>Exemplo</td>
-                  <td>Exemplo</td>
-                </tr>
-                <tr>
-                  <td>exemplo</td>
-                  <td>exemplo</td>
-                </tr>
-                <tr>
-                  <td>exemplo</td>
-                  <td>exemplo</td>
-                </tr>
-                <tr>
-                  <td>exemplo</td>
-                  <td>exemplo</td>
-                </tr>
-                <tr>
-                  <td>exemplo</td>
-                  <td>exemplo</td>
-                </tr>
-               
-              </table>
-            </div>
-            <div class="conjuntoDashboard">
-                <div class="dashAreas">
-                    <div>
-                        <canvas class="grafic" id="myChartCinco"></canvas>
-                      </div>
-                </div>
-                <div class="dashAreasDois">
-                    <div>
-                        <canvas class="grafic" id="myChartSeis"></canvas>
-                      </div>
-                </div>
-            </div>
-           </div>
-           <div class="conjuntoKPI">
-            <div class="kpi"><h1>Kpi 1</h1></div>
-            <div class="kpi"><h1>Kpi 1</h1></div>
-            <div class="kpi"><h1>Kpi 1</h1></div>
-            <div class="kpi"><h1>Kpi 1</h1></div>
-          
-        </div>
-
-        </div>
+        
         <div class="conteudo dis" id="conteudoQuatro" style="flex-direction: row;">
           
            <div class="conjuntoFinal">
@@ -205,7 +152,7 @@
                 </div>
                 <div class="dashAreasDois" style="align-items: start; padding-left: 2rem;">
                   <h1 class="titulin">Consideações finais</h1>
-                  <p class="titulinho">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, ullam incidunt dolor vero corrupti eius modi ipsum tenetur iste ad eum veniam sint cupiditate adipisci libero fugiat consequuntur cumque. Velit?</p>
+                  <p class="titulinho">Com isso afirmo que tem rotas que precisam ser analisadas antes de tomar a decisâo final.</p>
 
                 </div>
             </div>
@@ -430,7 +377,6 @@
     console.log(lateral)
   }
         var contUm = document.getElementById('conteudoUm')
-        var contTres = document.getElementById('conteudoTres')
         var contQuatro = document.getElementById('conteudoQuatro')
         var contDois = document.getElementById('conteudoDois')
         var contEmpAdd = document.getElementById('cadEmp')
@@ -445,7 +391,6 @@
     
         var contUm = document.getElementById('conteudoUm');
 var contDois = document.getElementById('conteudoDois');
-var contTres = document.getElementById('conteudoTres');
 var contQuatro = document.getElementById('conteudoQuatro');
 var contCinco = document.getElementById('conteudoSeis');
 
@@ -486,7 +431,6 @@ function mostrarModal(modal) {
     // Oculta todos os modais
     contUm.classList.add('dis');
     contDois.classList.add('dis');
-    contTres.classList.add('dis');
     contQuatro.classList.add('dis');
     contCinco.classList.add('dis');
 
@@ -577,50 +521,6 @@ new Chart(ctxQuatro, {
   }
 });
         
-
-    } else if (modal === 3) {
-        contTres.classList.remove('dis');
-        const ctxCinco = document.getElementById('myChartCinco');
-
-new Chart(ctxCinco, {
-  type: 'bar',
-  data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
-const ctxSeis = document.getElementById('myChartSeis');
-
-new Chart(ctxSeis, {
-  type: 'bar',
-  data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
-
 
 
     } else if (modal === 4) {
