@@ -1,3 +1,5 @@
+package teste;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -6,10 +8,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
 
+
+
 public class Log {
     public static void main(String[] args) {
-        static String VERMELHO = "\u001B[31m";
-        static String RESET = "\u001B[0m";
+        String VERMELHO = "\u001B[31m";
+        String RESET = "\u001B[0m";
         Timer temporizador = new Timer();
         TimerTask tarefa = new TimerTask() {
             @Override
