@@ -1,16 +1,22 @@
+version: '3.7'
+
 services:
-  mysql:
-    container_name: teste
-    image: imagem-mysql:v2
+  docker-mysql:
+    container_name: container_mysql
+    image: filipefguerreiro/vorteil-dockerfiles:imagem-mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: urubu100
-      MYSQL_DATABASE: aulaSO
-    volumes :
-      - mysql_data:/var/lib/mysql # Volume persistente para dados do MySQL
-      - ./init-scripts:/docker-entrypoint-initdb.d
-    ports :
+      MYSQL_DATABASE: vorteil
+    ports:
       - "3306:3306"
-
-volumes :
-  mysql_data:
+  docker-java:
+    container_name: container_java
+    image: filipefguerreiro/vorteil-dockerfiles:imagem-java
+    volumes:
+      - ./logs:/home/ubuntu/logs
+  docker-node:
+    container_name: container_node
+    image: filipefguerreiro/vorteil-dockerfiles:imagem-node
+    ports:
+      - "8080:3333"
