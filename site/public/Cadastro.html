@@ -53,7 +53,7 @@
                 </div>
                 <div class="alignForm">
                     <p>Senha</p>
-                    <input type="text" class="ipt" id="input_log_senha">
+                    <input type="password" class="ipt" id="input_log_senha">
                     <a href="./redefinirSenha.html">Esqueci a senha</a>
 
                 </div>
@@ -71,13 +71,17 @@
                     <input type="text" class="ipt" id="input_nome">
                 </div>
                 <div class="alignForm">
-                    <p>Empresa</p>
-                    <select name="" id="input_empresa" class="sel">
-                        <option value=""></option>
-                        <option value="1">Empresa 1</option>
-                        <option value="2">Empresa 2</option>
-                        <option value="3">Empresa 3</option>
+                    <p>Tipo de conta</p>
+                    <select onchange="validatioType()" name="" id="inputType" class="sel">
+                        <option value="funcionario">Funcionario</option>
+                        <option value="fiscal">Fiscal</option>
                     </select>
+                </div>
+                <div id="inputEmp" class="alignForm">
+                    <p>Token de verificação da empresa</p>
+                    <input type="text" class="ipt" id="input_email">
+
+                  
                 </div>
                 <div class="alignForm">
                     <p>E-mail</p>
@@ -95,44 +99,13 @@
                     <div class="btn" onclick="btnCadastro()"><p>Enviar</p></div>
                     <div class="align" style="flex-direction: row;">
                         <p  onclick="changeDois()">Ja tenho uma conta &nbsp; &nbsp; |</p>
-                        <p  onclick="changeTres()">Cadastrar empresa</p>
-    
-                    </div>
-                </div>
-            </div>
-        </div>
-            <div class="cadastroEmp" id="cadEmp">
-            <h1 class="titulo">Cadastro empresa</h1>
-            <div class="align">
-                <div class="alignForm">
-                    <p>Nome fantasia</p>
-                    <input type="text" class="ipt" id="input_nome_empresa">
-                </div>
-                <div class="alignForm">
-                    <p>CNPJ</p>
-                   <input type="text" class="ipt" id="input_cnpj" maxlength="18" oninput="formatarCNPJ(this)">
-                </div>
-                <div class="alignForm">
-                    <p>E-mail</p>
-                    <input type="text" id="input_email_empresa" class="ipt">
-                </div>
-                <div class="alignForm">
-                    <p>Senha</p>
-                    <input type="text" id="input_senha_empresa" class="ipt">
-                </div>
-                <div class="alignForm">
-                    <p>Confirmar Senha</p>
-                    <input type="text" id="input_confirmar_senha_empresa" class="ipt">
-                </div>
-                <div class="align">
-                    <div class="btn" onclick="btnCadastroEmpresa()"><p>Enviar</p></div>
-                    <div class="align" style="flex-direction: row;">
-                        <p  onclick="changeReset()">Não possui uma conta?</p>
                    
     
                     </div>
                 </div>
             </div>
+        </div>
+            
         </div>
             <div class="lado"></div>
         </div>
@@ -143,7 +116,23 @@
     cads = document.getElementById("cad")
     login = document.getElementById("logi")
     cadEmp = document.getElementById("cadEmp")
+    inputEmp = document.getElementById("inputEmp")
+    inputType = document.getElementById("inputType")
+
+
     console.log("oi")
+
+    function validatioType(){
+        if(inputType.value == 'fiscal'){
+            inputEmp.classList.add('dis')
+        } else {
+            inputEmp.classList.remove('dis')
+
+
+        }
+     
+        console.log(inputType.value)
+    }
 
 
     function change() {

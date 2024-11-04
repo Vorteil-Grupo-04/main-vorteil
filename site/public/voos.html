@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=], initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    flex-direction: column;
+    padding: 2.5vw 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-cards{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 45vh;
+    width: 90vw;
+}
+
+.card{
+    border: 2px solid black;
+    height: 30vh;
+    width: 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.high-card{
+    border: 1px solid black;
+    height: 25vh;
+    width: 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+.low-card{
+    border: 1px solid black;
+    height: 5vh;
+    width: 10vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+
+}
+
+.high-division{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+}
+
+#adicionar{
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+</style>
+<body>
+    <div id="adicionar" style="width: 300px; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
+        <label for="partida">Local de Partida:</label>
+        <input type="text" id="partida" name="partida" placeholder="Digite o local de partida" style="width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc;">
+        
+        <label for="destino">Destino:</label>
+        <input type="text" id="destino" name="destino" placeholder="Digite o destino" style="width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc;">
+        
+        <label for="hora_saida">Hora de Saída:</label>
+        <input type="time" id="hora_saida" name="hora_saida" style="width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc;">
+        
+        <label for="hora_chegada">Previsão de Chegada:</label>
+        <input type="time" id="hora_chegada" name="hora_chegada" style="width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc;">
+        
+        <button type="submit" style="width: 100%; padding: 10px; border-radius: 5px; background-color: #1abc9c; color: white; border: none;">Confirmar</button>
+    </div>
+    <div class="high-division">
+        <span>
+            Filtrar pelas próximas: 
+            <select name="" id="">
+                <option value="">24 horas</option>
+                <option value="">48 horas</option>
+                <option value="">72 horas</option>
+            </select>
+        </span>
+       
+    
+        <button onclick="adicionar()">Adicionar Voo</button>
+    
+    </div>
+   
+    
+    <div class="box-cards">
+        <div class="card">
+            <div class="high-card">
+                <span>Sergipe</span>
+                <Span>To</Span>
+                <Span>São Paulo</Span>
+                <Span>14:00</Span>
+                <span>15/10</span>
+            </div>
+            <div class="low-card">
+                <span>45/200</span>
+                <span style="font-size: 2.5rem;">+</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="high-card">
+                <span>Sergipe</span>
+                <Span>To</Span>
+                <Span>São Paulo</Span>
+                <Span>14:00</Span>
+                <span>15/10</span>
+            </div>
+            <div class="low-card">
+                <span>45/200</span>
+               
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="high-card">
+                <span>Sergipe</span>
+                <Span>To</Span>
+                <Span>São Paulo</Span>
+                <Span>14:00</Span>
+                <span>15/10</span>
+            </div>
+            <div class="low-card">
+                <span>45/200</span>
+            
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="high-card">
+                <span>Sergipe</span>
+                <Span>To</Span>
+                <Span>São Paulo</Span>
+                <Span>14:00</Span>
+                <span>15/10</span>
+            </div>
+            <div class="low-card">
+                <span>45/200</span>
+           
+            </div>
+        </div>
+    </div>
+    <div class="box-cards">
+        <div class="card">
+            <div class="high-card">
+                <span>Sergipe</span>
+                <Span>To</Span>
+                <Span>São Paulo</Span>
+                <Span>14:00</Span>
+                <span>15/10</span>
+            </div>
+            <div class="low-card">
+                <span>45/200</span>
+               
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="high-card">
+                <span>Sergipe</span>
+                <Span>To</Span>
+                <Span>São Paulo</Span>
+                <Span>14:00</Span>
+                <span>15/10</span>
+            </div>
+            <div class="low-card">
+                <span>45/200</span>
+            
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="high-card">
+                <span>Sergipe</span>
+                <Span>To</Span>
+                <Span>São Paulo</Span>
+                <Span>14:00</Span>
+                <span>15/10</span>
+            </div>
+            <div class="low-card">
+                <span>45/200</span>
+             
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="high-card">
+                <span>Sergipe</span>
+                <Span>To</Span>
+                <Span>São Paulo</Span>
+                <Span>14:00</Span>
+                <span>15/10</span>
+            </div>
+            <div class="low-card">
+                <span>45/200</span>
+              
+            </div>
+        </div>
+    </div>
+
+
+
+    
+   
+    
+</body>
+</html>
+<script>
+    function adicionar(params) {
+        const div = document.getElementById('adicionar');
+        div.style.display = 'block'; 
+    }
+</script>

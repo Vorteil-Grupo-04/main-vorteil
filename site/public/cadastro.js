@@ -125,6 +125,7 @@ function validarEmail() {
               
                 setTimeout(function () {
                   alert("login realizado com sucesso");
+                  window.location = "Dashbord.html"
                 }, 1000);
             });
     
