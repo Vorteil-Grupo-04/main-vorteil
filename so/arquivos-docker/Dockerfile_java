@@ -3,11 +3,11 @@ FROM ubuntu:latest
 
 RUN apt-get update && apt-get install -y openjdk-21-jdk
 
-WORKDIR home/ubuntu/arquivos-docker/scriptsInicializacao
+WORKDIR home/ubuntu/arquivos-docker/
 
+COPY ./scripts/executar_jar.sh /app/executar_jar.sh
+COPY ./projeto-vorteil-1.0-SNAPSHOT-jar-with-dependencies.jar /app/projeto-vorteil-1.0-SNAPSHOT-jar-with-dependencies.jar
 
-COPY ./scriptsInicializacao/executar_jar.sh /app/executar_jar.sh
-COPY ./classe-logv2-1.0-SNAPSHOT-jar-with-dependencies.jar /app/classe-logv2-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 RUN mkdir -p /app
 
@@ -15,6 +15,7 @@ RUN chmod +x /app/executar_jar.sh
 
 WORKDIR /app
 
-VOLUME /apps/logs:/home/ubuntu/logs
+VOLUME /app/logs:/home/ubuntu/logs
+
 
 CMD ["/app/executar_jar.sh"]

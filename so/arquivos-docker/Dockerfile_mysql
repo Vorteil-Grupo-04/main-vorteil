@@ -1,13 +1,13 @@
 # Utiliza a imagem oficial do MySQL 8.0 como base
 FROM mysql:8.0
 
-# Define o diretório de trabalho dentro do container
-WORKDIR /usr/src/app
+ENV MYSQL_ROOT_PASSWORD=urubu100
 
-# Expor a porta 3306 para conexões externas
+ENV MYSQL_DATABASE=vorteil
+
+# Define o diretório de trabalho dentro do container
+COPY ./scripts/ScriptMySql.sql /docker-entrypoint-initdb.d/
+
 EXPOSE 3306
 
-# Define a senha root do MySQL
-ENV MYSQL_ROOT_PASSWORD=urubu100
-# Comando para iniciar o MySQL ao iniciar o container
 CMD ["mysqld"]

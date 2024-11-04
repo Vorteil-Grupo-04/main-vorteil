@@ -1,0 +1,16 @@
+services:
+  mysql:
+    container_name: teste
+    image: imagem-mysql:v2
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: urubu100
+      MYSQL_DATABASE: aulaSO
+    volumes :
+      - mysql_data:/var/lib/mysql # Volume persistente para dados do MySQL
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    ports :
+      - "3306:3306"
+
+volumes :
+  mysql_data:
