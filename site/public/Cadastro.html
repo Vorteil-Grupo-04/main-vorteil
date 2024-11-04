@@ -72,7 +72,7 @@
                 </div>
                 <div class="alignForm">
                     <p>Tipo de conta</p>
-                    <select onchange="validatioType()" name="" id="inputType" class="sel">
+                    <select onchange="validatioType()" name="" id="id_tipo_conta" class="sel">
                         <option value="funcionario">Funcionario</option>
                         <option value="fiscal">Fiscal</option>
                     </select>
@@ -96,7 +96,7 @@
                     <input type="text" class="ipt" id="input_confirmar_senha">
                 </div>
                 <div class="align">
-                    <div class="btn" onclick="btnCadastro()"><p>Enviar</p></div>
+                    <div class="btn" onclick="btnCadastro()"><p>Cadastrar</p></div>
                     <div class="align" style="flex-direction: row;">
                         <p  onclick="changeDois()">Ja tenho uma conta &nbsp; &nbsp; |</p>
                    
@@ -117,7 +117,7 @@
     login = document.getElementById("logi")
     cadEmp = document.getElementById("cadEmp")
     inputEmp = document.getElementById("inputEmp")
-    inputType = document.getElementById("inputType")
+    inputType = document.getElementById("id_tipo_conta")
 
 
     console.log("oi")

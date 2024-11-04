@@ -157,13 +157,13 @@ function validarEmail() {
     const senha_input = input_senha.value;
     const confirmacao_senha_input = input_confirmar_senha.value;
     const empresa_input = input_empresa.value
-
+    const tipoConta_input =  id_tipo_conta.value;
           
     console.log(nome_input)
     console.log(email_input)
     console.log(senha_input)
     console.log(confirmacao_senha_input)
-  
+    console.log(tipoConta_input)
   
     if (
       nome_input == "" ||
@@ -174,7 +174,8 @@ function validarEmail() {
     ) {
       return false;
     }
-  
+
+    if (tipoConta_input == "funcionario") {
     fetch("../usuarios/cadastrar", {
       method: "POST",
       headers: {
@@ -185,6 +186,8 @@ function validarEmail() {
         empresaServer: empresa_input,
         emailServer: email_input,
         senhaServer: senha_input,
+       
+
       }),
     })
       .then(function (resposta) {
@@ -206,7 +209,42 @@ function validarEmail() {
       });
   
     return false;
+    }
+    
+    else{
+      fetch("../usuarios/cadastrarFiscal", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nomeServer: nome_input,
+          emailServer: email_input,
+          senhaServer: senha_input,
+         
   
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+    
+          if (resposta.ok) {
+            setTimeout(() => {
+              alert("Usuário Cadastrado!")
+             
+            }, "2000");
+    
+    
+          } else {
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
+    
+      return false;
+    }
     }
 
 
