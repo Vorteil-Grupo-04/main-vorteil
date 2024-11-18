@@ -48,14 +48,22 @@
            <div class="conjuntoFinal">
             <div class="conjuntoDashboard">
                 <div class="dashAreasDois">
+                  <canvas style="width: 600px;" class="grafic" id="myChart"></canvas>
+
                 </div>
               <div class="dashAreasDois">
+                <canvas style="width: 600px;" class="grafic" id="myChartDois"></canvas>
+
               </div>
             </div>
             <div class="conjuntoDashboard">
               <div class="dashAreasDois">
+                <canvas style="width: 600px;" class="grafic" id="myChartTres"></canvas>
+
               </div>
             <div class="dashAreasDois">
+              <canvas style="width: 600px;" class="grafic" id="myChartQuatro"></canvas>
+
             </div>
           </div>
            
@@ -72,7 +80,6 @@
         <div class="conjuntoDashboard alt">
             <div style="align-items: start;" class="dashAreas codUm">
                 <div>
-                    <canvas style="width: 600px;" class="grafic" id="myChartTres"></canvas>
                   </div>
             </div>
         <div class="kpiTotal">
@@ -111,7 +118,6 @@
             </div>
             <div class="dashAreasDois" style="align-items: start;">
                 <div>
-                    <canvas  style="width: 600px;" class="grafic" id="myChartQuatro"></canvas>
                   </div>
             </div>
 
@@ -432,6 +438,7 @@ function mostrarModal(modal) {
         contUm.classList.remove('dis');
         botaoUm.classList.remove('inactive');
         const ctx = document.getElementById('myChart');
+        
 
 
 new Chart(ctx, {
@@ -472,11 +479,7 @@ new Chart(ctxDois, {
     }
   }
 });
-    } else if (modal === 2) {
-        contDois.classList.remove('dis');
-        botaoDois.classList.remove('inactive');
-
-        const ctxTres = document.getElementById('myChartTres');
+const ctxTres = document.getElementById('myChartTres');
 
 new Chart(ctxTres, {
   type: 'bar',
@@ -499,25 +502,32 @@ new Chart(ctxTres, {
 const ctxQuatro = document.getElementById('myChartQuatro');
 
 new Chart(ctxQuatro, {
-  type: 'bar',
-  data: {
-    labels: ['25/10', '26/10', '27/10', '28/10', '29/10', '30/10'],
-    datasets: [{
-      label: 'Temperatura Ceará      17:30',
-      data: [12, 19, 3, 5, 2, 3],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
+  type: 'doughnut',
+   data:{
+  labels: [
+    'Internet',
+    'Presencial',
+    'Aplicativo'
+  ],
+  datasets: [{
+    label: 'My First Dataset',
+    data: [300, 50, 100],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+   }
 });
 
        
+    } else if (modal === 2) {
+        contDois.classList.remove('dis');
+        botaoDois.classList.remove('inactive');
+
+   
 
 
     }
