@@ -6,25 +6,36 @@
     <link rel="stylesheet" href="StyleDashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gloock&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gloock&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gloock&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gloock&display=swap" rel="stylesheet">
+    <script src="cadastro.js"></script>
+    <script src="CRUDempresa.js"></script>
     <title>Dashbord</title>
 </head>
+      
 <body>
     <div class="container" id="pai">
         <div class="lateral">
+          <div class="contLat">
             <div class="userCont">
                 <div class="profilePai">
                     <img src="./assets/gray-user-profile-icon-png-fP8Q1P.png" alt="" class="profile">
                 </div>
                 <p class="textoDefault">Olá, usuario</p>
             </div>
-            <div  onclick="modalUm()"  class="botaoAcesso" id="botaoUm"><p class="textoDefault">cancelamentos</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
-            <div  onclick="modalDois()" class="botaoAcesso" id="botaoDois"><p class="textoDefault">Clima e tempo</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
-            <div onclick="modalQuatro()" class="botaoAcesso ia"><p class="textoDefault " id="botaoQuatro">Feedback IA</p> <p>(new)</p></div>
-            <div onclick="modalCinco()" class="botaoAcesso"><p class="textoDefault" id="botaoQuatro">Configurações</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
-            <div class="botaoAcesso"><p class="textoDefault" id="botaoQuatro">Sair</p> <img src="./assets/painel-de-controle.png" alt="" class="iconeAcesso"></div>
+            <div  onclick="modalUm()"  class="botaoAcesso" id="botaoUm"><p class="textoDefault">cancelamentos</p> </div>
+            <div  onclick="modalDois()" class="botaoAcesso"  id="botaoDois"><p class="textoDefault">Filtro</p> </div>
+            <div  onclick="modalTres()" class="botaoAcesso" id="botaoTres"><p class="textoDefault" >Clima</p> </div>
+          </div>
+          <div class="iconAlert"></div>
+          <div class="contLat">
+           
+            <div onclick="modalCinco()" class="botaoAcesso"  id="botaoCinco"><p class="textoDefault">Configurações</p> </div>
+            <div  onclick="modalSeis()" class="botaoAcesso" id="botaoSeis"><p class="textoDefault" >Sair</p> </div>
+          </div>
 
         </div>
         <div class="conteudo" id="conteudoUm" >
@@ -36,56 +47,26 @@
             </div>
            <div class="conjuntoFinal">
             <div class="conjuntoDashboard">
-                <div class="dashAreas">
-                    <div>
-                        <canvas class="grafic" id="myChart"></canvas>
-                      </div>
-                </div>
                 <div class="dashAreasDois">
-                    <div>
-                        <canvas  class="grafic" id="myChartDois"></canvas>
-                      </div>
                 </div>
+              <div class="dashAreasDois">
+              </div>
             </div>
-            <div style="flex-direction: column; gap: 1rem;" class="kpiTotal">
-              <div class="textoFlutuante"><p>Dados de atrasos mensais</p></div>
-              <table>
-  <tr>
-    <th class="titulos">Empresa</th>
-    <th class="titulos">Atrasos Superiores a 30 min</th>
-    <th class="titulos">Atrasos Superiores a 60 min</th>
-  </tr>
-  <tr>
-    <td>TAM</td>
-    <td>25</td>
-    <td>33</td>
-  </tr>
-  <tr>
-    <td>GOL</td>
-    <td>29</td>
-    <td>9</td>
-  </tr>
-  <tr>
-    <td>AZUL</td>
-    <td>22</td>
-    <td>18</td>
-  </tr>
-  <tr>
-    <td>LATAM</td>
-    <td>10</td>
-    <td>9</td>
-  </tr>
- 
-</table>
-                
+            <div class="conjuntoDashboard">
+              <div class="dashAreasDois">
+              </div>
+            <div class="dashAreasDois">
             </div>
+          </div>
+           
+         
            </div>
         </div>
         <div class="conteudo dis" id="conteudoDois">
           <div class="conjuntoKPI" style="justify-content: space-around;">
             <div class="kpi" style="width:calc((100% / 2 ) - 0.5rem);"><h1>Clima São Paulo: <br>Tempestade</h1></div>
             <div class="kpi" style="width:calc((100% / 2 ) - 0.5rem);"><h1>Clima Ceará: <br>Céu Limpo</h1></div>
-            
+           
         </div>
        <div class="conjuntoFinal modify">
         <div class="conjuntoDashboard alt">
@@ -95,7 +76,7 @@
                   </div>
             </div>
         <div class="kpiTotal">
-          
+         
         <table>
             <tr>
               <th class="titulos">Velocida do Vento</th>
@@ -123,7 +104,7 @@
               <td>5.70 km/h</td>
             </tr>
            
-          
+         
                
               </table>
             </div>
@@ -136,9 +117,9 @@
 
            </div>
         </div>
-        
+       
         <div class="conteudo dis" id="conteudoQuatro" style="flex-direction: row;">
-          
+         
            <div class="conjuntoFinal">
             <div class="conjuntoDashboard">
                 <div class="dashAreas" style="align-items: start; padding-left: 2rem;">
@@ -171,7 +152,7 @@
                 <div class="kpi"></div>
                 <div class="kpi"></div>
 
-        
+       
             </div>
            <div class="conjuntoFinal">
             <div class="conjuntoDashboard">
@@ -182,43 +163,42 @@
            </div>
         </div>
         <div class="conteudo dis" id="conteudoSeis">
-            
+           
            <div class="conjuntoFinal">
-            <div class="conjuntoDashboard">
-                <div class="dashArea" style="background-color: rgba(0, 0, 255, 0); padding: 0; gap: 0.5rem; justify-content: start; width: 100%;">
-                  <div class="changeMode" style="border: 1px solid white;"><p class="textoDefault" onclick="addEmp()">Adicionar empresa</p></div>
-                  <div class="changeMode" style="border: 1px solid white;"><p class="textoDefault" onclick="ediEmp()">editar empresa</p></div>
-                  <div class="changeMode" style="border: 1px solid white;"><p class="textoDefault" onclick="delEmp()">excluir empresa</p></div>
-                  <div class="changeMode" style="border: 1px solid white;"><p class="textoDefault" onclick="editUser()">editar usuario</p></div>
-                  <div class="changeMode" style="border: 1px solid white;"><p class="textoDefault" onclick="delUser()">excluir usuario</p></div>
+            <div class="conjuntoDashboard" style="flex-direction: row;">
+                <div class="dashArea" style="background-color: rgba(0, 0, 255, 0); padding: 0; gap: 0.5rem; align-items: center; justify-content: center; display: flex; flex-direction: column; height: 100%; width: 100%;">
+                  <div class="changeMode"  onclick="addEmp()" style="border: 1px solid white;" ><p class="textoDefault">Adicionar empresa</p></div>
+                  <div class="changeMode" onclick="ediEmp(),listarDados()" style="border: 1px solid white;"><p class="textoDefault">Editar empresa</p></div>
+                  <div class="changeMode"onclick="delEmp(),listarDados()" style="border: 1px solid white;"><p class="textoDefault" >Deletar empresa</p></div>
+                  <div class="changeMode" onclick="editUser()"style="border: 1px solid white;"><p class="textoDefault" >editar usuario</p></div>
+                  <div class="changeMode"  onclick="delUser()" style="border: 1px solid white;"><p class="textoDefault">excluir usuario</p></div>
                 </div>
-                <div class="dashAreasDois" style="color: #ffff;">
+                <div class="dashAreasDois" style="color: #1d1d1d; height: 100%; width: 100%;">
                   <div class="cadastroEmp" id="cadEmp">
                     <h1 class="titulo">Cadastro empresa</h1>
                     <div class="align">
                         <div class="alignForm">
-                            <p></p>
-                            <input type="text" class="ipt" id="input_nome_empresa">
-                        </div>
-                        <div class="alignForm">
+                            <p>Nome Fantasia</p>
+                            <input type="text" class="ipt" id="input_nome_empresa_cadastro">
+                          </div>
+                          <div class="alignForm">
+                            <p>Razão Social</p>
+                            <input type="text" class="ipt" id="input_razao_social_cadastro">
+                          </div>
+                          <div class="alignForm">
                             <p>CNPJ</p>
-                           <input type="text" class="ipt" id="input_cnpj" maxlength="18" oninput="formatarCNPJ(this)">
-                        </div>
-                        <div class="alignForm">
-                            <p>E-mail</p>
-                            <input type="text" id="input_email_empresa" class="ipt">
-                        </div>
-                        <div class="alignForm">
-                            <p>Senha</p>
-                            <input type="text" id="input_senha_empresa" class="ipt">
-                        </div>
-                        <div class="alignForm">
-                            <p>Confirmar Senha</p>
-                            <input type="text" id="input_confirmar_senha_empresa" class="ipt">
-                        </div>
-                        <div class="align">
-                            <div class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="btnCadastroEmpresa()"><p>Enviar</p></div>
-                            
+                            <input type="text" class="ipt" id="input_cnpj_cadastro" maxlength="18" oninput="formatarCNPJ(this)">
+                          </div>
+                          <div class="alignForm">
+                            <p>Cidade</p>
+                            <input type="text" id="input_cidade_cadastro" class="ipt">
+                          </div>
+                          <div class="align">
+                            <div class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;"
+                              onclick="btnCadastroEmpresa()">
+                              <p>Enviar</p>
+                            </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -247,7 +227,6 @@
                       </div>
                       <div class="align">
                           <div class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="btnCadastroEmpresa()"><p>Enviar</p></div>
-                          
                       </div>
                   </div>
               </div>
@@ -255,49 +234,54 @@
                     <h1 class="titulo">Editar empresa</h1>
                     <div class="align">
                         <div class="alignForm">
-                            <p></p>
-                            <input type="text" class="ipt" id="input_nome_empresa">
+                          <p>Nome Fantasia</p>
+                          <input type="text" class="ipt" id="input_nome_empresa_editar">
                         </div>
                         <div class="alignForm">
-                            <p>CNPJ</p>
-                           <input type="text" class="ipt" id="input_cnpj" maxlength="18" oninput="formatarCNPJ(this)">
+                          <p>Razão Social</p>
+                          <input type="text" class="ipt" id="input_razao_social_editar">
                         </div>
                         <div class="alignForm">
-                            <p>E-mail</p>
-                            <input type="text" id="input_email_empresa" class="ipt">
+                          <p>CNPJ</p>
+                          <input type="text" class="ipt" id="input_cnpj_editar" maxlength="18" oninput="formatarCNPJ(this)">
                         </div>
                         <div class="alignForm">
-                            <p>Senha</p>
-                            <input type="text" id="input_senha_empresa" class="ipt">
-                        </div>
-                        <div class="alignForm">
-                            <p>Confirmar Senha</p>
-                            <input type="text" id="input_confirmar_senha_empresa" class="ipt">
+                          <p>Cidade</p>
+                          <input type="text" class="ipt" id="input_cidade_editar">
                         </div>
                         <div class="align">
-                            <div class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="btnCadastroEmpresa()"><p>Enviar</p></div>
-                            
+                          <div class="btnConfirmar" id="btnEdit" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;"
+                            onclick="habilitarEdicao()">
+                            <p>Editar</p>
+                            </div>
+
+                            <div class="btnConfirmar" id="btnEnviar" style="display: none; width: 100px; height: 35px; margin-top: 8px; cursor: pointer;"
+                            onclick="enviarEdicao()">
+                            <p>Enviar</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="cadastroEmp" id="delEmp">
-                  <h1 class="titulo">Deletar empresa</h1>
-                  <button class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;">excluir</button>
+                  <h1 class="titulo">Remover empresa</h1>
+                  <div class="alignForm">
+                    <p>Sua empresa:</p>
+                    <input type="text" class="ipt" id="input_nome_empresa_deletar">
+                  </div>
+                  <button class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="removerEmpresa()">Remover</button>
                 </div>
                 <div class="cadastroEmp" id="delUser">
                   <h1 class="titulo">Deletar usuário</h1>
                   <button class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;">excluir</button>
                 </div>
             </div>
-                  
+                 
             </div>
-            <div class="kpiTotal"></div>
            </div>
         </div>
      
     </div>
     <div class="close" id="closeIcon" onclick="closeMod()">   <nav id="nav" class="lateralNav">
-      <div class="hamburger"></div>
   </nav></div>
   <div class="lateralDireita hidden" id="latDir">
     <div class="formContent">
@@ -320,7 +304,7 @@
         <input type="text" placeholder="Digite aqui">
     </div>
 
-    <!-- <div class="formContent">
+    <div class="formContent">
         <label for="" class="informativo">Media de passageiros</label>
         <select name="" id="">
             <option value="">Um</option>
@@ -328,12 +312,12 @@
             <option value="">Um</option>
             <option value="">Um</option>
         </select>
-    </div> -->
+    </div>
 
-    <!-- <div class="formContent">
+    <div class="formContent">
         <label for="" class="informativo">Aeroporto de saida</label>
         <input type="text" placeholder="Digite aqui">
-    </div> -->
+    </div>
     <div class="formContent">
         <label for="" class="informativo">Deseja a ajuda de inteligencia artifical?</label>
         <div class="formContentAlt">
@@ -351,7 +335,7 @@
                 name="subscribe"
                 value="newsletter" />
             </label>
-      
+     
     </div>
 
    
@@ -360,42 +344,49 @@
     <div class="formContent">
         <div class="btnConfirmar"><p>Confirmar</p></div>
     </div>
-    
+   
 
 </div>
 
-    
+   
 </body>
 </html>
 
 <script>
   function closeMod() {
-    var lateral = document.getElementById('latDir')
     var clos = document.getElementById('closeIcon')
-    lateral.classList.toggle('hidden')
     clos.classList.toggle('active')
-    console.log(lateral)
   }
-        var contUm = document.getElementById('conteudoUm')
-        var contQuatro = document.getElementById('conteudoQuatro')
-        var contDois = document.getElementById('conteudoDois')
-        var contEmpAdd = document.getElementById('cadEmp')
-        var contEmpEdit = document.getElementById('editEmp')
-        var contEmpDel = document.getElementById('delEmp')
-        var contUserEdit = document.getElementById('editUser')
-        var contUserDel = document.getElementById('delUser')
+  setInterval(() => {
+    var clos = document.getElementById('closeIcon')
+    console.log(clos.classList.value)
+    if(clos.classList.value != 'close active')
+    clos.classList.toggle('notification')
+
+  }, 2000)
+     
 
 
 
-
-    
-        var contUm = document.getElementById('conteudoUm');
+var contUm = document.getElementById('conteudoUm')
+var contQuatro = document.getElementById('conteudoQuatro')
+var contDois = document.getElementById('conteudoDois')
+var contEmpAdd = document.getElementById('cadEmp')
+var contEmpEdit = document.getElementById('editEmp')
+var contEmpDel = document.getElementById('delEmp')
+var contUserEdit = document.getElementById('editUser')
+var contUserDel = document.getElementById('delUser')  
+var contUm = document.getElementById('conteudoUm');
 var contDois = document.getElementById('conteudoDois');
 var contQuatro = document.getElementById('conteudoQuatro');
 var contCinco = document.getElementById('conteudoSeis');
+var botaoUm = document.getElementById('botaoUm')
+var botaoDois = document.getElementById('botaoDois')
+var botaoTres = document.getElementById('botaoTres')
+var botaoCinco = document.getElementById('botaoCinco')
+var botaaoSeis = document.getElementById('botaoSeis')
 
-mostrarModal(1)
-mostrarModalCrud(0)
+mostrarModalCrud(1)
 function mostrarModalCrud(modal) {
     // Oculta todos os modais
     contEmpAdd.classList.add('dis')
@@ -403,12 +394,6 @@ function mostrarModalCrud(modal) {
     contEmpDel.classList.add('dis')
     contUserDel.classList.add('dis')
     contUserEdit.classList.add('dis')
-    console.log(modal);
-    
-
-
-
-    // Mostra apenas o modal escolhido
     if (modal === 1) {
         contEmpAdd.classList.remove('dis');
   }
@@ -433,12 +418,21 @@ function mostrarModal(modal) {
     contDois.classList.add('dis');
     contQuatro.classList.add('dis');
     contCinco.classList.add('dis');
+    botaoUm.classList.add('inactive');
+    botaoDois.classList.add('inactive');
+    botaoTres.classList.add('inactive');
+    botaoCinco.classList.add('inactive');
+    botaoSeis.classList.add('inactive');
 
-    
+
+
+   
     // Mostra apenas o modal escolhido
     if (modal === 1) {
         contUm.classList.remove('dis');
+        botaoUm.classList.remove('inactive');
         const ctx = document.getElementById('myChart');
+
 
 new Chart(ctx, {
   type: 'bar',
@@ -480,6 +474,8 @@ new Chart(ctxDois, {
 });
     } else if (modal === 2) {
         contDois.classList.remove('dis');
+        botaoDois.classList.remove('inactive');
+
         const ctxTres = document.getElementById('myChartTres');
 
 new Chart(ctxTres, {
@@ -520,13 +516,18 @@ new Chart(ctxQuatro, {
     }
   }
 });
-        
+
+       
 
 
-    } else if (modal === 4) {
+    }
+  else if (modal === 3) {
+        botaoTres.classList.remove('inactive');}
+    else if (modal === 4) {
         contQuatro.classList.remove('dis');
     }
     else if (modal === 5) {
+      botaoCinco.classList.remove('inactive');
         contCinco.classList.remove('dis');
     }
 }
@@ -555,7 +556,7 @@ function addEmp() {
     console.log('addEmp')
 
 }
-function ediEmp() {
+async function ediEmp() {
     mostrarModalCrud(2);
     console.log('ediEMp')
 
@@ -575,8 +576,8 @@ function delUser() {
 
 }
 
-const chaveApi = '61a63f60759671b91f52c72ecfa66019'; 
-        const cidade = 'Amapa, BR'; 
+const chaveApi = '61a63f60759671b91f52c72ecfa66019';
+        const cidade = 'Amapa, BR';
 
         const traducoesTempo = {
             "clear sky": "céu limpo",
@@ -589,11 +590,11 @@ const chaveApi = '61a63f60759671b91f52c72ecfa66019';
             "snow": "neve",
             "mist": "neblina",
             "drizzle": "chuvisco",
-            "light rain": "chuva leve", 
-            "overcast clouds": "nuvens cobertas", 
+            "light rain": "chuva leve",
+            "overcast clouds": "nuvens cobertas",
         };
 
-      
+     
         const obterPrevisao = () => {
             const urlPrevisao = `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&appid=${chaveApi}&units=metric`;
 
@@ -626,13 +627,13 @@ const chaveApi = '61a63f60759671b91f52c72ecfa66019';
                 const previsoesDiarias = dadosPrevisao.list.filter(item => item.dt_txt.endsWith('15:00:00')).slice(0, 5);
 
        
-                const visibilidade = dadosClimaAtual.visibility; 
+                const visibilidade = dadosClimaAtual.visibility;
 
                 previsoesDiarias.forEach(dia => {
-                    const data = new Date(dia.dt * 1000).toLocaleDateString(); 
+                    const data = new Date(dia.dt * 1000).toLocaleDateString();
                     const temperatura = dia.main.temp;
                     const descricaoTempo = dia.weather[0].description;
-                    const descricaoTraduzida = traducoesTempo[descricaoTempo] || descricaoTempo; 
+                    const descricaoTraduzida = traducoesTempo[descricaoTempo] || descricaoTempo;
                     const velocidadeVento = (dia.wind.speed * 3.6).toFixed(2);
                     const icone = dia.weather[0].icon;
 
@@ -655,5 +656,5 @@ const chaveApi = '61a63f60759671b91f52c72ecfa66019';
                 document.getElementById('divJ').innerHTML = 'Erro ao buscar dados do tempo.';
             });
 
-    
+   
 </script>

@@ -1,4 +1,4 @@
-*{
+/* *{
     padding: 0;
     margin: 0;
     font-size: 16px;
@@ -363,4 +363,474 @@ background: linear-gradient(0deg, rgba(16,223,116,1) 0%, rgba(45,133,253,1) 100%
     cursor: pointer;
     color: #ffffff;
     font-size: 22px;
+  } */
+
+
+  *{
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #040404;
+}
+.container {
+    width: 98%;
+    height: 95%;
+    background-color: #1d1d1d;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    border-radius: 20px;
+    gap: 0.5rem;
+    align-items: center;
+}
+.conjuntoKPI {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+.conjuntoFinal {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 2rem;
+}
+.dashAreas.codUm{
+    height: 100%;
+    width: 70%;
+    transition: 0.5s;
+
+}
+.conjuntoFinal.modify {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+}
+.kpiTotal {
+    width: 25%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.conjuntoDashboard {
+    width: calc(100%);
+    height: 100%;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    transition: 0.5s;
+
+}
+.conjuntoDashboard.alt {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    transition: 0.5s;
+
+}
+.dashAreas, .dashAreasDois {
+    background-color: rgb(237, 237, 237);
+    transition: 0.5s;
+    width: calc(100% - 2rem);
+    height: 200px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 2rem;
+
+}
+.grafic {
+    width: 450px;
+    height: 350px;
+}
+.kpi {
+    width: calc((100% / 4));
+    height: calc(100% - (0.5rem + 8px));
+    border-radius: 10px;
+    background-color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    padding: 0.5rem;
+    gap: 4px;
+
+
+}
+.kpi h1{
+    font-size: 15px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #ffffff;
+}
+.kpi h2{
+    font-size: 50px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #ffffff;
+}
+.lateral {
+    height: 100%;
+    width: 20%;
+    background-color: #111111;
+    border-radius: 20px 0px 0px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+.conteudo {
+    width: 100%;
+    background-color: #d4d4d4;
+height: 97%;
+display: flex;
+flex-direction: column;
+gap: 2rem;
+padding: 8px;
+
+}
+.lateralDireita {
+    width: 25%;
+    background-color: #111111;
+    border-radius: 0px 20px 20px 0px;
+    border-left: 1px solid #d4d4d4;
+
+height: 100%;
+display: flex;
+flex-direction: column;
+gap: 1rem;
+align-items: center;
+justify-content: center;
+padding-left: 1rem;
+
+}
+.formContent {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: white;
+}
+.formContent input{
+    width: 95%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+.formContent select {
+    width: 95%;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+.formContentAlt input {
+width: 15px;
+height: 15px;
+
+}
+.formContentAlt {
+    display: flex;
+align-items: center;
+flex-direction: row;    
+gap: 16px;
+}
+.btnConfirmar {
+    width: 150px;
+    height: 75px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #1d1d1d;
+    color: #fff;
+}
+
+.botaoAcesso {
+    width: 90%;
+    height: 50px;
+    background-color: rgb(23, 126, 237);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    gap: 0.5rem;
+    border-radius: 10px;
+    transition: 0.5s;
+
+}
+#botaoSeis {
+    background-color: #ec2020;
+    width: 80%;
+}
+.botaoAcesso.inactive {
+    background-color: #000;
+    width: 80%;
+}
+.foco {
+    border: 2px solid white;
+}
+.userCont{
+    width: 100%;
+    height: 75px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+    padding-left: 1rem;
+    font-weight: 600;
+
+
+}
+.profile {
+    width: 25px;
+    height: 25px;
+    filter: invert(0.5);
+
+}
+.profilePai {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    background-color: #000000;
+}
+.textoFlutuante {
+    font-size: 22px;
+    color: #fff;
+    top: 50px;
+    font-weight: 600;
+}
+.iconeAcesso {
+    width: 20px;
+    height: 20px;
+    filter: invert(1);
+}
+
+.botaoAcesso:hover {
+    border: 2p solid red !important;
+}
+
+.dis {
+    display: none;
+}
+ td, th {
+    border: 1px solid white;
+    width: 100px;
+    height: calc(500px / 6.5);
+    text-align: center;
+    color: #fff;
+
+}
+.titulinho {
+    font-size: 16px;
+    font-weight: 400;
+    color: #d3d3d3;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+   
+}
+.titulin {
+    font-size: 32px;
+    font-weight: 600;
+    color: #d3d3d3;
+    font-family: "bebas-neue";
+    letter-spacing: 2px;
+
+   
+}
+.titulos{
+    height: 50px;
+    background-color: #d4d4d4;
+    color: #000000;
+    border: none;
+}
+.close {
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    background-color: #000000;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 700;
+    font-family: "Bebas Neue", sans-serif;
+    transition: 0.5s;
+    font-size: 50px;
+
+}
+.close.active {
+    background-color: rgb(23, 126, 237);
+    width: 350px;
+    height: 400px;
+    border-radius: 10px;
+
+}
+.close.notification {
+    width: 250px;
+}
+.close.notification::before {
+    content: "Tenha ajuda da nossa inteligencia artificial";
+    font-size: 12px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+.lateralDireita.hidden {
+    display: none;
+}
+.botaoAcesso.ia {
+    color: #000000;
+    font-weight: 700;
+background: linear-gradient(0deg, rgba(16,223,116,1) 0%, rgba(45,133,253,1) 100%);
+
+}
+.hamburger {
+    border-top: 0.125rem solid;
+    width: 1.25rem;
+    border-color: #fff;
+    cursor: pointer;
   }
+  .hamburger::after,
+  .hamburger::before {
+    content: " ";
+    display: block;
+    width: 1.25rem;
+    height: 0.125rem;
+    background: #fff;
+    margin-top: 0.3125rem;
+    position: relative;
+    transition: 0.3s;
+  }
+
+  .close.active .hamburger {
+    border-top-color: transparent;
+    z-index: 8;
+    cursor: pointer;
+  }
+
+  .close.active .hamburger::before {
+    transform: rotate(135deg);
+    z-index: 8;
+  }
+  .close.active .hamburger::after {
+    transform: rotate(-135deg);
+    top: -0.4375rem;
+    z-index: 8;
+  }
+  .changeMode {
+    width: 100%;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: #000000;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 22px;
+  }
+  .scrollIdea {
+    background-color: red;
+    height: 350px;
+    width: 700px;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  .contLat {
+    width: 100%;
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .iconAlert {
+    width: 60px;
+    height: 70px;
+    border-radius: 100px;
+    background-color: #000000;
+  }
+  input {
+   
+        width: calc(90% - 20px);
+        border: none;
+        border-radius: 5px;
+        height: 15px;
+        color: #000;
+        padding: 8px;
+   
+   
+}
+.cadastroEmp {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.cadastroEmp .align {
+    gap: 1.5rem;
+    display: flex;
+    flex-direction: column;
+   
+
+
+}
+.cadastroEmp .titulo {
+    font-size: 26px;
+    margin-bottom: 16px;
+}
+
+/* input:disabled{
+    background-color: #ffffff;
+    background-color: rgb(202, 198, 198);
+    border-bottom: 1px solid black;
+} */
+
+input:disabled{
+    background-color: rgb(0, 0, 255, 0);
+
+}
+
+.ipt{
+    border-bottom: 1px solid black;  
+}
+
+#input_nome_empresa_deletar{
+    width: auto; /* Inicializa o campo com largura automática */
+    min-width: 150px; /* Define a largura mínima do campo */
+    padding: 5px 10px;
+    font-size: 16px;
+    border-bottom: 1px solid black;
+    border-radius: 5px;
+    transition: width 0.2s ease-in-out;
+    background-color: #ffffff;
+}
