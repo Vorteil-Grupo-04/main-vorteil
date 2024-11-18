@@ -13,6 +13,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gloock&display=swap" rel="stylesheet">
     <script src="cadastro.js"></script>
     <script src="CRUDempresa.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gloock&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gloock&display=swap" rel="stylesheet">
     <title>Dashbord</title>
 </head>
       
@@ -46,17 +50,23 @@
                
             </div>
            <div class="conjuntoFinal">
-            <div class="conjuntoDashboard">
-                <div class="dashAreasDois">
-                  <canvas style="width: 600px;" class="grafic" id="myChart"></canvas>
+            <div class="dashAlign">
+              <p class="sub" style="font-weight: 500;">Teste de label</p>
+<div class="conjuntoDashboard" style="flex-direction: row; gap: 0;" >
+  <div class="dashAreasDois" style="border-radius: 0;">
+    <canvas style="width: 600px; border-radius: 0;" class="grafic" id="myChart"></canvas>
 
-                </div>
-              <div class="dashAreasDois">
-                <canvas style="width: 600px;" class="grafic" id="myChartDois"></canvas>
+  </div>
+<div class="dashAreasDois" style="border-radius: 0;">
+  <canvas style="width: 600px; border-radius: 0;" class="grafic" id="myChartDois"></canvas>
 
-              </div>
+</div>
+</div>
             </div>
-            <div class="conjuntoDashboard">
+            <div class="dashAlign">
+              <p class="sub" style="font-weight: 500;">Teste de label</p>
+
+            <div class="conjuntoDashboard"  style="flex-direction: row;" >
               <div class="dashAreasDois">
                 <canvas style="width: 600px;" class="grafic" id="myChartTres"></canvas>
 
@@ -66,6 +76,7 @@
 
             </div>
           </div>
+        </div>
            
          
            </div>
@@ -169,15 +180,23 @@
            </div>
         </div>
         <div class="conteudo dis" id="conteudoSeis">
-           
+          <h1 class="tituloDA">Dados pessoais</h1>
            <div class="conjuntoFinal">
             <div class="conjuntoDashboard" style="flex-direction: row;">
                 <div class="dashArea" style="background-color: rgba(0, 0, 255, 0); padding: 0; gap: 0.5rem; align-items: center; justify-content: center; display: flex; flex-direction: column; height: 100%; width: 100%;">
-                  <div class="changeMode"  onclick="addEmp()" style="border: 1px solid white;" ><p class="textoDefault">Adicionar empresa</p></div>
-                  <div class="changeMode" onclick="ediEmp(),listarDados()" style="border: 1px solid white;"><p class="textoDefault">Editar empresa</p></div>
-                  <div class="changeMode"onclick="delEmp(),listarDados()" style="border: 1px solid white;"><p class="textoDefault" >Deletar empresa</p></div>
-                  <div class="changeMode" onclick="editUser()"style="border: 1px solid white;"><p class="textoDefault" >editar usuario</p></div>
-                  <div class="changeMode"  onclick="delUser()" style="border: 1px solid white;"><p class="textoDefault">excluir usuario</p></div>
+                  <div class="changeMode"  onclick="empHidden()" style="border: 1px solid white;" ><p class="textoDefault">Empresa</p></div>
+                  <div class="hidden dis" id="empHidden" style="width: 50%;">
+                     <div class="changeMode list"  onclick="addEmp()" style="border: 1px solid white;" ><p class="textoDefault">Adicionar empresa</p></div>
+                  <div class="changeMode list" onclick="ediEmp(),listarDados()" style="border: 1px solid white;"><p class="textoDefault">Editar empresa</p></div>
+                  <div class="changeMode exclu" onclick="delEmp(),listarDados()" style="border: 1px solid white;"><p class="textoDefault" >Deletar empresa</p></div>
+                  </div>
+                  <div class="changeMode"  onclick="userHidden()" style="border: 1px solid white;" ><p class="textoDefault">Usuário</p></div>
+                  <div class="hidden dis" id="userHidden" style="width: 50%;">
+                     <div class="changeMode list" onclick="editUser()"style="border: 1px solid white;"><p class="textoDefault" >editar usuario</p></div>
+                  <div class="changeMode exclu"  onclick="delUser()" style="border: 1px solid white;"><p class="textoDefault">excluir usuario</p></div>
+
+                  </div>
+                 
                 </div>
                 <div class="dashAreasDois" style="color: #1d1d1d; height: 100%; width: 100%;">
                   <div class="cadastroEmp" id="cadEmp">
@@ -359,18 +378,49 @@
 </html>
 
 <script>
+  var isOpenEmp = false
+  var isOpenUser = false
+
   function closeMod() {
     var clos = document.getElementById('closeIcon')
     clos.classList.toggle('active')
   }
   setInterval(() => {
     var clos = document.getElementById('closeIcon')
-    console.log(clos.classList.value)
     if(clos.classList.value != 'close active')
     clos.classList.toggle('notification')
 
   }, 2000)
-     
+
+  function empHidden(){
+    var caixaEmp = document.getElementById('empHidden')
+  !isOpenEmp ? mostrarModalCrud(1) : mostrarModalCrud(0)
+    caixaEmp.classList.toggle('dis')
+    if(caixaEmp.classList.value == "hidden"){
+   isOpenEmp = true
+
+    } else {
+   isOpenEmp = false
+
+
+    }
+
+
+  }
+    function userHidden(){
+!isOpenUser ? mostrarModalCrud(4) : mostrarModalCrud(0)
+
+    var caixaUser = document.getElementById('userHidden')
+    caixaUser.classList.toggle('dis')
+    if(caixaUser.classList.value == "hidden"){
+   isOpenUser = true
+
+    } else {
+   isOpenUser = false
+
+
+    }
+  }
 
 
 
@@ -391,8 +441,7 @@ var botaoDois = document.getElementById('botaoDois')
 var botaoTres = document.getElementById('botaoTres')
 var botaoCinco = document.getElementById('botaoCinco')
 var botaaoSeis = document.getElementById('botaoSeis')
-
-mostrarModalCrud(1)
+isOpenEmp ? mostrarModalCrud(1) : mostrarModalCrud(0)
 function mostrarModalCrud(modal) {
     // Oculta todos os modais
     contEmpAdd.classList.add('dis')
