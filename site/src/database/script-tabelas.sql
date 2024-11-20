@@ -11,18 +11,26 @@ CREATE TABLE empresaTuristica (
     token VARCHAR(45) NOT NULL
 );
 
+INSERT INTO empresaTuristica (CNPJ, nome, razaoSocial, token) VALUES ('0000-0000', "Sem Empresa", "Sem Empresa", "000"); 
+select * from empresaTuristica;
+
 CREATE TABLE cargo(
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(45)
-)
+);
+
+INSERT INTO cargo (nome) VALUES ('Responsável Fiscal'); 
+INSERT INTO cargo (nome) VALUES ('Funcionario');
+
+select * from cargo;
 
 CREATE TABLE usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(45) NULL,
-    email VARCHAR(45) NULL,
-    senha VARCHAR(45) NULL,
-    fkEmpresa INT NOT NULL,
-    FOREIGN KEY (fkEmpresa) REFERENCES empresaTuristica(id)
+    nome VARCHAR(45) NOT NULL ,
+    email VARCHAR(45) NOT NULL UNIQUE,
+    senha VARCHAR(45) NOT NULL,
+    fkEmpresa INT,
+    FOREIGN KEY (fkEmpresa) REFERENCES empresaTuristica(id),
     fkCargo INT NOT NULL,
     FOREIGN KEY (fkCargo) REFERENCES cargo(id)
 );
@@ -34,7 +42,7 @@ CREATE TABLE token(
     statusToken VARCHAR(45),
     fkEmpresa INT NOT NULL,
     FOREIGN KEY (fkEmpresa) REFERENCES empresaTuristica(id)
-)
+);
 
 
 

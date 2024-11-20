@@ -181,8 +181,7 @@ function btnCadastro() {
       nomeServer: nome_input,
       emailServer: email_input,
       senhaServer: senha_input,
-     
-
+      cargoServer: 2
     }),
   })
     .then(function (resposta) {
@@ -207,7 +206,8 @@ function btnCadastro() {
   }
   
   else{
-    fetch("../usuarios/cadastrarFiscal", {
+    //fiscal
+    fetch("../usuarios/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -216,6 +216,8 @@ function btnCadastro() {
         nomeServer: nome_input,
         emailServer: email_input,
         senhaServer: senha_input,
+        cargoServer: 1,
+        empresaServer: 1
       }),
     })
       .then(function (resposta) {
@@ -223,7 +225,7 @@ function btnCadastro() {
   
         if (resposta.ok) {
           setTimeout(() => {
-            alert("Usuário Cadastrado!")
+            alert("Fiscal Cadastrado!")
            
           }, "2000");
   
