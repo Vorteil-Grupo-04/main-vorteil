@@ -2,39 +2,41 @@
 CREATE DATABASE vorteilTeste;
 USE vorteilTeste;
 
-CREATE TABLE responsavelFiscal (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nome VARCHAR(45) NULL,
-    email VARCHAR(45) NULL,
-    senha VARCHAR(45) NULL
-);
-
-CREATE TABLE endereco (
-    cep VARCHAR(45) NOT NULL PRIMARY KEY,
-    cidade VARCHAR(45) NULL,
-    numero VARCHAR(45) NULL,
-    logradouro VARCHAR(45) NULL
-);
 
 CREATE TABLE empresaTuristica (
     id INT AUTO_INCREMENT PRIMARY KEY,
     CNPJ VARCHAR(45) NOT NULL,
-    nome VARCHAR(45) NULL,
-    token VARCHAR(45) NULL,
-    fkResponsavel INT NOT NULL,
-    fkEndereco VARCHAR(45) NOT NULL,
-    FOREIGN KEY (fkResponsavel) REFERENCES responsavelFiscal(id),
-    FOREIGN KEY (fkEndereco) REFERENCES endereco(cep)
+    nome VARCHAR(45) NOT NULL,
+    razaoSocial VARCHAR(45) NOT NULL,
+    token VARCHAR(45) NOT NULL
 );
 
-CREATE TABLE funcionario (
+CREATE TABLE cargo(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(45)
+)
+
+CREATE TABLE usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(45) NULL,
     email VARCHAR(45) NULL,
     senha VARCHAR(45) NULL,
     fkEmpresa INT NOT NULL,
     FOREIGN KEY (fkEmpresa) REFERENCES empresaTuristica(id)
+    fkCargo INT NOT NULL,
+    FOREIGN KEY (fkCargo) REFERENCES cargo(id)
 );
+
+CREATE TABLE token(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    dataCriacao DATE,
+    dataExpiracao DATE,
+    statusToken VARCHAR(45),
+    fkEmpresa INT NOT NULL,
+    FOREIGN KEY (fkEmpresa) REFERENCES empresaTuristica(id)
+)
+
+
 
 CREATE TABLE companhiaAerea (
     id INT AUTO_INCREMENT PRIMARY KEY,
