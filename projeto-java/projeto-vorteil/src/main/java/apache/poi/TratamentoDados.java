@@ -1,8 +1,8 @@
 package apache.poi;
+
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import util.classes.Logv2;
 
@@ -19,82 +19,68 @@ import java.util.regex.Pattern;
 public class TratamentoDados {
     static Logger logger = Logger.getLogger(TratamentoDados.class.getName());
 
+    private List<Voo> voos;
+
+    public TratamentoDados() {
+        voos = new ArrayList<>();
+    }
 
     public List<Voo> lerXls(String caminhoArquivo) throws FileNotFoundException {
         Logv2 logv2 = new Logv2("LogsTratamentoDeDados.log");
         try (FileInputStream arquivoAberto = new FileInputStream(caminhoArquivo);
              HSSFWorkbook workbook = new HSSFWorkbook(arquivoAberto)) {
+
             System.out.println("Arquivo Excel foi aberto.");
             logv2.criarLog("Arquivo Excel foi aberto.");
             HSSFSheet sheet = workbook.getSheetAt(0);
-            System.out.println("Planilha acessada!");
-            logv2.criarLog("Planilha acessada!");
 
-
-            List<Voo> voos = new ArrayList<>();
             DecimalFormat decimal = new DecimalFormat("#,00");
 
             for (Row currentRow : sheet) {
-                boolean isBrasil = false;
-                        Voo voo = new Voo();
+                Voo voo = new Voo(); 
 
                 for (Cell celula : currentRow) {
                     if (celula != null && !getCellValueAsString(celula).isBlank()) {
-//                        System.out.println(getCellValueAsString(celula));
-//                        System.out.println("Index da celula: " + celula.getColumnIndex() + " ");
-//                        System.out.println("valor da celula: " + getCellValueAsString(celula));
-                        if(celula.getColumnIndex() == 0 && !getCellValueAsString(celula).isEmpty())
-                        {
+                        if (celula.getColumnIndex() == 0 && !getCellValueAsString(celula).isEmpty()) {
                             voo.setEmpresaAerea(getCellValueAsString(celula));
-                        }else if(celula.getColumnIndex() == 2 && !getCellValueAsString(celula).isEmpty()){
+                        } else if (celula.getColumnIndex() == 2 && !getCellValueAsString(celula).isEmpty()) {
                             voo.setSiglaAeroportoSaida(getCellValueAsString(celula));
-                        }else if(celula.getColumnIndex() == 3 && !getCellValueAsString(celula).isEmpty()){
+                        } else if (celula.getColumnIndex() == 3 && !getCellValueAsString(celula).isEmpty()) {
                             String regex = "(.*)\\((.*),(.*)\\)";
                             Pattern pattern = Pattern.compile(regex);
                             Matcher matcher = pattern.matcher(getCellValueAsString(celula));
                             if (matcher.find()) {
-                                String nomeAeroporto = matcher.group(1);
-                                String uf = matcher.group(2);
-                                String pais = matcher.group(3).replace(" ", "");
-
-                                voo.setNomeAeroportoSaida(nomeAeroporto);
-                                voo.setUfSaida(uf);
-                                voo.setPaisSaida(pais);
-
+                                voo.setNomeAeroportoSaida(matcher.group(1));
+                                voo.setUfSaida(matcher.group(2));
+                                voo.setPaisSaida(matcher.group(3).replace(" ", ""));
                             }
-                        }else if(celula.getColumnIndex() == 4 && !getCellValueAsString(celula).isEmpty()){
+                        } else if (celula.getColumnIndex() == 4 && !getCellValueAsString(celula).isEmpty()) {
                             voo.setSiglaAeroportoDestino(getCellValueAsString(celula));
-                        }else if(celula.getColumnIndex() == 5 && !getCellValueAsString(celula).isEmpty()){
+                        } else if (celula.getColumnIndex() == 5 && !getCellValueAsString(celula).isEmpty()) {
                             String regex = "(.*)\\((.*),(.*)\\)";
                             Pattern pattern = Pattern.compile(regex);
                             Matcher matcher = pattern.matcher(getCellValueAsString(celula));
                             if (matcher.find()) {
-                                String nomeAeroporto = matcher.group(1);
-                                String uf = matcher.group(2);
-                                String pais = matcher.group(3).replace(" ", "");
-
-                                voo.setNomeAeroportoDestino(nomeAeroporto);
-                                voo.setUfDestino(uf);
-                                voo.setPaisDestino(pais);
+                                voo.setNomeAeroportoDestino(matcher.group(1));
+                                voo.setUfDestino(matcher.group(2));
+                                voo.setPaisDestino(matcher.group(3).replace(" ", ""));
                             }
-                        }else if(celula.getColumnIndex() == 7 && !getCellValueAsString(celula).isEmpty() && !getCellValueAsString(celula).contains("% de Cancelamento")){
+                        } else if (celula.getColumnIndex() == 7 && !getCellValueAsString(celula).isEmpty()) {
                             voo.setPorcentCancelamentos(Double.parseDouble(getCellValueAsString(celula)));
-                        }else if(celula.getColumnIndex() == 8 && !getCellValueAsString(celula).isEmpty() && !getCellValueAsString(celula).contains("Superiores a 30 min.") && !getCellValueAsString(celula).contains("% de Atrasos")){
+                        } else if (celula.getColumnIndex() == 8 && !getCellValueAsString(celula).isEmpty()) {
                             voo.setPorcentAtrasoSuperior30(Double.parseDouble(getCellValueAsString(celula)));
-                        }else if(celula.getColumnIndex() == 9 && !getCellValueAsString(celula).isEmpty() && !getCellValueAsString(celula).contains("Superiores a 60 min.") && !getCellValueAsString(celula).contains("% de Atrasos")){
+                        } else if (celula.getColumnIndex() == 9 && !getCellValueAsString(celula).isEmpty()) {
                             voo.setPorcentAtrasoSuperior60(Double.parseDouble(getCellValueAsString(celula)));
                         }
-
                     }
-
                 }
-                        if ((voo.getNomeAeroportoSaida() != null && voo.getUfSaida() != null && voo.getPaisSaida() != null) && (voo.getNomeAeroportoDestino() != null && voo.getUfDestino() != null && voo.getPaisDestino() != null) ){
-                            voos.add(voo);
-//                            System.out.println(voo);
-                        }
+
+                if (voo.getNomeAeroportoSaida() != null && voo.getUfSaida() != null && voo.getPaisSaida() != null &&
+                        voo.getNomeAeroportoDestino() != null && voo.getUfDestino() != null && voo.getPaisDestino() != null) {
+                    voos.add(voo); // Adiciona voo à lista composta
+                }
             }
 
-//             Exibir os dados filtrados
             System.out.println("Todas as linhas foram processadas.");
             logv2.criarLog("Todas as linhas foram processadas.");
             return voos;
@@ -119,13 +105,8 @@ public class TratamentoDados {
         }
     }
 
-    public static List<Voo> converterBaseDeDados() {
-        TratamentoDados tratamentoDados = new TratamentoDados();
-        String path = System.getProperty("user.dir"); System.out.println("Working Directory = " + path);
-        try {
-           return tratamentoDados.lerXls("percentuaisTeste.xls");
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException();
-        }
+
+    public List<Voo> getVoos() {
+        return voos;
     }
 }
