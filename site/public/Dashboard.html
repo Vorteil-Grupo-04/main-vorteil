@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <link rel="stylesheet" href="StyleDashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,9 +45,8 @@
         </div>
         <div class="conteudo" id="conteudoUm" >
             <div class="conjuntoKPI" style="font-size: 22px;">
-                <div class="kpi" style="width:calc((100% / 3 ))"><h2>TAM</h2><h1>Empresa com menor indice de cancelamento</h1></div>
-                <div class="kpi" style="width:calc((100% / 3 ))"><h2>GOL</h2><h1>Empresa com maior indice de cancelamento</h1></div>
-                <div class="kpi" style="width:calc((100% / 3 ))"><h2>20%</h2><h1>Porcentagem da media geral de cancelamento</h1></div>
+                <div class="kpi" style="width:calc((100% / 2 ))"><h2  id="piorEmpresa">TAM</h2><h1>Empresa com pior desempenho</h1> <h1 id="dadosEmpresa"></h1></div>
+                <div class="kpi" style="width:calc((100% / 2 ))"><h2  id="piorAeroporto">GOL</h2><h1>Aeroporto com pior desempenho</h1> <h1 id="dadosAeroporto"></h1></div>
                
             </div>
            <div class="conjuntoFinal">
@@ -378,6 +378,294 @@
 </html>
 
 <script>
+  var empresaUmCancelamentos;
+  var empresaUmNome;
+  var empresaDoisCancelamentos;
+  var empresaDoisNome;
+  var empresaTresCancelamentos;
+  var empresaTresNome;
+  var empresaQuatroCancelamentos;
+  var empresaQuatroNome;
+  var empresaCincoCancelamentos;
+  var empresaCincoNome;
+  var empresaSeisCancelamentos;
+  var empresaSeisNome;
+  var empresaUmAtrasos;
+  var empresaDoisAtrasos;
+  var empresaTresAtrasos;
+  var empresaQuatroAtrasos;
+  var empresaCincoAtrasos;
+  var empresaSeisAtrasos;
+  
+
+  var aeroportoUmCancelamentos;
+  var aeroportoUmNome;
+  var aeroportoDoisCancelamentos;
+  var aeroportoDoisNome;
+  var aeroportoTresCancelamentos;
+  var aeroportoTresNome;
+  var aeroportoQuatroCancelamentos;
+  var aeroportoQuatroNome;
+  var aeroportoCincoCancelamentos;
+  var aeroportoCincoNome;
+  var aeroportoSeisCancelamentos;
+  var aeroportoSeisNome;
+  var aeroportoUmAtrasos;
+  var aeroportoDoisAtrasos;
+  var aeroportoTresAtrasos;
+  var aeroportoQuatroAtrasos;
+  var aeroportoCincoAtrasos;
+  var aeroportoSeisAtrasos;
+  function puxarDadosKPIAero() {
+    
+    fetch("../dashboard/puxarDadosKPIAero", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+        console.log('estou aqui');
+        
+  
+        if (resposta.ok) {
+      setTimeout(() => {
+        resposta.json().then(json => {
+          console.log(json);
+          console.log('atrasos aeroporto')
+          piorAeroporto.innerHTML = json[0].nomeAeroportoSaida.slice(0, 14)
+          dadosAeroporto.innerHTML = `${json[0].mediaCancelamentos.toFixed(1)}% de cancelamento`
+          piorEmpresa = json[0].empresaAerea
+          piorEmpresaDado = json[0].mediaCancelamentos
+
+          
+        })
+        
+          }, 500);
+ 
+        } else {
+          throw "Houve um erro ao trazer dados!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  
+    return false;
+  
+  }
+  function puxarDadosKPI() {
+    
+    fetch("../dashboard/puxarDadosKPI", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+        console.log('estou aqui');
+        
+  
+        if (resposta.ok) {
+      setTimeout(() => {
+        resposta.json().then(json => {
+          console.log(json);
+          console.log('atrasos aeroporto')
+          piorEmpresa.innerHTML = json[0].empresaAerea.slice(0, 4)
+          dadosEmpresa.innerHTML = `${json[0].mediaCancelamentos.toFixed(1)}% de cancelamento`
+          piorEmpresa = json[0].empresaAerea
+          piorEmpresaDado = json[0].mediaCancelamentos
+
+          
+        })
+        
+          }, 500);
+ 
+        } else {
+          throw "Houve um erro ao trazer dados!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  
+    return false;
+  
+  }
+
+function atrasosAeroportos() {
+    
+    fetch("../dashboard/atrasosAeroporto", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+        console.log('estou aqui');
+        
+  
+        if (resposta.ok) {
+      setTimeout(() => {
+        resposta.json().then(json => {
+          console.log(json);
+          console.log('atrasos aeroporto')
+          aeroportoUmAtrasos = json[0].mediaAtrasoSuperior30
+          aeroportoDoisAtrasos = json[1].mediaAtrasoSuperior30
+          aeroportoTresAtrasos = json[2].mediaAtrasoSuperior30
+          aeroportoQuatroAtrasos = json[3].mediaAtrasoSuperior30
+          aeroportoCincoAtrasos = json[4].mediaAtrasoSuperior30
+          aeroportoSeisAtrasos = json[5].mediaAtrasoSuperior30
+          
+        })
+        
+          }, 500);
+ 
+        } else {
+          throw "Houve um erro ao trazer dados!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  
+    return false;
+  
+  }
+  
+  function atrasosEmpresa() {
+    
+    fetch("../dashboard/atrasosEmpresa", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+        console.log(resposta.empresaAerea)
+  
+        if (resposta.ok) {
+      setTimeout(() => {
+        resposta.json().then(json => {
+          console.log(json);
+          empresaUmAtrasos = json[0].mediaAtrasoSuperior30
+          empresaDoisAtrasos = json[1].mediaAtrasoSuperior30
+          empresaTresAtrasos = json[2].mediaAtrasoSuperior30
+          empresaQuatroAtrasos = json[3].mediaAtrasoSuperior30
+          empresaCincoAtrasos = json[4].mediaAtrasoSuperior30
+          empresaSeisAtrasos = json[5].mediaAtrasoSuperior30
+          
+        })
+        
+          }, 500);
+ 
+        } else {
+          throw "Houve um erro ao trazer dados!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  
+    return false;
+  
+  }
+  async function cancelamentosEmpresa() {
+    console.log("Entrei");
+    
+  try {
+    const resposta = await fetch("../dashboard/cancelamentosEmpresa", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    });
+
+    // console.log("resposta: ", resposta);
+
+    if (resposta.ok) {
+      setTimeout(() => {
+        resposta.json().then(json => {
+          console.log(json);
+          empresaUmNome = json[0].empresaAerea
+          empresaUmCancelamentos = json[0].mediaCancelamentos
+          empresaDoisNome = json[1].empresaAerea
+          empresaDoisCancelamentos = json[1].mediaCancelamentos
+          empresaTresNome = json[2].empresaAerea
+          empresaTresCancelamentos = json[2].mediaCancelamentos
+          empresaQuatroNome = json[3].empresaAerea
+          empresaQuatroCancelamentos = json[3].mediaCancelamentos
+          empresaCincoNome = json[4].empresaAerea
+          empresaCincoCancelamentos = json[4].mediaCancelamentos
+          empresaSeisNome = json[5].empresaAerea
+          empresaSeisCancelamentos = json[5].mediaCancelamentos
+
+
+          console.log(empresaUmNome, empresaUmCancelamentos);
+          
+          
+        })
+        
+
+      }, 500); // O tempo é em milissegundos, então 2000 = 2 segundos
+    } else {
+      throw new Error("Houve um erro ao trazer dados!");
+    }
+  } catch (erro) {
+    console.log(`#ERRO: ${erro}`);
+  }
+
+  return false;
+}
+
+  function cancelamentosAeroporto() {
+    
+    fetch("../dashboard/cancelamentosAeroporto", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+  
+        if (resposta.ok) {
+      setTimeout(() => {
+        resposta.json().then(json => {
+          console.log(json);
+          aeroportoUmNome = json[0].nomeAeroportoSaida
+          aeroportoUmCancelamentos = json[0].mediaCancelamentos
+          aeroportoDoisNome = json[1].nomeAeroportoSaida
+          aeroportoDoisCancelamentos = json[1].mediaCancelamentos
+          aeroportoTresNome = json[2].nomeAeroportoSaida
+          aeroportoTresCancelamentos = json[2].mediaCancelamentos
+          aeroportoQuatroNome = json[3].nomeAeroportoSaida
+          aeroportoQuatroCancelamentos = json[3].mediaCancelamentos
+          aeroportoCincoNome = json[4].nomeAeroportoSaida
+          aeroportoCincoCancelamentos = json[4].mediaCancelamentos
+          aeroportoSeisNome = json[5].nomeAeroportoSaida
+          aeroportoSeisCancelamentos = json[5].mediaCancelamentos
+          
+        })
+        
+          }, 500);
+ 
+        } else {
+          throw "Houve um erro ao trazer dados!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  
+    return false;
+  
+  }
+
   var isOpenEmp = false
   var isOpenUser = false
 
@@ -407,6 +695,16 @@
 
 
   }
+
+  cancelamentosEmpresa()
+  cancelamentosAeroporto()
+  atrasosAeroportos()
+  atrasosEmpresa()
+  puxarDadosKPI()
+  puxarDadosKPIAero()
+
+
+
     function userHidden(){
 !isOpenUser ? mostrarModalCrud(4) : mostrarModalCrud(0)
 
@@ -487,47 +785,55 @@ function mostrarModal(modal) {
         contUm.classList.remove('dis');
         botaoUm.classList.remove('inactive');
         const ctx = document.getElementById('myChart');
+    const ctxDois = document.getElementById('myChartDois');
         
-
-
-new Chart(ctx, {
+setTimeout(() => {
+  new Chart(ctx, {
   type: 'bar',
-  data: {
-    labels: ['TAM', 'GOL', 'AZUL', 'VOEPASS', 'VOEAKI', 'DRUMOND'],
-    datasets: [{
-      label: 'Cancelamentos de Companhias Aéreas (%)',
-      data: [3, 60, 10, 25, 7, 20, 100],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
+ data: {
+  labels:  [empresaUmNome.slice(0, 5), empresaDoisNome.slice(0, 5), empresaTresNome.slice(0, 5), empresaQuatroNome.slice(0, 5), empresaCincoNome.slice(0, 5), empresaSeisNome.slice(0, 5)],
+  datasets: [
+    {
+      label: 'Cancelamentos',
+      data: [empresaUmCancelamentos, empresaDoisCancelamentos, empresaTresCancelamentos, empresaQuatroCancelamentos, empresaCincoCancelamentos, empresaSeisCancelamentos],
+      borderColor: 'red',
+      backgroundColor: 'red',
+    },
+    {
+      label: 'Atrasos',
+      data:  [empresaUmAtrasos, empresaDoisAtrasos, empresaTresAtrasos, empresaQuatroAtrasos, empresaCincoAtrasos, empresaSeisAtrasos],
+      borderColor: 'blue',
+      backgroundColor: 'blue',
     }
-  }
-});
-const ctxDois = document.getElementById('myChartDois');
+  ]
+}
+    });
+    
 
 new Chart(ctxDois, {
   type: 'bar',
-  data: {
-    labels: ['GRU', 'CONG', 'BSB', 'SBT', 'MPB', 'DRU'],
-    datasets: [{
-      label: 'Cancelamentos por Aeroportos (%)',
-      data: [30, 6, 15, 45, 37, 24, 100],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
+ data: {
+  labels:  [aeroportoUmNome.slice(0, 5), aeroportoDoisNome.slice(0, 5), aeroportoTresNome.slice(0, 5), aeroportoQuatroNome.slice(0, 5), aeroportoCincoNome.slice(0, 5), aeroportoSeisNome.slice(0, 5)],
+  datasets: [
+    {
+      label: 'Cancelamentos',
+      data: [aeroportoUmCancelamentos, aeroportoDoisCancelamentos, aeroportoTresCancelamentos, aeroportoQuatroCancelamentos, aeroportoCincoCancelamentos, aeroportoSeisCancelamentos],
+      borderColor: 'red',
+      backgroundColor: 'red',
+    },
+    {
+      label: 'Atrasos',
+      data:  [aeroportoUmAtrasos, aeroportoDoisAtrasos, aeroportoTresAtrasos, aeroportoQuatroAtrasos, aeroportoCincoAtrasos, aeroportoSeisAtrasos],
+      borderColor: 'blue',
+      backgroundColor: 'blue',
     }
-  }
-});
+  ]
+}
+    });
+}, 1000)
+
+
+
 const ctxTres = document.getElementById('myChartTres');
 
 new Chart(ctxTres, {
@@ -635,85 +941,85 @@ function delUser() {
 
 }
 
-const chaveApi = '61a63f60759671b91f52c72ecfa66019';
-        const cidade = 'Amapa, BR';
+// const chaveApi = '61a63f60759671b91f52c72ecfa66019';
+//         const cidade = 'Amapa, BR';
 
-        const traducoesTempo = {
-            "clear sky": "céu limpo",
-            "few clouds": "poucas nuvens",
-            "scattered clouds": "nuvens dispersas",
-            "broken clouds": "nuvens quebradas",
-            "shower rain": "chuva rápida",
-            "rain": "chuva",
-            "thunderstorm": "tempestade",
-            "snow": "neve",
-            "mist": "neblina",
-            "drizzle": "chuvisco",
-            "light rain": "chuva leve",
-            "overcast clouds": "nuvens cobertas",
-        };
+//         const traducoesTempo = {
+//             "clear sky": "céu limpo",
+//             "few clouds": "poucas nuvens",
+//             "scattered clouds": "nuvens dispersas",
+//             "broken clouds": "nuvens quebradas",
+//             "shower rain": "chuva rápida",
+//             "rain": "chuva",
+//             "thunderstorm": "tempestade",
+//             "snow": "neve",
+//             "mist": "neblina",
+//             "drizzle": "chuvisco",
+//             "light rain": "chuva leve",
+//             "overcast clouds": "nuvens cobertas",
+//         };
 
      
-        const obterPrevisao = () => {
-            const urlPrevisao = `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&appid=${chaveApi}&units=metric`;
+//         const obterPrevisao = () => {
+//             const urlPrevisao = `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&appid=${chaveApi}&units=metric`;
 
-            return fetch(urlPrevisao)
-                .then(resposta => {
-                    if (!resposta.ok) {
-                        throw new Error('Erro na requisição da previsão: ' + resposta.status);
-                    }
-                    return resposta.json();
-                });
-        };
+//             return fetch(urlPrevisao)
+//                 .then(resposta => {
+//                     if (!resposta.ok) {
+//                         throw new Error('Erro na requisição da previsão: ' + resposta.status);
+//                     }
+//                     return resposta.json();
+//                 });
+//         };
 
 
-        const obterClimaAtual = () => {
-            const urlClimaAtual = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${chaveApi}&units=metric`;
+//         const obterClimaAtual = () => {
+//             const urlClimaAtual = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${chaveApi}&units=metric`;
 
-            return fetch(urlClimaAtual)
-                .then(resposta => {
-                    if (!resposta.ok) {
-                        throw new Error('Erro na requisição do clima atual: ' + resposta.status);
-                    }
-                    return resposta.json();
-                });
-        };
+//             return fetch(urlClimaAtual)
+//                 .then(resposta => {
+//                     if (!resposta.ok) {
+//                         throw new Error('Erro na requisição do clima atual: ' + resposta.status);
+//                     }
+//                     return resposta.json();
+//                 });
+//         };
 
    
-        Promise.all([obterPrevisao(), obterClimaAtual()])
-            .then(([dadosPrevisao, dadosClimaAtual]) => {
-                let resultado = `<h2>Previsão do Tempo em ${cidade}</h2>`;
-                const previsoesDiarias = dadosPrevisao.list.filter(item => item.dt_txt.endsWith('15:00:00')).slice(0, 5);
+//         Promise.all([obterPrevisao(), obterClimaAtual()])
+//             .then(([dadosPrevisao, dadosClimaAtual]) => {
+//                 let resultado = `<h2>Previsão do Tempo em ${cidade}</h2>`;
+//                 const previsoesDiarias = dadosPrevisao.list.filter(item => item.dt_txt.endsWith('15:00:00')).slice(0, 5);
 
        
-                const visibilidade = dadosClimaAtual.visibility;
+//                 const visibilidade = dadosClimaAtual.visibility;
 
-                previsoesDiarias.forEach(dia => {
-                    const data = new Date(dia.dt * 1000).toLocaleDateString();
-                    const temperatura = dia.main.temp;
-                    const descricaoTempo = dia.weather[0].description;
-                    const descricaoTraduzida = traducoesTempo[descricaoTempo] || descricaoTempo;
-                    const velocidadeVento = (dia.wind.speed * 3.6).toFixed(2);
-                    const icone = dia.weather[0].icon;
+//                 previsoesDiarias.forEach(dia => {
+//                     const data = new Date(dia.dt * 1000).toLocaleDateString();
+//                     const temperatura = dia.main.temp;
+//                     const descricaoTempo = dia.weather[0].description;
+//                     const descricaoTraduzida = traducoesTempo[descricaoTempo] || descricaoTempo;
+//                     const velocidadeVento = (dia.wind.speed * 3.6).toFixed(2);
+//                     const icone = dia.weather[0].icon;
 
-                    resultado += `
-                        <div>
-                            <h4>${data}</h4>
-                            <p>Temperatura: ${temperatura}°C</p>
-                            <p>Condição: ${descricaoTraduzida}</p>
-                            <p>Velocidade do Vento: ${velocidadeVento} km/h</p>
-                            <p>Visibilidade: ${visibilidade} metros</p>
-                            <img src="https://openweathermap.org/img/wn/${icone}.png" alt="Ícone do tempo">
-                        </div>
-                    `;
-                });
+//                     resultado += `
+//                         <div>
+//                             <h4>${data}</h4>
+//                             <p>Temperatura: ${temperatura}°C</p>
+//                             <p>Condição: ${descricaoTraduzida}</p>
+//                             <p>Velocidade do Vento: ${velocidadeVento} km/h</p>
+//                             <p>Visibilidade: ${visibilidade} metros</p>
+//                             <img src="https://openweathermap.org/img/wn/${icone}.png" alt="Ícone do tempo">
+//                         </div>
+//                     `;
+//                 });
 
-                document.getElementById('divJ').innerHTML = resultado;
-            })
-            .catch(erro => {
-                console.error('Erro:', erro);
-                document.getElementById('divJ').innerHTML = 'Erro ao buscar dados do tempo.';
-            });
+//                 document.getElementById('divJ').innerHTML = resultado;
+//             })
+//             .catch(erro => {
+//                 console.error('Erro:', erro);
+//                 document.getElementById('divJ').innerHTML = 'Erro ao buscar dados do tempo.';
+//             });
 
    
 </script>
