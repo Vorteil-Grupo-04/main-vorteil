@@ -20,7 +20,7 @@ async function enviarEmail() {
             
             
         });
-
+    
         const data = await response.json();
         alert(data.message);
         await receberToken();

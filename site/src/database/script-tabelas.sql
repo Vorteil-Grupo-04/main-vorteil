@@ -37,6 +37,7 @@ CREATE TABLE usuario (
 
 CREATE TABLE token(
     id INT AUTO_INCREMENT PRIMARY KEY,
+    codigo CHAR(8),
     dataCriacao DATE,
     dataExpiracao DATE,
     statusToken VARCHAR(45),
