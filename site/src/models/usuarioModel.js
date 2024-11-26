@@ -7,7 +7,7 @@ function autenticar(email, senha) {
       senha
     );
     var instrucaoSql = `
-          SELECT idUsuario, nome, email, idEmpresa FROM usuario JOIN empresa on idEmpresa = idUsuario WHERE email = '${email}' AND senha = '${senha}';
+          SELECT idUsuario, usuario.nome, usuario.email, idEmpresa FROM usuario JOIN empresaTuristica on fkEmpresa = idEmpresa WHERE email = '${email}' AND senha = '${senha}';
       `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

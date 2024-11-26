@@ -4,11 +4,10 @@ USE vorteilTeste;
 
 
 CREATE TABLE empresaTuristica (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    idEmpresa INT AUTO_INCREMENT PRIMARY KEY,
     CNPJ VARCHAR(45) NOT NULL,
     nome VARCHAR(45) NOT NULL,
     razaoSocial VARCHAR(45) NOT NULL,
-    token VARCHAR(45) NOT NULL
 );
 
 INSERT INTO empresaTuristica (CNPJ, nome, razaoSocial, token) VALUES ('0000-0000', "Sem Empresa", "Sem Empresa", "000"); 
@@ -25,14 +24,14 @@ INSERT INTO cargo (nome) VALUES ('Funcionario');
 select * from cargo;
 
 CREATE TABLE usuario (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    idUsuario INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(45) NOT NULL ,
     email VARCHAR(45) NOT NULL UNIQUE,
     senha VARCHAR(45) NOT NULL,
     fkEmpresa INT,
     FOREIGN KEY (fkEmpresa) REFERENCES empresaTuristica(id),
     fkCargo INT NOT NULL,
-    FOREIGN KEY (fkCargo) REFERENCES cargo(id)
+    FOREIGN KEY (fkCargo) REFERENCES cargo(idEmpresa)
 );
 
 CREATE TABLE token(
@@ -42,7 +41,7 @@ CREATE TABLE token(
     dataExpiracao DATE,
     statusToken VARCHAR(45),
     fkEmpresa INT NOT NULL,
-    FOREIGN KEY (fkEmpresa) REFERENCES empresaTuristica(id)
+    FOREIGN KEY (fkEmpresa) REFERENCES empresaTuristica(idEmpresa)
 );
 
 

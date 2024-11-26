@@ -299,6 +299,10 @@
                   <h1 class="titulo">Deletar usuário</h1>
                   <button class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;">excluir</button>
                 </div>
+
+                <button id="insertToken" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer; color: red;" >INSERT</button>
+                <button style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer; color: red;" ></button>
+                <button style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer; color: red;" ></button>
             </div>
                  
             </div>
@@ -940,6 +944,64 @@ function delUser() {
     console.log('delUser')
 
 }
+
+
+
+document.getElementById('insertToken').addEventListener('click', function() {
+    // Enviar a requisição para o backend para obter o token
+    fetch('http://localhost:3000/enviar-email', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => {
+        console.log('Resposta do envio de e-mail:', response);  // Logando a resposta bruta
+        return response.json(); // Espera a resposta em formato JSON
+    })
+    .then(data => {
+        console.log('Dados do token recebidos:', data);  // Exibe os dados do token recebidos
+        if (data.token) {
+            // Pega o ID_EMPRESA do sessionStorage
+            const idEmpresa = sessionStorage.getItem('ID_EMPRESA');
+            console.log('ID da empresa do sessionStorage:', idEmpresa);  // Logando o ID da empresa
+            
+            // Envia o token e o ID_EMPRESA para o endpoint de cadastro de empresa
+            fetch('http://localhost:3000/token/insertToken', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    tokenServer: data.token,
+                    idEmpresaServer: idEmpresa
+                })
+            })
+            .then(resposta => {
+                console.log('Resposta do cadastro da empresa:', resposta);  // Logando a resposta bruta do cadastro
+                return resposta.json();  // Espera a resposta em formato JSON
+            })
+            .then(cadastroData => {
+                console.log('Cadastro da empresa realizado:', cadastroData);  // Logando os dados de sucesso do cadastro
+                document.getElementById('resultado').innerText = 'Empresa cadastrada com sucesso!';
+            })
+            .catch(error => {
+                console.error('Erro ao cadastrar a empresa:', error);
+                document.getElementById('resultado').innerText = 'Erro ao cadastrar a empresa.';
+            });
+        } else {
+            console.error('Token não encontrado na resposta:', data);
+            document.getElementById('resultado').innerText = 'Erro ao obter o token.';
+        }
+    })
+    .catch(error => {
+        console.error('Erro ao enviar e-mail:', error);
+        document.getElementById('resultado').innerText = 'Erro ao enviar e-mail.';
+    });
+});
+
+
+
 
 // const chaveApi = '61a63f60759671b91f52c72ecfa66019';
 //         const cidade = 'Amapa, BR';

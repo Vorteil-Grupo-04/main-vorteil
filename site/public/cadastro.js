@@ -123,7 +123,7 @@ function entrarLogin() {
 
               setTimeout(function () {
                 alert("login realizado com sucesso");
-                window.location = "Dashbord.html"
+                window.location = "Dashboard.html"
               }, 1000);
           });
   
