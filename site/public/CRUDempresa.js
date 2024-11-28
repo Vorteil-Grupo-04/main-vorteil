@@ -197,4 +197,6 @@ function btnCadastroEmpresa() {
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
         });  
+
+        location.reload();
   }

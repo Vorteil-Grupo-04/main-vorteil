@@ -20,12 +20,20 @@ router.post("/cadastrarEmpresa", function (req, res) {
     usuarioController.cadastrarEmpresa(req, res);
 });
 
-
 router.put("/atualizarSenha", function (req, res) {
     usuarioController.atualizarSenha(req, res);
 });
 
+router.get("/:idUsuario", function (req, res) {
+    usuarioController.listarDadosPorUsuario(req, res);
+});
 
+router.put("/atualizarUsuario", function (req, res) {
+    usuarioController.atualizarUsuario(req, res);
+});
 
+router.delete("/removerUsuario/:idUsuario", function (req, res) {
+    usuarioController.removerUsuario(req, res);
+});
 
 module.exports = router;

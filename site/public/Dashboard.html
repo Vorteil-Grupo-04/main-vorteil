@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gloock&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gloock&display=swap" rel="stylesheet">
-    <title>Dashbord</title>
+    <title>Dashboard</title>
 </head>
       
 <body>
@@ -31,7 +31,7 @@
                 </div>
                 <p class="textoDefault">Olá, usuario</p>
             </div>
-            <div  onclick="modalUm()"  class="botaoAcesso" id="botaoUm"><p class="textoDefault">cancelamentos</p> </div>
+            <div  onclick="modalUm()"  class="botaoAcesso" id="botaoUm"><p class="textoDefault">Dashboard</p> </div>
             <div  onclick="modalDois()" class="botaoAcesso"  id="botaoDois"><p class="textoDefault">Filtro</p> </div>
             <div  onclick="modalTres()" class="botaoAcesso" id="botaoTres"><p class="textoDefault" >Clima</p> </div>
           </div>
@@ -180,27 +180,26 @@
            </div>
         </div>
         <div class="conteudo dis" id="conteudoSeis">
-          <h1 class="tituloDA">Dados pessoais</h1>
+          <h1 class="tituloDA">Dados cadastrais</h1>
            <div class="conjuntoFinal">
             <div class="conjuntoDashboard" style="flex-direction: row;">
                 <div class="dashArea" style="background-color: rgba(0, 0, 255, 0); padding: 0; gap: 0.5rem; align-items: center; justify-content: center; display: flex; flex-direction: column; height: 100%; width: 100%;">
                   <div class="changeMode"  onclick="empHidden()" style="border: 1px solid white;" ><p class="textoDefault">Empresa</p></div>
                   <div class="hidden dis" id="empHidden" style="width: 50%;">
-                     <div class="changeMode list"  onclick="addEmp()" style="border: 1px solid white;" ><p class="textoDefault">Adicionar empresa</p></div>
+                  <div class="changeMode list"  onclick="addEmp()" style="border: 1px solid white;" ><p class="textoDefault">Adicionar empresa</p></div>
                   <div class="changeMode list" onclick="ediEmp(),listarDados()" style="border: 1px solid white;"><p class="textoDefault">Editar empresa</p></div>
-                  <div class="changeMode exclu" onclick="delEmp(),listarDados()" style="border: 1px solid white;"><p class="textoDefault" >Deletar empresa</p></div>
+                  <div class="changeMode exclu" onclick="delEmp(),listarDados()" style="border: 1px solid white;"><p class="textoDefault" >Remover empresa</p></div>
                   </div>
-                  <div class="changeMode"  onclick="userHidden()" style="border: 1px solid white;" ><p class="textoDefault">Usuário</p></div>
+                  <div class="changeMode"  onclick="userHidden(), listarDadosUsuario()" style="border: 1px solid white;" ><p class="textoDefault">Usuário</p></div>
                   <div class="hidden dis" id="userHidden" style="width: 50%;">
-                     <div class="changeMode list" onclick="editUser()"style="border: 1px solid white;"><p class="textoDefault" >editar usuario</p></div>
-                  <div class="changeMode exclu"  onclick="delUser()" style="border: 1px solid white;"><p class="textoDefault">excluir usuario</p></div>
-
+                  <div class="changeMode list" onclick="mostrarModalCrud(4)" style="border: 1px solid white;"><p class="textoDefault" >Editar usuário</p></div>
+                  <div class="changeMode exclu"  onclick="delUser()" style="border: 1px solid white;"><p class="textoDefault">Remover usuário</p></div>
                   </div>
                  
                 </div>
                 <div class="dashAreasDois" style="color: #1d1d1d; height: 100%; width: 100%;">
                   <div class="cadastroEmp" id="cadEmp">
-                    <h1 class="titulo">Cadastro empresa</h1>
+                    <h1 class="titulo">Adicionar empresa</h1>
                     <div class="align">
                         <div class="alignForm">
                             <p>Nome Fantasia</p>
@@ -231,28 +230,21 @@
                   <h1 class="titulo">Editar usuario</h1>
                   <div class="align">
                       <div class="alignForm">
-                          <p></p>
-                          <input type="text" class="ipt" id="input_nome_empresa">
-                      </div>
-                      <div class="alignForm">
-                          <p>CNPJ</p>
-                         <input type="text" class="ipt" id="input_cnpj" maxlength="18" oninput="formatarCNPJ(this)">
+                        <p>Nome</p>
+                        <input type="text" class="ipt" id="input_nome_usuario_editar">
                       </div>
                       <div class="alignForm">
                           <p>E-mail</p>
-                          <input type="text" id="input_email_empresa" class="ipt">
-                      </div>
-                      <div class="alignForm">
-                          <p>Senha</p>
-                          <input type="text" id="input_senha_empresa" class="ipt">
-                      </div>
-                      <div class="alignForm">
-                          <p>Confirmar Senha</p>
-                          <input type="text" id="input_confirmar_senha_empresa" class="ipt">
+                          <input type="text" id="input_email_usuario_editar" class="ipt">
                       </div>
                       <div class="align">
-                          <div class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="btnCadastroEmpresa()"><p>Enviar</p></div>
+                        <div class="btnConfirmar" id="btnEdit2" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="habilitarEdicaoUsuario()"><p>Editar</p></div>
+                        <div class="btnConfirmar" id="btnEnviar2" style="display: none; width: 100px; height: 35px; margin-top: 8px; cursor: pointer;"
+                            onclick="enviarEdicaoUsuario()">
+                            <p>Enviar</p>
+                            </div>
                       </div>
+                      
                   </div>
               </div>
                 <div class="cadastroEmp" id="editEmp">
@@ -296,8 +288,12 @@
                   <button class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="removerEmpresa()">Remover</button>
                 </div>
                 <div class="cadastroEmp" id="delUser">
-                  <h1 class="titulo">Deletar usuário</h1>
-                  <button class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;">excluir</button>
+                  <h1 class="titulo">Remover seu usuário</h1>
+                  <div class="alignForm">
+                    <p>Será removido:</p>
+                    <input type="text" class="ipt" id="input_nome_usuario_deletar">
+                  </div>
+                  <button class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="removerUsuario()">Remover</button>
                 </div>
 
                 <button id="insertToken" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer; color: red;" >INSERT</button>
