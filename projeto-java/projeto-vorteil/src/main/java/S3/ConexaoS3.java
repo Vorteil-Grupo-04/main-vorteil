@@ -23,7 +23,7 @@ public class ConexaoS3 {
         // Instanciando o cliente S3 via S3Provider
         S3Client s3Client = new S3Provider().getS3Client();
         String bucketName = "bucket-vorteil";
-        Logv2 logv2 = new Logv2("LogsConexaoS3.log");
+        Logv2 logv2 = new Logv2("LogsConexaoS3.txt");
 
         // Criando um novo bucket no S3
         try {
@@ -35,6 +35,7 @@ public class ConexaoS3 {
             logv2.criarLog("Bucket criado com sucesso:" + bucketName);
         } catch (S3Exception e) {
             // Ignorando erro ao criar o bucket, caso já exista
+            System.out.println("O bucket ja existe. " + e.getMessage());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

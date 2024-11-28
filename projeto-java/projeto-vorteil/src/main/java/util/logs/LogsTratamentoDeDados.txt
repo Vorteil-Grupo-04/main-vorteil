@@ -1,0 +1,42 @@
+
+22/11/2024 16:34:17 Arquivo Excel foi aberto.
+22/11/2024 16:34:17 Planilha acessada!
+22/11/2024 16:34:17 Todas as linhas foram processadas.
+22/11/2024 23:47:49 Arquivo Excel foi aberto.
+22/11/2024 23:47:49 Planilha acessada!
+22/11/2024 23:47:50 Todas as linhas foram processadas.
+25/11/2024 23:48:51 Arquivo Excel foi aberto.
+25/11/2024 23:48:51 Planilha acessada!
+25/11/2024 23:48:52 Todas as linhas foram processadas.
+25/11/2024 23:54:37 Arquivo Excel foi aberto.
+25/11/2024 23:54:37 Planilha acessada!
+25/11/2024 23:54:37 Todas as linhas foram processadas.
+25/11/2024 23:54:38 Arquivo Excel Reclamações foi aberto.
+25/11/2024 23:54:38 Planilha Reclamações acessada!
+25/11/2024 23:54:38 Todas as linhas das reclamações foram processadas.
+25/11/2024 23:54:54 Arquivo Excel foi aberto.
+25/11/2024 23:54:54 Planilha acessada!
+25/11/2024 23:54:55 Todas as linhas foram processadas.
+25/11/2024 23:54:57 Arquivo Excel Reclamações foi aberto.
+25/11/2024 23:54:57 Planilha Reclamações acessada!
+25/11/2024 23:54:57 Todas as linhas das reclamações foram processadas.
+25/11/2024 23:59:11 Arquivo Excel foi aberto.
+25/11/2024 23:59:11 Planilha acessada!
+25/11/2024 23:59:12 Todas as linhas foram processadas.
+25/11/2024 23:59:12 Arquivo Excel Reclamações foi aberto.
+25/11/2024 23:59:12 Planilha Reclamações acessada!
+25/11/2024 23:59:13 Todas as linhas das reclamações foram processadas.
+26/11/2024 00:00:41 Arquivo Excel foi aberto.
+26/11/2024 00:00:41 Planilha acessada!
+26/11/2024 00:00:42 Todas as linhas foram processadas.
+26/11/2024 00:00:42 Arquivo Excel Reclamações foi aberto.
+26/11/2024 00:00:42 Planilha Reclamações acessada!
+26/11/2024 00:00:43 Todas as linhas das reclamações foram processadas.
+26/11/2024 18:28:33 Arquivo Excel Reclamações foi aberto.
+26/11/2024 18:28:33 Planilha Reclamações acessada!
+26/11/2024 18:28:33 Todas as linhas das reclamações foram processadas.
+26/11/2024 18:30:44 Arquivo Excel Reclamações foi aberto.
+26/11/2024 18:30:44 Planilha Reclamações acessada!
+26/11/2024 18:32:15 Arquivo Excel Reclamações foi aberto.
+26/11/2024 18:32:15 Planilha Reclamações acessada!
+26/11/2024 18:32:15 Todas as linhas das reclamações foram processadas.
