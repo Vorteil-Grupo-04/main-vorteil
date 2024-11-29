@@ -16,6 +16,7 @@ var HOST_APP = process.env.APP_HOST;
 var app = express();
 
 var usuarioRouter = require("./src/routes/usuarios");
+var tokenRouter = require("./src/routes/token");
 var empresaRouter = require("./src/routes/empresa");
 var dashboardRouter = require("./src/routes/dashboard");
 
@@ -30,6 +31,7 @@ app.use(cors());
 app.use("/usuarios", usuarioRouter);
 app.use("/empresa", empresaRouter);
 app.use("/dashboard", dashboardRouter);
+app.use("/token", tokenRouter);
 
 
 

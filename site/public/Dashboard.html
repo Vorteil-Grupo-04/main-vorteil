@@ -961,9 +961,11 @@ document.getElementById('insertToken').addEventListener('click', function() {
             // Pega o ID_EMPRESA do sessionStorage
             const idEmpresa = sessionStorage.getItem('ID_EMPRESA');
             console.log('ID da empresa do sessionStorage:', idEmpresa);  // Logando o ID da empresa
+            console.log("Token", data.token)
+            console.log("Empresa", idEmpresa)
             
             // Envia o token e o ID_EMPRESA para o endpoint de cadastro de empresa
-            fetch('http://localhost:3000/token/insertToken', {
+            fetch('./token/insertToken', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -974,15 +976,15 @@ document.getElementById('insertToken').addEventListener('click', function() {
                 })
             })
             .then(resposta => {
-                console.log('Resposta do cadastro da empresa:', resposta);  // Logando a resposta bruta do cadastro
+                console.log('Resposta do cadastro do token:', resposta);  // Logando a resposta bruta do cadastro
                 return resposta.json();  // Espera a resposta em formato JSON
             })
             .then(cadastroData => {
-                console.log('Cadastro da empresa realizado:', cadastroData);  // Logando os dados de sucesso do cadastro
+                console.log('Cadastro do token realizado:', cadastroData);  // Logando os dados de sucesso do cadastro
                 document.getElementById('resultado').innerText = 'Empresa cadastrada com sucesso!';
             })
             .catch(error => {
-                console.error('Erro ao cadastrar a empresa:', error);
+                console.error('Erro ao cadastrar o token:', error);
                 document.getElementById('resultado').innerText = 'Erro ao cadastrar a empresa.';
             });
         } else {
