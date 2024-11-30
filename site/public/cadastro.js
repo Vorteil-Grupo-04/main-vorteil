@@ -119,7 +119,7 @@ function entrarLogin() {
               sessionStorage.EMAIL_USUARIO = json.email;
               sessionStorage.NOME_USUARIO = json.nome;
               sessionStorage.ID_USUARIO = json.idUsuario;
-              sessionStorage.ID_EMPRESA = json.idUsuario;
+              sessionStorage.ID_EMPRESA = json.fkEmpresa;
 
               setTimeout(function () {
                 alert("login realizado com sucesso");
