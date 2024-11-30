@@ -1,6 +1,8 @@
 package apache.poi;
 
-public class Voo {
+import apache.poi.tratamento.RespostaTratamento;
+
+public class Voo implements RespostaTratamento {
     private String nome;
     private String empresaAerea;
     private String siglaAeroportoSaida;
@@ -14,6 +16,8 @@ public class Voo {
     private Double porcentCancelamentos;
     private Double porcentAtrasoSuperior30;
     private Double porcentAtrasoSuperior60;
+
+    
 
     public String getNome() {
         return nome;
