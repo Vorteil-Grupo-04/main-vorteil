@@ -29,7 +29,7 @@ function insertToken(req, res) {
 
 function deleteToken(req, res) {
     var tokenCodigo = req.body.codigoServer;
-    var idEmpresa = req.body.idEmpresaServer;
+    var idEmpresa = req.body.empresaServer;
 
     if (tokenCodigo == undefined) {
         res.status(400).send("Seu codigo do token está undefined!");

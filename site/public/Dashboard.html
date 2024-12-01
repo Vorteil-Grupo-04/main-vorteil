@@ -284,8 +284,8 @@
                   </div>
                    <div class="cadastroEmp" id="delToken">
                     <h1 class="titulo">Excluir token</h1>
-                    <input type="text">
-                    <button id="deleteToken" class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;">adicionar</button>
+                    <input type="text" id="input_deleteToken">
+                    <button  id="deleteToken" class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="deletarToken()">Excluir Código</button>
                   </div>
                   <div class="cadastroEmp" id="addToken">
                     <h1 class="titulo">adicionar token</h1>
@@ -1219,7 +1219,9 @@ document.getElementById('insertToken').addEventListener('click', function() {
             })
             .then(cadastroData => {
                 console.log('Cadastro do token realizado:', cadastroData);  // Logando os dados de sucesso do cadastro
-                document.getElementById('resultado').innerText = 'Empresa cadastrada com sucesso!';
+                document.getElementById('resultado').innerText = 'Token cadastrado com sucesso!';
+                alert("Token Cadastrado com sucesso, verifique seu email!")
+  
             })
             .catch(error => {
                 console.error('Erro ao cadastrar o token:', error);
@@ -1237,39 +1239,40 @@ document.getElementById('insertToken').addEventListener('click', function() {
 });
 
 
-  function deletarForum(idForum) {
-  fetch(`/token/deleteToken`, {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      tokenServer: codigoToken,
-
-  })
-}).then(function (resposta) {
-    console.log("ESTOU NO THEN DO enviarForum()!")
-
-    if (resposta.ok) {
-        console.log(resposta);
-        
-        resposta.json().then(json => {
-            console.log(json);
-            console.log(JSON.stringify(json));
-              window.location = "forum.html";
-
-             
-        });
-
-    } else {
-
-        console.log("Houve um erro ao tentar realizar o enviarForum!");
-
-        
-    }
+function deletarToken() {
+    const idEmpresa = sessionStorage.getItem('ID_EMPRESA');
+    const codigoToken =  input_deleteToken.value;
+    fetch(`./token/deleteToken`, {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      
+      body: JSON.stringify({      
+        empresaServer: idEmpresa,
+        codigoServer: codigoToken
   
-})
-}
+    })
+  }).then(function (resposta) {
+      console.log("ESTOU NO THEN DO enviarForum()!")
+  
+      if (resposta.ok) {
+          console.log(resposta);
+          
+          resposta.json().then(json => {
+              console.log(json);
+              console.log(JSON.stringify(json));
+              alert("Token deletado com sucesso!")
+  
+               
+          });
+  
+      } else {
+          console.log("Houve um erro ao tentar realizar o enviarForum!");        
+      }
+    
+  })
+  }
 
 
 

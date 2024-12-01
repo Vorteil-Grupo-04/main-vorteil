@@ -155,6 +155,9 @@ function btnCadastro() {
   const senha_input = input_senha.value;
   const confirmacao_senha_input = input_confirmar_senha.value;
   const tipoConta_input =  id_tipo_conta.value;
+  const inputToken =  input_token.value;
+
+  
         
   console.log(nome_input)
   console.log(email_input)
@@ -172,7 +175,7 @@ function btnCadastro() {
   }
 
   if (tipoConta_input == "funcionario") {
-  fetch("../usuarios/cadastrar", {
+  fetch("../usuarios/cadastrarFuncionario", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -181,7 +184,8 @@ function btnCadastro() {
       nomeServer: nome_input,
       emailServer: email_input,
       senhaServer: senha_input,
-      cargoServer: 2
+      cargoServer: 2,
+      inputTokenServer: inputToken
     }),
   })
     .then(function (resposta) {
