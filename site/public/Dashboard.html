@@ -185,106 +185,103 @@
                     
                    </div>
                    <div class="dashAreasDois" style="color: #1d1d1d; height: 100%; width: 100%;">
-                     <div class="cadastroEmp" id="cadEmp">
-                       <h1 class="titulo">Cadastro empresa</h1>
-                       <div class="align">
-                           <div class="alignForm">
-                               <p>Nome Fantasia</p>
-                               <input type="text" class="ipt" id="input_nome_empresa_cadastro">
-                             </div>
-                             <div class="alignForm">
-                               <p>Razão Social</p>
-                               <input type="text" class="ipt" id="input_razao_social_cadastro">
-                             </div>
-                             <div class="alignForm">
-                               <p>CNPJ</p>
-                               <input type="text" class="ipt" id="input_cnpj_cadastro" maxlength="18" oninput="formatarCNPJ(this)">
-                             </div>
-                             <div class="alignForm">
-                               <p>Cidade</p>
-                               <input type="text" id="input_cidade_cadastro" class="ipt">
-                             </div>
-                             <div class="align">
-                               <div class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;"
-                                 onclick="btnCadastroEmpresa()">
-                                 <p>Enviar</p>
-                               </div>
-                              
-                           </div>
-                       </div>
-                   </div>
-                   <div class="cadastroEmp" id="editUser">
-                     <h1 class="titulo">Editar usuario</h1>
-                     <div class="align">
-                         <div class="alignForm">
-                             <p></p>
-                             <input type="text" class="ipt" id="input_nome_empresa">
-                         </div>
-                         <div class="alignForm">
-                             <p>CNPJ</p>
-                            <input type="text" class="ipt" id="input_cnpj" maxlength="18" oninput="formatarCNPJ(this)">
-                         </div>
-                         <div class="alignForm">
-                             <p>E-mail</p>
-                             <input type="text" id="input_email_empresa" class="ipt">
-                         </div>
-                         <div class="alignForm">
-                             <p>Senha</p>
-                             <input type="text" id="input_senha_empresa" class="ipt">
-                         </div>
-                         <div class="alignForm">
-                             <p>Confirmar Senha</p>
-                             <input type="text" id="input_confirmar_senha_empresa" class="ipt">
-                         </div>
-                         <div class="align">
-                             <div class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="btnCadastroEmpresa()"><p>Enviar</p></div>
-                         </div>
-                     </div>
-                 </div>
-                   <div class="cadastroEmp" id="editEmp">
-                       <h1 class="titulo">Editar empresa</h1>
-                       <div class="align">
-                           <div class="alignForm">
-                             <p>Nome Fantasia</p>
-                             <input type="text" class="ipt" id="input_nome_empresa_editar">
-                           </div>
-                           <div class="alignForm">
-                             <p>Razão Social</p>
-                             <input type="text" class="ipt" id="input_razao_social_editar">
-                           </div>
-                           <div class="alignForm">
-                             <p>CNPJ</p>
-                             <input type="text" class="ipt" id="input_cnpj_editar" maxlength="18" oninput="formatarCNPJ(this)">
-                           </div>
-                           <div class="alignForm">
-                             <p>Cidade</p>
-                             <input type="text" class="ipt" id="input_cidade_editar">
-                           </div>
-                           <div class="align">
-                             <div class="btnConfirmar" id="btnEdit" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;"
-                               onclick="habilitarEdicao()">
-                               <p>Editar</p>
-                               </div>
-   
-                               <div class="btnConfirmar" id="btnEnviar" style="display: none; width: 100px; height: 35px; margin-top: 8px; cursor: pointer;"
-                               onclick="enviarEdicao()">
-                               <p>Enviar</p>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-                   <div class="cadastroEmp" id="delEmp">
-                     <h1 class="titulo">Remover empresa</h1>
-                     <div class="alignForm">
-                       <p>Sua empresa:</p>
-                       <input type="text" class="ipt" id="input_nome_empresa_deletar">
-                     </div>
-                     <button class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="removerEmpresa()">Remover</button>
-                   </div>
-                   <div class="cadastroEmp" id="delUser">
-                     <h1 class="titulo">Deletar usuário</h1>
-                     <button class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;">excluir</button>
-                   </div>
+                    <div class="cadastroEmp" id="cadEmp">
+                      <h1 class="titulo">Adicionar empresa</h1>
+                      <div class="align">
+                          <div class="alignForm">
+                              <p>Nome Fantasia</p>
+                              <input type="text" class="ipt" id="input_nome_empresa_cadastro">
+                            </div>
+                            <div class="alignForm">
+                              <p>Razão Social</p>
+                              <input type="text" class="ipt" id="input_razao_social_cadastro">
+                            </div>
+                            <div class="alignForm">
+                              <p>CNPJ</p>
+                              <input type="text" class="ipt" id="input_cnpj_cadastro" maxlength="18" oninput="formatarCNPJ(this)">
+                            </div>
+                            <div class="alignForm">
+                              <p>Cidade</p>
+                              <input type="text" id="input_cidade_cadastro" class="ipt">
+                            </div>
+                            <div class="align">
+                              <div class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;"
+                                onclick="btnCadastroEmpresa()">
+                                <p>Enviar</p>
+                              </div>
+                             
+                          </div>
+                      </div>
+                  </div>
+                  <div class="cadastroEmp" id="editUser">
+                    <h1 class="titulo">Editar usuario</h1>
+                    <div class="align">
+                        <div class="alignForm">
+                          <p>Nome</p>
+                          <input type="text" class="ipt" id="input_nome_usuario_editar">
+                        </div>
+                        <div class="alignForm">
+                            <p>E-mail</p>
+                            <input type="text" id="input_email_usuario_editar" class="ipt">
+                        </div>
+                        <div class="align">
+                          <div class="btnConfirmar" id="btnEdit2" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="habilitarEdicaoUsuario()"><p>Editar</p></div>
+                          <div class="btnConfirmar" id="btnEnviar2" style="display: none; width: 100px; height: 35px; margin-top: 8px; cursor: pointer;"
+                              onclick="enviarEdicaoUsuario()">
+                              <p>Enviar</p>
+                              </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                  <div class="cadastroEmp" id="editEmp">
+                      <h1 class="titulo">Editar empresa</h1>
+                      <div class="align">
+                          <div class="alignForm">
+                            <p>Nome Fantasia</p>
+                            <input type="text" class="ipt" id="input_nome_empresa_editar">
+                          </div>
+                          <div class="alignForm">
+                            <p>Razão Social</p>
+                            <input type="text" class="ipt" id="input_razao_social_editar">
+                          </div>
+                          <div class="alignForm">
+                            <p>CNPJ</p>
+                            <input type="text" class="ipt" id="input_cnpj_editar" maxlength="18" oninput="formatarCNPJ(this)">
+                          </div>
+                          <div class="alignForm">
+                            <p>Cidade</p>
+                            <input type="text" class="ipt" id="input_cidade_editar">
+                          </div>
+                          <div class="align">
+                            <div class="btnConfirmar" id="btnEdit" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;"
+                              onclick="habilitarEdicao()">
+                              <p>Editar</p>
+                              </div>
+  
+                              <div class="btnConfirmar" id="btnEnviar" style="display: none; width: 100px; height: 35px; margin-top: 8px; cursor: pointer;"
+                              onclick="enviarEdicao()">
+                              <p>Enviar</p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="cadastroEmp" id="delEmp">
+                    <h1 class="titulo">Remover empresa</h1>
+                    <div class="alignForm">
+                      <p>Sua empresa:</p>
+                      <input type="text" class="ipt" id="input_nome_empresa_deletar">
+                    </div>
+                    <button class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="removerEmpresa()">Remover</button>
+                  </div>
+                  <div class="cadastroEmp" id="delUser">
+                    <h1 class="titulo">Remover seu usuário</h1>
+                    <div class="alignForm">
+                      <p>Será removido:</p>
+                      <input type="text" class="ipt" id="input_nome_usuario_deletar">
+                    </div>
+                    <button class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="removerUsuario()">Remover</button>
+                  </div>
                    <div class="cadastroEmp" id="delToken">
                     <h1 class="titulo">Excluir token</h1>
                     <input type="text">
