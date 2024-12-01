@@ -29,15 +29,17 @@ CREATE TABLE usuario (
     FOREIGN KEY (fkCargo) REFERENCES cargo(id)
 );
 
-CREATE TABLE token(
+CREATE TABLE token (
     id INT AUTO_INCREMENT PRIMARY KEY,
     codigo CHAR(8),
-    dataCriacao DATE,
-    dataExpiracao DATE,
+    dataCriacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+    dataExpiracao datetime default(current_timestamp() + interval 3 DAY), 
     statusToken VARCHAR(45),
     fkEmpresa INT NOT NULL,
     FOREIGN KEY (fkEmpresa) REFERENCES empresaTuristica(idEmpresa)
 );
+
+
 
 CREATE TABLE companhiaAerea (
     id INT AUTO_INCREMENT PRIMARY KEY,
