@@ -81,6 +81,42 @@ function cadastrar(req, res) {
     }
 }
 
+
+function sessionEmpresa(req, res) {
+  var idUsuario = req.body.idUsuarioServer;
+
+  if (idUsuario == undefined) {
+    console.log("Seu idUsuario está undefined!")
+    res.status(400).send("Seu idUsuario está undefined!");
+  }  else {
+    usuarioModel.sessionEmpresa(idUsuario)
+      .then(function (resultadoAutenticar) {
+        console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+        console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+
+        if (resultadoAutenticar.length == 1) {
+          console.log(resultadoAutenticar);
+          res.json({
+            fkEmpresa: resultadoAutenticar[0].fkEmpresa
+          });
+      
+        } else if (resultadoAutenticar.length == 0) {
+          res.status(403).send("idUsuario inválido(s)");
+        } else {
+          res.status(403).send("Mais de uma empresa !");
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao realizar o login! Erro: ",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+}
+
 function cadastrarFiscal(req, res) {
   var nome = req.body.nomeServer;
   var email = req.body.emailServer;
@@ -239,5 +275,6 @@ module.exports = {
     atualizarSenha,
     listarDadosPorUsuario,
     atualizarUsuario,
-    removerUsuario
+    removerUsuario,
+    sessionEmpresa
 }

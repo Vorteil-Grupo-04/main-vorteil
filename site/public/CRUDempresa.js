@@ -36,6 +36,7 @@ function btnCadastroEmpresa() {
   
         if (resposta.ok) {
           setTimeout(() => {
+            sessionStorageEmpresa()
             alert("Empresa Cadastrada!")
           }, "2000");
  
@@ -50,6 +51,53 @@ function btnCadastroEmpresa() {
     return false;
   
   }
+
+  function sessionStorageEmpresa(params) {
+    var idUsuario = sessionStorage.ID_USUARIO;
+
+    fetch("./usuarios/sessionEmpresa", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idUsuarioServer: idUsuario,
+        })
+    }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO sessionStorage da empresa()!")
+    
+        if (resposta.ok) {
+            console.log(resposta);
+     
+        
+            resposta.json().then(json => {
+                console.log(json);
+                console.log(JSON.stringify(json));
+                sessionStorage.ID_EMPRESA = json.fkEmpresa;
+                
+            });
+            window.location = "Dashboard.html"
+        } else {
+    
+            console.log("Houve um erro ao tentar realizar o cadastro do session storage da empresa!");
+    
+            
+        }
+    
+    }).catch(function (erro) {
+        console.log(erro);
+    })
+    
+    return false;
+    }
+
+
+
+
+
+
+
+
 
   async function listarDados(){
     var idEmpresa = sessionStorage.ID_USUARIO; //não é o ideal, mas funciona o crud empresa

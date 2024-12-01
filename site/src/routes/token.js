@@ -9,4 +9,8 @@ router.post("/insertToken", function (req, res) {
     tokenController.insertToken(req, res);
 })
 
+router.post("/deleteToken", function (req, res) {
+    tokenController.deleteToken(req, res);
+})
+
 module.exports = router;

@@ -8,7 +8,6 @@ CREATE TABLE empresaTuristica (
     razaoSocial VARCHAR(45) NOT NULL,
     cnpj VARCHAR(45) NOT NULL,
     cidade VARCHAR (45) NOT NULL,
-    token VARCHAR(45)
 );
 
 CREATE TABLE cargo(

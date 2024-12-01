@@ -36,4 +36,8 @@ router.delete("/removerUsuario/:idUsuario", function (req, res) {
     usuarioController.removerUsuario(req, res);
 });
 
+router.post("/sessionEmpresa", function (req, res) {
+    usuarioController.sessionEmpresa(req, res);
+});
+
 module.exports = router;
