@@ -22,358 +22,362 @@
 </head>
       
 <body>
-    <div class="container" id="pai">
-        <div class="lateral">
-          <div class="contLat">
-            <div class="userCont">
-                <div class="profilePai">
-                    <img src="./assets/gray-user-profile-icon-png-fP8Q1P.png" alt="" class="profile">
-                </div>
-                <p class="textoDefault">Olá, usuario</p>
-            </div>
-            <div  onclick="modalUm()"  class="botaoAcesso" id="botaoUm"><p class="textoDefault">Dashboard</p> </div>
-            <div  onclick="modalDois()" class="botaoAcesso"  id="botaoDois"><p class="textoDefault">Filtro</p> </div>
-            <div  onclick="modalTres()" class="botaoAcesso" id="botaoTres"><p class="textoDefault" >Clima</p> </div>
-          </div>
-          <div class="iconAlert"></div>
-          <div class="contLat">
-           
-            <div onclick="modalCinco()" class="botaoAcesso"  id="botaoCinco"><p class="textoDefault">Configurações</p> </div>
-            <div  onclick="modalSeis()" class="botaoAcesso" id="botaoSeis"><p class="textoDefault" >Sair</p> </div>
-          </div>
-
-        </div>
-        <div class="conteudo" id="conteudoUm" >
-            <div class="conjuntoKPI" style="font-size: 22px;">
-                <div class="kpi" style="width:calc((100% / 2 ))"><h2  id="piorEmpresa">TAM</h2><h1>Empresa com pior desempenho</h1> <h1 id="dadosEmpresa"></h1></div>
-                <div class="kpi" style="width:calc((100% / 2 ))"><h2  id="piorAeroporto">GOL</h2><h1>Aeroporto com pior desempenho</h1> <h1 id="dadosAeroporto"></h1></div>
-               
-            </div>
-           <div class="conjuntoFinal">
-            <div class="dashAlign">
-              <p class="sub" style="font-weight: 500;">Teste de label</p>
-<div class="conjuntoDashboard" style="flex-direction: row; gap: 0;" >
-  <div class="dashAreasDois" style="border-radius: 0;">
-    <canvas style="width: 600px; border-radius: 0;" class="grafic" id="myChart"></canvas>
-
-  </div>
-<div class="dashAreasDois" style="border-radius: 0;">
-  <canvas style="width: 600px; border-radius: 0;" class="grafic" id="myChartDois"></canvas>
-
-</div>
-</div>
-            </div>
-            <div class="dashAlign">
-              <p class="sub" style="font-weight: 500;">Teste de label</p>
-
-            <div class="conjuntoDashboard"  style="flex-direction: row;" >
-              <div class="dashAreasDois">
-                <canvas style="width: 600px;" class="grafic" id="myChartTres"></canvas>
-
+  <div class="container" id="pai">
+      <div class="lateral">
+        <div class="contLat">
+          <div class="userCont">
+              <div class="profilePai">
+                  <img src="./assets/gray-user-profile-icon-png-fP8Q1P.png" alt="" class="profile">
               </div>
-            <div class="dashAreasDois">
-              <canvas style="width: 600px;" class="grafic" id="myChartQuatro"></canvas>
-
-            </div>
+              <p class="textoDefault">Olá, usuario</p>
           </div>
+          <div  onclick="modalUm()"  class="botaoAcesso" id="botaoUm"><p class="textoDefault">cancelamentos</p> </div>
+          <div  onclick="modalDois()" class="botaoAcesso"  id="botaoDois"><p class="textoDefault">Filtro</p> </div>
+          <div  onclick="modalTres()" class="botaoAcesso" id="botaoTres"><p class="textoDefault" >Clima</p> </div>
         </div>
-           
+        <div class="iconAlert"></div>
+        <div class="contLat">
          
-           </div>
+          <div onclick="modalCinco()" class="botaoAcesso"  id="botaoCinco"><p class="textoDefault">Configurações</p> </div>
+          <div  onclick="modalSeis()" class="botaoAcesso" id="botaoSeis"><p class="textoDefault" >Sair</p> </div>
         </div>
-        <div class="conteudo dis" id="conteudoDois">
-          <div class="conjuntoKPI" style="justify-content: space-around;">
-            <div class="kpi" style="width:calc((100% / 2 ) - 0.5rem);"><h1>Clima São Paulo: <br>Tempestade</h1></div>
-            <div class="kpi" style="width:calc((100% / 2 ) - 0.5rem);"><h1>Clima Ceará: <br>Céu Limpo</h1></div>
-           
-        </div>
-       <div class="conjuntoFinal modify">
-        <div class="conjuntoDashboard alt">
-            <div style="align-items: start;" class="dashAreas codUm">
-                <div>
-                  </div>
-            </div>
-        <div class="kpiTotal">
-         
-        <table>
-            <tr>
-              <th class="titulos">Velocida do Vento</th>
-              <th class="titulos">São Paulo</th>
-              <th class="titulos">Ceará</th>
-            </tr>
-            <tr>
-              <td>25/10</td>
-              <td>8.24 km/h</td>
-              <td>3.73 km/h</td>
-            </tr>
-            <tr>
-              <td>26/10</td>
-              <td>8.24 km/h</td>
-              <td>3.73 km/h</td>
-            </tr>
-            <tr>
-              <td>27/10</td>
-              <td>7.52 km/h</td>
-              <td>2.83 km/h</td>
-            </tr>
-            <tr>
-              <td>28/10</td>
-              <td>8.75 km/h</td>
-              <td>5.70 km/h</td>
-            </tr>
-           
-         
-               
-              </table>
-            </div>
-            </div>
-            <div class="dashAreasDois" style="align-items: start;">
-                <div>
-                  </div>
-            </div>
 
-           </div>
-        </div>
-       
-        <div class="conteudo dis" id="conteudoQuatro" style="flex-direction: row;">
-         
-           <div class="conjuntoFinal">
-            <div class="conjuntoDashboard">
-                <div class="dashAreas" style="align-items: start; padding-left: 2rem;">
-                  <h1 class="titulin">Conselho da IA</h1>
-                  <p class="titulinho">A rota aérea São Paulo - Ceará conecta a capital paulista a Fortaleza, famosa por suas praias e cultura. O tempo de voo direto é de cerca de 3 horas e 30 minutos. Companhias como LATAM, Gol e Azul operam essa rota, partindo principalmente do Aeroporto Internacional de Guarulhos (GRU). O Aeroporto Pinto Martins (FOR) é o principal ponto de chegada em Fortaleza. A demanda é alta tanto para negócios quanto para turismo, especialmente na alta temporada. Reservas antecipadas e atenção às políticas de bagagem são recomendadas.
-
-
-
-                  </p>
+      </div>
+      <div class="conteudo" id="conteudoUm" >
+          <div class="conjuntoKPI" style="font-size: 22px;">
+              <div class="kpi" style="width:calc((100% / 2 ))"><h2  id="piorEmpresa">TAM</h2><h1>Empresa com pior desempenho</h1> <h1 id="dadosEmpresa"></h1></div>
+              <div class="kpi" style="width:calc((100% / 2 ))"><h2  id="piorAeroporto">GOL</h2><h1>Aeroporto com pior desempenho</h1> <h1 id="dadosAeroporto"></h1></div>
              
-                </div>
-                <div class="dashAreasDois" style="align-items: start; padding-left: 2rem;">
-                  <h1 class="titulin">Consideações finais</h1>
-                  <p class="titulinho">Com isso afirmo que tem rotas que precisam ser analisadas antes de tomar a decisâo final.</p>
-
-                </div>
-            </div>
-            <div class="kpiTotal" style="flex-direction: column; gap: 0.5rem; " >
-              <div class="kpi" style="width: calc(100% - 1rem); height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px; font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
-              <div class="kpi" style="width: calc(100% - 1rem); height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px;font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
-              <div class="kpi" style="width: calc(100% - 1rem); height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px;font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
-              <div class="kpi" style="width: calc(100% - 1rem); height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px;font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
-            </div>
-           </div>
-        </div>
-        <div class="conteudo dis" id="conteudoCinco">
-            <div class="conjuntoKPI" style="flex-direction: column;">
-                <div class="kpi"></div>
-                <div class="kpi"></div>
-                <div class="kpi"></div>
-                <div class="kpi"></div>
-
-       
-            </div>
-           <div class="conjuntoFinal">
-            <div class="conjuntoDashboard">
-                <div class="dashAreas" style="background-color: blue;"></div>
-                <div class="dashAreasDois"></div>
-            </div>
-            <div class="kpiTotal"></div>
-           </div>
-        </div>
-        <div class="conteudo dis" id="conteudoSeis">
-          <h1 class="tituloDA">Dados cadastrais</h1>
-           <div class="conjuntoFinal">
-            <div class="conjuntoDashboard" style="flex-direction: row;">
-                <div class="dashArea" style="background-color: rgba(0, 0, 255, 0); padding: 0; gap: 0.5rem; align-items: center; justify-content: center; display: flex; flex-direction: column; height: 100%; width: 100%;">
-                  <div class="changeMode"  onclick="empHidden()" style="border: 1px solid white;" ><p class="textoDefault">Empresa</p></div>
-                  <div class="hidden dis" id="empHidden" style="width: 50%;">
-                  <div class="changeMode list"  onclick="addEmp()" style="border: 1px solid white;" ><p class="textoDefault">Adicionar empresa</p></div>
-                  <div class="changeMode list" onclick="ediEmp(),listarDados()" style="border: 1px solid white;"><p class="textoDefault">Editar empresa</p></div>
-                  <div class="changeMode exclu" onclick="delEmp(),listarDados()" style="border: 1px solid white;"><p class="textoDefault" >Remover empresa</p></div>
-                  </div>
-                  <div class="changeMode"  onclick="userHidden(), listarDadosUsuario()" style="border: 1px solid white;" ><p class="textoDefault">Usuário</p></div>
-                  <div class="hidden dis" id="userHidden" style="width: 50%;">
-                  <div class="changeMode list" onclick="mostrarModalCrud(4)" style="border: 1px solid white;"><p class="textoDefault" >Editar usuário</p></div>
-                  <div class="changeMode exclu"  onclick="delUser()" style="border: 1px solid white;"><p class="textoDefault">Remover usuário</p></div>
-                  </div>
-                 
-                </div>
-                <div class="dashAreasDois" style="color: #1d1d1d; height: 100%; width: 100%;">
-                  <div class="cadastroEmp" id="cadEmp">
-                    <h1 class="titulo">Adicionar empresa</h1>
-                    <div class="align">
-                        <div class="alignForm">
-                            <p>Nome Fantasia</p>
-                            <input type="text" class="ipt" id="input_nome_empresa_cadastro">
-                          </div>
-                          <div class="alignForm">
-                            <p>Razão Social</p>
-                            <input type="text" class="ipt" id="input_razao_social_cadastro">
-                          </div>
-                          <div class="alignForm">
-                            <p>CNPJ</p>
-                            <input type="text" class="ipt" id="input_cnpj_cadastro" maxlength="18" oninput="formatarCNPJ(this)">
-                          </div>
-                          <div class="alignForm">
-                            <p>Cidade</p>
-                            <input type="text" id="input_cidade_cadastro" class="ipt">
-                          </div>
-                          <div class="align">
-                            <div class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;"
-                              onclick="btnCadastroEmpresa()">
-                              <p>Enviar</p>
-                            </div>
-                           
-                        </div>
-                    </div>
-                </div>
-                <div class="cadastroEmp" id="editUser">
-                  <h1 class="titulo">Editar usuario</h1>
-                  <div class="align">
-                      <div class="alignForm">
-                        <p>Nome</p>
-                        <input type="text" class="ipt" id="input_nome_usuario_editar">
-                      </div>
-                      <div class="alignForm">
-                          <p>E-mail</p>
-                          <input type="text" id="input_email_usuario_editar" class="ipt">
-                      </div>
-                      <div class="align">
-                        <div class="btnConfirmar" id="btnEdit2" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="habilitarEdicaoUsuario()"><p>Editar</p></div>
-                        <div class="btnConfirmar" id="btnEnviar2" style="display: none; width: 100px; height: 35px; margin-top: 8px; cursor: pointer;"
-                            onclick="enviarEdicaoUsuario()">
-                            <p>Enviar</p>
-                            </div>
-                      </div>
-                      
-                  </div>
-              </div>
-                <div class="cadastroEmp" id="editEmp">
-                    <h1 class="titulo">Editar empresa</h1>
-                    <div class="align">
-                        <div class="alignForm">
-                          <p>Nome Fantasia</p>
-                          <input type="text" class="ipt" id="input_nome_empresa_editar">
-                        </div>
-                        <div class="alignForm">
-                          <p>Razão Social</p>
-                          <input type="text" class="ipt" id="input_razao_social_editar">
-                        </div>
-                        <div class="alignForm">
-                          <p>CNPJ</p>
-                          <input type="text" class="ipt" id="input_cnpj_editar" maxlength="18" oninput="formatarCNPJ(this)">
-                        </div>
-                        <div class="alignForm">
-                          <p>Cidade</p>
-                          <input type="text" class="ipt" id="input_cidade_editar">
-                        </div>
-                        <div class="align">
-                          <div class="btnConfirmar" id="btnEdit" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;"
-                            onclick="habilitarEdicao()">
-                            <p>Editar</p>
-                            </div>
-
-                            <div class="btnConfirmar" id="btnEnviar" style="display: none; width: 100px; height: 35px; margin-top: 8px; cursor: pointer;"
-                            onclick="enviarEdicao()">
-                            <p>Enviar</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="cadastroEmp" id="delEmp">
-                  <h1 class="titulo">Remover empresa</h1>
-                  <div class="alignForm">
-                    <p>Sua empresa:</p>
-                    <input type="text" class="ipt" id="input_nome_empresa_deletar">
-                  </div>
-                  <button class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="removerEmpresa()">Remover</button>
-                </div>
-                <div class="cadastroEmp" id="delUser">
-                  <h1 class="titulo">Remover seu usuário</h1>
-                  <div class="alignForm">
-                    <p>Será removido:</p>
-                    <input type="text" class="ipt" id="input_nome_usuario_deletar">
-                  </div>
-                  <button class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="removerUsuario()">Remover</button>
-                </div>
-
-                <button id="insertToken" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer; color: red;" >INSERT</button>
-                <button style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer; color: red;" ></button>
-                <button style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer; color: red;" ></button>
-            </div>
-                 
-            </div>
-           </div>
-        </div>
-     
-    </div>
-    <div class="close" id="closeIcon" onclick="closeMod()">   <nav id="nav" class="lateralNav">
-  </nav></div>
-  <div class="lateralDireita hidden" id="latDir">
-    <div class="formContent">
-        <label for="" class="informativo">Local de saida</label>
-        <input type="text" placeholder="Digite aqui">
-    </div>
-
-    <div class="formContent">
-        <label for="" class="informativo">Local de destino</label>
-        <input type="text" placeholder="Digite aqui">
-    </div>
-
-    <div class="formContent">
-        <label for="" class="informativo">Horário de partida</label>
-        <input type="text" placeholder="Digite aqui">
-    </div>
-
-    <div class="formContent">
-        <label for="" class="informativo">Previsâo de chegada</label>
-        <input type="text" placeholder="Digite aqui">
-    </div>
-
-    <div class="formContent">
-        <label for="" class="informativo">Media de passageiros</label>
-        <select name="" id="">
-            <option value="">Um</option>
-            <option value="">Um</option>
-            <option value="">Um</option>
-            <option value="">Um</option>
-        </select>
-    </div>
-
-    <div class="formContent">
-        <label for="" class="informativo">Aeroporto de saida</label>
-        <input type="text" placeholder="Digite aqui">
-    </div>
-    <div class="formContent">
-        <label for="" class="informativo">Deseja a ajuda de inteligencia artifical?</label>
-        <div class="formContentAlt">
-            <label for="" class="informativo">Sim
-                <input
-                type="checkbox"
-                id="subscribeNews"
-                name="subscribe"
-                value="newsletter" />
-            </label>
-            <label for="" class="informativo">Nâo
-                <input
-                type="checkbox"
-                id="subscribeNews"
-                name="subscribe"
-                value="newsletter" />
-            </label>
-     
-    </div>
-
-   
- 
-    </div>
-    <div class="formContent">
-        <div class="btnConfirmar"><p>Confirmar</p></div>
-    </div>
-   
+          </div>
+         <div class="conjuntoFinal">
+          <div class="dashAlign">
+            <p class="sub" style="font-weight: 500;">Teste de label</p>
+<div class="conjuntoDashboard" style="flex-direction: row; gap: 0;" >
+<div class="dashAreasDois" style="border-radius: 0;">
+  <canvas style="width: 600px; border-radius: 0;" class="grafic" id="myChart"></canvas>
 
 </div>
+<div class="dashAreasDois" style="border-radius: 0;">
+<canvas style="width: 600px; border-radius: 0;" class="grafic" id="myChartDois"></canvas>
 
+</div>
+</div>
+          </div>
+          <div class="dashAlign">
+            <p class="sub" style="font-weight: 500;">Teste de label</p>
+
+          <div class="conjuntoDashboard"  style="flex-direction: row;" >
+            <div class="dashAreasDois">
+              <canvas style="width: 600px; border-radius: 0;" class="grafic" id="myChartTres"></canvas>
+
+
+            </div>
+          <div class="dashAreasDois">
+            <canvas style="width: 600px;" class="grafic" id="myChartQuatro"></canvas>
+
+          </div>
+        </div>
+      </div>
+         
+       
+         </div>
+      </div>
+      <div class="conteudo dis" id="conteudoDois" style="align-items: center; justify-content: center; ">
+       
+     <div class="conjuntoFinal modify" style="flex-direction: column; align-items: center;">
+    <div class="alinhator" style="flex-direction: row;">
+      <div class="alinhator">
+        <label for="">saida</label>
+        <input type="text" name="" id="">
+      </div>
+      <div class="alinhator">
+        <label for="">destino</label>
+        <input type="text" name="" id="">
+      </div>
+    </div>
+      <div class="alinhator">
+      <p>Previsões</p>
+     <div class="alignCard" style="width: auto; gap: 2.5rem; height: auto; display: flex; align-items: center; justify-content: center;">
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+     </div>
+    </div>
+    <div class="alinhator">
+      <p>Previsões</p>
+     <div class="alignCard" style="width: auto; gap: 2.5rem; height: auto; display: flex; flex-direction: row; align-items: center; justify-content: center;">
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+      <div class="card"></div>
+     </div>
+    </div>
+         </div>
+        
+             </div>
+             <div class="conteudo dis" id="conteudoQuatro" style="flex-direction: row;">
+       
+              <div class="conjuntoFinal">
+               <div class="conjuntoDashboard">
+                   <div class="dashAreas" style="align-items: start; padding-left: 2rem;">
+                     <h1 class="titulin">Conselho da IA</h1>
+                     <p class="titulinho">A rota aérea São Paulo - Ceará conecta a capital paulista a Fortaleza, famosa por suas praias e cultura. O tempo de voo direto é de cerca de 3 horas e 30 minutos. Companhias como LATAM, Gol e Azul operam essa rota, partindo principalmente do Aeroporto Internacional de Guarulhos (GRU). O Aeroporto Pinto Martins (FOR) é o principal ponto de chegada em Fortaleza. A demanda é alta tanto para negócios quanto para turismo, especialmente na alta temporada. Reservas antecipadas e atenção às políticas de bagagem são recomendadas.
    
+   
+   
+                     </p>
+                
+                   </div>
+                   <div class="dashAreasDois" style="align-items: start; padding-left: 2rem;">
+                     <h1 class="titulin">Consideações finais</h1>
+                     <p class="titulinho">Com isso afirmo que tem rotas que precisam ser analisadas antes de tomar a decisâo final.</p>
+   
+                   </div>
+               </div>
+               <div class="kpiTotal" style="flex-direction: column; gap: 0.5rem; " >
+                 <div class="kpi" style="width: calc(100% - 1rem); height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px; font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
+                 <div class="kpi" style="width: calc(100% - 1rem); height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px;font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
+                 <div class="kpi" style="width: calc(100% - 1rem); height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px;font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
+                 <div class="kpi" style="width: calc(100% - 1rem); height: calc((100% / 4) - 0.5rem); flex-direction: column; gap: 8px;font-family:sans-serif;"><h1 class="titulin">Destaques</h1><p class="titulinho">destaque 1</p></div>
+               </div>
+              </div>
+           </div>
+           <div class="conteudo dis" id="conteudoCinco">
+               <div class="conjuntoKPI" style="flex-direction: column;">
+                   <div class="kpi"></div>
+                   <div class="kpi"></div>
+                   <div class="kpi"></div>
+                   <div class="kpi"></div>
+   
+          
+               </div>
+              <div class="conjuntoFinal">
+               <div class="conjuntoDashboard">
+                   <div class="dashAreas" style="background-color: blue;"></div>
+                   <div class="dashAreasDois"></div>
+               </div>
+               <div class="kpiTotal"></div>
+              </div>
+           </div>
+           <div class="conteudo dis" id="conteudoSeis">
+              <div class="conjuntoFinal">
+               <div class="conjuntoDashboard" style="flex-direction: row;">
+                   <div class="dashArea" style="background-color: rgba(0, 0, 255, 0); padding: 0; gap: 0.5rem; align-items: center; justify-content: center; display: flex; flex-direction: column; height: 100%; width: 100%;">
+                     <div class="changeMode"  onclick="empHidden()" style="border: 1px solid white;" ><p class="textoDefault">Empresa</p></div>
+                     <div class="hidden dis" id="empHidden" style="width: 50%;">
+                        <div class="changeMode list"  onclick="addEmp()" style="border: 1px solid white;" ><p class="textoDefault">Adicionar empresa</p></div>
+                     <div class="changeMode list" onclick="ediEmp(),listarDados()" style="border: 1px solid white;"><p class="textoDefault">Editar empresa</p></div>
+                     <div class="changeMode exclu" onclick="delEmp(),listarDados()" style="border: 1px solid white;"><p class="textoDefault" >Deletar empresa</p></div>
+                     </div>
+                     <div class="changeMode"  onclick="tokenHidden()" style="border: 1px solid white;" ><p class="textoDefault">Token</p></div>
+                     <div class="hidden dis" id="tokenHidden" style="width: 50%;">
+                        <div class="changeMode list"  onclick="addToken()" style="border: 1px solid white;" ><p class="textoDefault">Adicionar token</p></div>
+                     <div class="changeMode list" onclick="ediToken(),listarDados()" style="border: 1px solid white;"><p class="textoDefault">Editar token</p></div>
+                     <div class="changeMode exclu" onclick="delToken(),listarDados()" style="border: 1px solid white;"><p class="textoDefault" >Deletar token</p></div>
+                     </div>
+                     <div class="changeMode"  onclick="userHidden()" style="border: 1px solid white;" ><p class="textoDefault">Usuário</p></div>
+                     <div class="hidden dis" id="userHidden" style="width: 50%;">
+                        <div class="changeMode list" onclick="editUser()"style="border: 1px solid white;"><p class="textoDefault" >editar usuario</p></div>
+                     <div class="changeMode exclu"  onclick="delUser()" style="border: 1px solid white;"><p class="textoDefault">excluir usuario</p></div>
+   
+                     </div>
+                    
+                   </div>
+                   <div class="dashAreasDois" style="color: #1d1d1d; height: 100%; width: 100%;">
+                     <div class="cadastroEmp" id="cadEmp">
+                       <h1 class="titulo">Cadastro empresa</h1>
+                       <div class="align">
+                           <div class="alignForm">
+                               <p>Nome Fantasia</p>
+                               <input type="text" class="ipt" id="input_nome_empresa_cadastro">
+                             </div>
+                             <div class="alignForm">
+                               <p>Razão Social</p>
+                               <input type="text" class="ipt" id="input_razao_social_cadastro">
+                             </div>
+                             <div class="alignForm">
+                               <p>CNPJ</p>
+                               <input type="text" class="ipt" id="input_cnpj_cadastro" maxlength="18" oninput="formatarCNPJ(this)">
+                             </div>
+                             <div class="alignForm">
+                               <p>Cidade</p>
+                               <input type="text" id="input_cidade_cadastro" class="ipt">
+                             </div>
+                             <div class="align">
+                               <div class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;"
+                                 onclick="btnCadastroEmpresa()">
+                                 <p>Enviar</p>
+                               </div>
+                              
+                           </div>
+                       </div>
+                   </div>
+                   <div class="cadastroEmp" id="editUser">
+                     <h1 class="titulo">Editar usuario</h1>
+                     <div class="align">
+                         <div class="alignForm">
+                             <p></p>
+                             <input type="text" class="ipt" id="input_nome_empresa">
+                         </div>
+                         <div class="alignForm">
+                             <p>CNPJ</p>
+                            <input type="text" class="ipt" id="input_cnpj" maxlength="18" oninput="formatarCNPJ(this)">
+                         </div>
+                         <div class="alignForm">
+                             <p>E-mail</p>
+                             <input type="text" id="input_email_empresa" class="ipt">
+                         </div>
+                         <div class="alignForm">
+                             <p>Senha</p>
+                             <input type="text" id="input_senha_empresa" class="ipt">
+                         </div>
+                         <div class="alignForm">
+                             <p>Confirmar Senha</p>
+                             <input type="text" id="input_confirmar_senha_empresa" class="ipt">
+                         </div>
+                         <div class="align">
+                             <div class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="btnCadastroEmpresa()"><p>Enviar</p></div>
+                         </div>
+                     </div>
+                 </div>
+                   <div class="cadastroEmp" id="editEmp">
+                       <h1 class="titulo">Editar empresa</h1>
+                       <div class="align">
+                           <div class="alignForm">
+                             <p>Nome Fantasia</p>
+                             <input type="text" class="ipt" id="input_nome_empresa_editar">
+                           </div>
+                           <div class="alignForm">
+                             <p>Razão Social</p>
+                             <input type="text" class="ipt" id="input_razao_social_editar">
+                           </div>
+                           <div class="alignForm">
+                             <p>CNPJ</p>
+                             <input type="text" class="ipt" id="input_cnpj_editar" maxlength="18" oninput="formatarCNPJ(this)">
+                           </div>
+                           <div class="alignForm">
+                             <p>Cidade</p>
+                             <input type="text" class="ipt" id="input_cidade_editar">
+                           </div>
+                           <div class="align">
+                             <div class="btnConfirmar" id="btnEdit" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;"
+                               onclick="habilitarEdicao()">
+                               <p>Editar</p>
+                               </div>
+   
+                               <div class="btnConfirmar" id="btnEnviar" style="display: none; width: 100px; height: 35px; margin-top: 8px; cursor: pointer;"
+                               onclick="enviarEdicao()">
+                               <p>Enviar</p>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="cadastroEmp" id="delEmp">
+                     <h1 class="titulo">Remover empresa</h1>
+                     <div class="alignForm">
+                       <p>Sua empresa:</p>
+                       <input type="text" class="ipt" id="input_nome_empresa_deletar">
+                     </div>
+                     <button class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="removerEmpresa()">Remover</button>
+                   </div>
+                   <div class="cadastroEmp" id="delUser">
+                     <h1 class="titulo">Deletar usuário</h1>
+                     <button class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;">excluir</button>
+                   </div>
+                   <div class="cadastroEmp" id="delToken">
+                    <h1 class="titulo">Excluir token</h1>
+                    <input type="text">
+                    <button id="deleteToken" class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;">adicionar</button>
+                  </div>
+                  <div class="cadastroEmp" id="addToken">
+                    <h1 class="titulo">adicionar token</h1>
+                    <button id="insertToken" class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;">adicionar</button>
+                  </div>
+                  <div class="cadastroEmp" id="ediToken">
+                    <h1 class="titulo">editar token</h1>
+                    <input type="text">
+                    <button id="editToken" class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;">adicionar</button>
+
+                  </div>
+               </div>
+                    
+               </div>
+              </div>
+           </div>
+        
+       </div>
+       <div class="close" id="closeIcon" onclick="closeMod()">   <nav id="nav" class="lateralNav">
+     </nav></div>
+     <div class="lateralDireita hidden" id="latDir">
+       <div class="formContent">
+           <label for="" class="informativo">Local de saida</label>
+           <input type="text" placeholder="Digite aqui">
+       </div>
+   
+       <div class="formContent">
+           <label for="" class="informativo">Local de destino</label>
+           <input type="text" placeholder="Digite aqui">
+       </div>
+   
+       <div class="formContent">
+           <label for="" class="informativo">Horário de partida</label>
+           <input type="text" placeholder="Digite aqui">
+       </div>
+   
+       <div class="formContent">
+           <label for="" class="informativo">Previsâo de chegada</label>
+           <input type="text" placeholder="Digite aqui">
+       </div>
+   
+       <div class="formContent">
+           <label for="" class="informativo">Media de passageiros</label>
+           <select name="" id="">
+               <option value="">Um</option>
+               <option value="">Um</option>
+               <option value="">Um</option>
+               <option value="">Um</option>
+           </select>
+       </div>
+   
+       <div class="formContent">
+           <label for="" class="informativo">Aeroporto de saida</label>
+           <input type="text" placeholder="Digite aqui">
+       </div>
+       <div class="formContent">
+           <label for="" class="informativo">Deseja a ajuda de inteligencia artifical?</label>
+           <div class="formContentAlt">
+               <label for="" class="informativo">Sim
+                   <input
+                   type="checkbox"
+                   id="subscribeNews"
+                   name="subscribe"
+                   value="newsletter" />
+               </label>
+               <label for="" class="informativo">Nâo
+                   <input
+                   type="checkbox"
+                   id="subscribeNews"
+                   name="subscribe"
+                   value="newsletter" />
+               </label>
+        
+       </div>
+   
+      
+    
+       </div>
+       <div class="formContent">
+           <div class="btnConfirmar"><p>Confirmar</p></div>
+       </div>
+      
+   
+   </div>
+   
+      </div>
+     
+      
+ 
 </body>
 </html>
 
@@ -396,7 +400,32 @@
   var empresaQuatroAtrasos;
   var empresaCincoAtrasos;
   var empresaSeisAtrasos;
-  
+  var empresaAereaAtrasoNomeUm;
+  var empresaAereaAtrasoNomeDois;
+  var empresaAereaAtrasoNomeTres;
+  var empresaAereaAtrasoNomeQuatro;
+  var empresaAereaAtrasoNomeCinco;
+  var empresaAereaAtrasoNomeSeis;
+  var internet;
+  var lojaFisica;
+  var telefone;
+  var internetNumero;
+  var telefoneNumero;
+  var lojaFisicaNumero;
+  // Definindo as variáveis para as faixas etárias
+var faixaEtariaUm; // Exemplo de faixa etária
+var faixaEtariaDois; // Exemplo de faixa etária
+var faixaEtariaTres; // Exemplo de faixa etária
+var faixaEtariaQuatro; // Exemplo de faixa etária
+var faixaEtariaCinco; // Exemplo de faixa etária
+
+// Definindo as variáveis para os dados das faixas etárias
+var fxUm; // Exemplo de valor de dados para a faixa etária 18-24
+var fxDois; // Exemplo de valor de dados para a faixa etária 25-34
+var fxTres; // Exemplo de valor de dados para a faixa etária 35-44
+var fxQuatro; // Exemplo de valor de dados para a faixa etária 45-54
+var fxCinco; // Exemplo de valor de dados para a faixa etária 55+
+
 
   var aeroportoUmCancelamentos;
   var aeroportoUmNome;
@@ -416,6 +445,137 @@
   var aeroportoQuatroAtrasos;
   var aeroportoCincoAtrasos;
   var aeroportoSeisAtrasos;
+  function comoComprou() {
+    
+    fetch("../dashboard/comoComprou", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+        console.log('estou aqui');
+        
+  
+        if (resposta.ok) {
+      setTimeout(() => {
+        resposta.json().then(json => {
+          console.log(json);
+          internet = json[0].comoComprouContratou
+          lojaFisica = json[1].comoComprouContratou
+          telefone = json[2].comoComprouContratou
+          internetNumero = json[0].frequency
+          lojaFisicaNumero = json[1].frequency
+          telefoneNumero = json[2].frequency
+
+          console.log(internetNumero)
+          console.log(telefoneNumero)
+          console.log(lojaFisicaNumero)
+
+          
+        })
+        
+          }, 500);
+ 
+        } else {
+          throw "Houve um erro ao trazer dados!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  
+    return false;
+  
+  }
+
+  function faixaEtaria() {
+    
+    fetch("../dashboard/faixaEtaria", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+        console.log('estou aqui');
+        
+  
+        if (resposta.ok) {
+      setTimeout(() => {
+        resposta.json().then(json => {
+          console.log(json);
+           faixaEtariaUm = json[0].faixaEtaria;
+ faixaEtariaDois = json[1].faixaEtaria;
+ faixaEtariaTres = json[2].faixaEtaria;
+ faixaEtariaQuatro = json[3].faixaEtaria;
+ faixaEtariaCinco = json[4].faixaEtaria;
+ fxUm = json[0].frequency; // 150
+ fxDois = json[1].frequency; // 200
+ fxTres = json[2].frequency; // 120
+ fxQuatro = json[3].frequency; // 180
+ fxCinco = json[4].frequency; // 90
+console.log('aqui'+fxCinco, fxUm)
+
+        
+          
+        })
+        
+          }, 500);
+ 
+        } else {
+          throw "Houve um erro ao trazer dados!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  
+    return false;
+  
+  }
+
+  function puxarDadosKPI() {
+    
+    fetch("../dashboard/puxarDadosKPI", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+        console.log('estou aqui');
+        
+  
+        if (resposta.ok) {
+      setTimeout(() => {
+        resposta.json().then(json => {
+          console.log(json);
+          console.log('atrasos aeroporto')
+          piorEmpresa.innerHTML = json[0].empresaAerea.slice(0, 4)
+          dadosEmpresa.innerHTML = `${json[0].mediaCancelamentos.toFixed(1)}% de cancelamento`
+          piorEmpresa = json[0].empresaAerea
+          piorEmpresaDado = json[0].mediaCancelamentos
+
+          
+        })
+        
+          }, 500);
+ 
+        } else {
+          throw "Houve um erro ao trazer dados!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  
+    return false;
+  
+  }
   function puxarDadosKPIAero() {
     
     fetch("../dashboard/puxarDadosKPIAero", {
@@ -553,6 +713,12 @@ function atrasosAeroportos() {
         resposta.json().then(json => {
           console.log(json);
           empresaUmAtrasos = json[0].mediaAtrasoSuperior30
+          empresaAereaAtrasoNomeUm = json[0].empresaAerea
+          empresaAereaAtrasoNomeDois = json[1].empresaAerea
+          empresaAereaAtrasoNomeTres = json[2].empresaAerea
+          empresaAereaAtrasoNomeQuatro = json[3].empresaAerea
+          empresaAereaAtrasoNomeCinco = json[4].empresaAerea
+          empresaAereaAtrasoNomeSeis = json[5].empresaAerea
           empresaDoisAtrasos = json[1].mediaAtrasoSuperior30
           empresaTresAtrasos = json[2].mediaAtrasoSuperior30
           empresaQuatroAtrasos = json[3].mediaAtrasoSuperior30
@@ -696,12 +862,61 @@ function atrasosAeroportos() {
 
   }
 
+  var isOpenEmp = false
+  var isOpenToken = false
+  var isOpenUser = false
+
+  function closeMod() {
+    var clos = document.getElementById('closeIcon')
+    clos.classList.toggle('active')
+  }
+  setInterval(() => {
+    var clos = document.getElementById('closeIcon')
+    if(clos.classList.value != 'close active')
+    clos.classList.toggle('notification')
+
+  }, 2000)
+
+  function empHidden(){
+    var caixaEmp = document.getElementById('empHidden')
+    
+  !isOpenEmp ? mostrarModalCrud(1) : mostrarModalCrud(0)
+    caixaEmp.classList.toggle('dis')
+    if(caixaEmp.classList.value == "hidden"){
+   isOpenEmp = true
+
+    } else {
+   isOpenEmp = false
+
+
+    }
+
+
+  }
+  function tokenHidden(){
+    var caixaEmp = document.getElementById('tokenHidden')
+  !isOpenToken ? mostrarModalCrud(6) : mostrarModalCrud(0)
+    caixaEmp.classList.toggle('dis')
+    if(caixaEmp.classList.value == "hidden"){
+   isOpenToken = true
+
+    } else {
+   isOpenToken = false
+
+
+    }
+
+
+  }
+
   cancelamentosEmpresa()
   cancelamentosAeroporto()
   atrasosAeroportos()
   atrasosEmpresa()
   puxarDadosKPI()
   puxarDadosKPIAero()
+  comoComprou()
+  faixaEtaria()
 
 
 
@@ -729,7 +944,10 @@ var contEmpAdd = document.getElementById('cadEmp')
 var contEmpEdit = document.getElementById('editEmp')
 var contEmpDel = document.getElementById('delEmp')
 var contUserEdit = document.getElementById('editUser')
-var contUserDel = document.getElementById('delUser')  
+var contUserDel = document.getElementById('delUser') 
+var contTokenDel = document.getElementById('delToken')  
+var contTokenAdd = document.getElementById('addToken')  
+var contTokeneEdi = document.getElementById('ediToken')  
 var contUm = document.getElementById('conteudoUm');
 var contDois = document.getElementById('conteudoDois');
 var contQuatro = document.getElementById('conteudoQuatro');
@@ -747,6 +965,9 @@ function mostrarModalCrud(modal) {
     contEmpDel.classList.add('dis')
     contUserDel.classList.add('dis')
     contUserEdit.classList.add('dis')
+    contTokenAdd.classList.add('dis')
+    contTokenDel.classList.add('dis')
+    contTokeneEdi.classList.add('dis')
     if (modal === 1) {
         contEmpAdd.classList.remove('dis');
   }
@@ -762,8 +983,16 @@ function mostrarModalCrud(modal) {
   if (modal === 5) {
         contUserDel.classList.remove('dis');
   }
+  if (modal === 6) {
+        contTokenAdd.classList.remove('dis');
+  }
+  if (modal === 7) {
+        contTokeneEdi.classList.remove('dis');
+  }
+  if (modal === 8) {
+        contTokenDel.classList.remove('dis');
+  }
 }
-
 mostrarModal(1)
 function mostrarModal(modal) {
     // Oculta todos os modais
@@ -787,7 +1016,7 @@ function mostrarModal(modal) {
         const ctx = document.getElementById('myChart');
     const ctxDois = document.getElementById('myChartDois');
         
-setTimeout(() => {
+    setTimeout(() => {
   new Chart(ctx, {
   type: 'bar',
  data: {
@@ -798,12 +1027,6 @@ setTimeout(() => {
       data: [empresaUmCancelamentos, empresaDoisCancelamentos, empresaTresCancelamentos, empresaQuatroCancelamentos, empresaCincoCancelamentos, empresaSeisCancelamentos],
       borderColor: 'red',
       backgroundColor: 'red',
-    },
-    {
-      label: 'Atrasos',
-      data:  [empresaUmAtrasos, empresaDoisAtrasos, empresaTresAtrasos, empresaQuatroAtrasos, empresaCincoAtrasos, empresaSeisAtrasos],
-      borderColor: 'blue',
-      backgroundColor: 'blue',
     }
   ]
 }
@@ -813,19 +1036,14 @@ setTimeout(() => {
 new Chart(ctxDois, {
   type: 'bar',
  data: {
-  labels:  [aeroportoUmNome.slice(0, 5), aeroportoDoisNome.slice(0, 5), aeroportoTresNome.slice(0, 5), aeroportoQuatroNome.slice(0, 5), aeroportoCincoNome.slice(0, 5), aeroportoSeisNome.slice(0, 5)],
+  labels:  [empresaAereaAtrasoNomeUm.slice(0, 5), empresaAereaAtrasoNomeDois.slice(0, 5), empresaAereaAtrasoNomeTres.slice(0, 5), empresaAereaAtrasoNomeQuatro.slice(0, 5), empresaAereaAtrasoNomeCinco.slice(0, 5), empresaAereaAtrasoNomeSeis.slice(0, 5)],
   datasets: [
-    {
-      label: 'Cancelamentos',
-      data: [aeroportoUmCancelamentos, aeroportoDoisCancelamentos, aeroportoTresCancelamentos, aeroportoQuatroCancelamentos, aeroportoCincoCancelamentos, aeroportoSeisCancelamentos],
-      borderColor: 'red',
-      backgroundColor: 'red',
-    },
-    {
+    
+  {
       label: 'Atrasos',
-      data:  [aeroportoUmAtrasos, aeroportoDoisAtrasos, aeroportoTresAtrasos, aeroportoQuatroAtrasos, aeroportoCincoAtrasos, aeroportoSeisAtrasos],
-      borderColor: 'blue',
-      backgroundColor: 'blue',
+      data:  [empresaUmAtrasos, empresaDoisAtrasos, empresaTresAtrasos, empresaQuatroAtrasos, empresaCincoAtrasos, empresaSeisAtrasos],
+      borderColor: 'orange',
+      backgroundColor: 'orange',
     }
   ]
 }
@@ -836,14 +1054,41 @@ new Chart(ctxDois, {
 
 const ctxTres = document.getElementById('myChartTres');
 
+
+  
+
+const ctxQuatro = document.getElementById('myChartQuatro');
+
+setTimeout(() => {
+  new Chart(ctxQuatro, {
+  type: 'doughnut',
+   data:{
+  labels: [
+    internet,
+    lojaFisica,
+    telefone
+  ],
+  datasets: [{
+    label: 'Números:',
+    data: [internetNumero, lojaFisicaNumero, telefoneNumero],
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)'
+    ],
+    hoverOffset: 4
+  }]
+   }
+});
 new Chart(ctxTres, {
   type: 'bar',
   data: {
-    labels: ['25/10', '26/10', '27/10', '28/10', '29/10', '30/10'],
+    labels: [faixaEtariaUm.slice(6), faixaEtariaDois.slice(6),faixaEtariaTres.slice(6), faixaEtariaQuatro.slice(6), faixaEtariaCinco.slice(6)],
     datasets: [{
-      label: 'Temperatura São Paulo   13:30',
-      data: [12, 19, 22, 15, 12, 23],
-      borderWidth: 1
+      label: 'Faixa etaria',
+      data: [fxUm, fxDois, fxTres, fxQuatro, fxCinco],
+      borderWidth: 2,
+      backgroundColor: 'green',
     }]
   },
   options: {
@@ -854,29 +1099,7 @@ new Chart(ctxTres, {
     }
   }
 });
-const ctxQuatro = document.getElementById('myChartQuatro');
-
-new Chart(ctxQuatro, {
-  type: 'doughnut',
-   data:{
-  labels: [
-    'Internet',
-    'Presencial',
-    'Aplicativo'
-  ],
-  datasets: [{
-    label: 'My First Dataset',
-    data: [300, 50, 100],
-    backgroundColor: [
-      'rgb(255, 99, 132)',
-      'rgb(54, 162, 235)',
-      'rgb(255, 205, 86)'
-    ],
-    hoverOffset: 4
-  }]
-   }
-});
-
+}, 1000)
        
     } else if (modal === 2) {
         contDois.classList.remove('dis');
@@ -940,6 +1163,24 @@ function delUser() {
     console.log('delUser')
 
 }
+function addToken() {
+    mostrarModalCrud(6);
+    console.log('delUser')
+
+}
+function ediToken() {
+    mostrarModalCrud(7);
+    console.log('delUser')
+
+}
+function delToken() {
+    mostrarModalCrud(8);
+    console.log('delUser')
+
+}
+
+
+
 
 
 
@@ -997,6 +1238,45 @@ document.getElementById('insertToken').addEventListener('click', function() {
         document.getElementById('resultado').innerText = 'Erro ao enviar e-mail.';
     });
 });
+
+
+  function deletarForum(idForum) {
+  fetch(`/token/deleteToken`, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      tokenServer: codigoToken,
+
+  })
+}).then(function (resposta) {
+    console.log("ESTOU NO THEN DO enviarForum()!")
+
+    if (resposta.ok) {
+        console.log(resposta);
+        
+        resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+              window.location = "forum.html";
+
+             
+        });
+
+    } else {
+
+        console.log("Houve um erro ao tentar realizar o enviarForum!");
+
+        
+    }
+  
+})
+}
+
+
+
+
 
 
 

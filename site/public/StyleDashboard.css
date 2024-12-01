@@ -12,6 +12,18 @@ body {
     height: 100vh;
     background-color: #040404;
 }
+.alinhator {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.card {
+    height: 150px;
+    width: 150px;
+    background-color: #1d1d1d;
+    padding: 8px;
+    border-radius: 8px;
+}
 .container {
     width: 98%;
     height: 95%;
