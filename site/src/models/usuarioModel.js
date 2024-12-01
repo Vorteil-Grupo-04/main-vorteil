@@ -97,11 +97,15 @@ function removerUsuario(idUsuario){
         DELETE FROM usuario WHERE idUsuario = ${idUsuario};
     `;
     console.log("Executando a segunda instrução SQL: \n" + instrucaoSql);
-    database.executar(instrucaoSql);
+
+    var instrucaoSql2 = `
+        DELETE FROM empresaTuristica WHERE idEmpresa = ${idUsuario};
+    `;
+    console.log("Executando a segunda instrução SQL: \n" + instrucaoSql2);
+    database.executar(instrucaoSql2);
 
     return database.executar(instrucaoSql);
 }
-
 
 module.exports = {
     autenticar,
