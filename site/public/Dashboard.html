@@ -297,7 +297,7 @@
                 </div>
 
                 <button id="insertToken" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer; color: red;" >INSERT</button>
-                <button style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer; color: red;" ></button>
+                <button id="deleteToken" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer; color: red;" ></button>
                 <button style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer; color: red;" ></button>
             </div>
                  
@@ -943,6 +943,9 @@ function delUser() {
 
 
 
+
+
+
 document.getElementById('insertToken').addEventListener('click', function() {
     // Enviar a requisição para o backend para obter o token
     fetch('http://localhost:3000/enviar-email', {
@@ -997,6 +1000,45 @@ document.getElementById('insertToken').addEventListener('click', function() {
         document.getElementById('resultado').innerText = 'Erro ao enviar e-mail.';
     });
 });
+
+
+  function deletarForum(idForum) {
+  fetch(`/token/deleteToken`, {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      tokenServer: codigoToken,
+
+  })
+}).then(function (resposta) {
+    console.log("ESTOU NO THEN DO enviarForum()!")
+
+    if (resposta.ok) {
+        console.log(resposta);
+        
+        resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+              window.location = "forum.html";
+
+             
+        });
+
+    } else {
+
+        console.log("Houve um erro ao tentar realizar o enviarForum!");
+
+        
+    }
+  
+})
+}
+
+
+
+
 
 
 
