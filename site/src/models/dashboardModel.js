@@ -9,7 +9,7 @@ function puxarDadoAeroportoAtrasos() {
          SELECT 
     nomeAeroportoDestino, 
     AVG(porcentAtrasoSuperior30) AS mediaAtrasoSuperior30
-FROM vorteil
+FROM atrasoCancelamento
 GROUP BY nomeAeroportoDestino
 ORDER BY mediaAtrasoSuperior30 DESC
 LIMIT 6;
@@ -26,10 +26,43 @@ function puxarDadoEmpresaAtrasos() {
 SELECT 
     empresaAerea, 
     AVG(porcentAtrasoSuperior30) AS mediaAtrasoSuperior30
-FROM vorteil
+FROM atrasoCancelamento
 GROUP BY empresaAerea
 ORDER BY mediaAtrasoSuperior30 DESC
 LIMIT 6;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+  }
+function puxarComoComprou() {
+    console.log(
+      "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",
+    );
+    var instrucaoSql = `
+        
+
+  SELECT comoComprouContratou, COUNT(*) AS frequency
+FROM reclamacao
+GROUP BY comoComprouContratou
+ORDER BY frequency DESC
+LIMIT 3;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+  }
+function puxarFaixaEtaria() {
+    console.log(
+      "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ",
+    );
+    var instrucaoSql = `
+        
+SELECT faixaEtaria, COUNT(*) AS frequency
+FROM reclamacao
+GROUP BY faixaEtaria
+ORDER BY frequency DESC
+LIMIT 5;
+
+
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -46,7 +79,7 @@ SELECT
     AVG(porcentCancelamentos) AS mediaCancelamentos,
     AVG(porcentAtrasoSuperior30) AS mediaAtrasos30Min,
     AVG(porcentAtrasoSuperior60) AS mediaAtrasos60Min
-FROM vorteil
+FROM atrasoCancelamento
 GROUP BY empresaAerea
 ORDER BY mediaCancelamentos DESC,
     mediaAtrasos30Min DESC, 
@@ -68,7 +101,7 @@ SELECT
     AVG(porcentAtrasoSuperior30) AS mediaAtrasos30Min,
     AVG(porcentAtrasoSuperior60) AS mediaAtrasos60Min
 FROM 
-    vorteil
+    atrasoCancelamento
 GROUP BY 
     nomeAeroportoSaida
 ORDER BY 
@@ -91,7 +124,7 @@ SELECT
     empresaAerea,
     AVG(porcentCancelamentos) AS mediaCancelamentos
 FROM 
-    vorteil
+    atrasoCancelamento
 GROUP BY 
     empresaAerea
 ORDER BY 
@@ -111,7 +144,7 @@ LIMIT 1;
          SELECT 
     nomeAeroportoSaida, 
     AVG(porcentCancelamentos) AS mediaCancelamentos
-FROM vorteil
+FROM atrasoCancelamento
 GROUP BY nomeAeroportoSaida
 ORDER BY mediaCancelamentos DESC
 LIMIT 6;
@@ -126,5 +159,7 @@ module.exports = {
     puxarDadoAeroportoAtrasos,
     puxarDadoEmpresaAtrasos,
     puxarDadosKPI,
-    puxarDadosKPIAero
+    puxarDadosKPIAero,
+    puxarComoComprou,
+    puxarFaixaEtaria
 };

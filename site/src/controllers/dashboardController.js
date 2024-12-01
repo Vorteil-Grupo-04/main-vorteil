@@ -1,4 +1,54 @@
 var dashboardModel = require("../models/dashboardModel");
+function comoComprou(req, res) {
+    dashboardModel
+      .puxarComoComprou()
+      .then(function (resultadoAutenticar) {
+        console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+        console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+        if (resultadoAutenticar.length >= 1) {
+            console.log(resultadoAutenticar);
+            console.log("to aqui")
+            res.status(200).json(
+              resultadoAutenticar);
+        
+        } else if (resultadoAutenticar.length == 0) {
+          res.status(403).send("Deu ruim");
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao trazer dados",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
+function faixaEtaria(req, res) {
+    dashboardModel
+      .puxarFaixaEtaria()
+      .then(function (resultadoAutenticar) {
+        console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
+        console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+        if (resultadoAutenticar.length >= 1) {
+            console.log(resultadoAutenticar);
+            console.log("to aqui")
+            res.status(200).json(
+              resultadoAutenticar);
+        
+        } else if (resultadoAutenticar.length == 0) {
+          res.status(403).send("Deu ruim");
+        }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao trazer dados",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      });
+  }
 function dadosKPIAero(req, res) {
     dashboardModel
       .puxarDadosKPIAero()
@@ -157,6 +207,8 @@ function cancelamentosEmpresa(req, res) {
         atrasosEmpresa,
         atrasosAeroporto,
         dadosKPI,
-        dadosKPIAero
+        dadosKPIAero,
+        faixaEtaria,
+        comoComprou,
        
     };

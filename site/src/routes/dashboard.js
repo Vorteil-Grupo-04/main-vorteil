@@ -22,6 +22,13 @@ router.get("/puxarDadosKPI", function (req, res) {
 router.get("/puxarDadosKPIAero", function (req, res) {
     dashboardController.dadosKPIAero(req, res);
 })
+router.get("/comoComprou", function (req, res) {
+    dashboardController.comoComprou(req, res);
+})
+router.get("/faixaEtaria", function (req, res) {
+    dashboardController.faixaEtaria(req, res);
+})
+
 
 
 
