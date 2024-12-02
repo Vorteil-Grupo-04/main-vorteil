@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatGPT Frontend</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .response {
+      margin-top: 20px;
+      padding: 10px;
+      background: #f1f1f1;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <textarea id="prompt" placeholder="Digite sua pergunta aqui..."></textarea>
+    <br>
+    <button onclick="enviarPrompt()">Enviar</button>
+    <div id="resposta" class="response"></div>
+  </div>
+
+  <script>
+    async function enviarPrompt() {
+      const prompt = document.getElementById("prompt").value;
+      const respostaDiv = document.getElementById("resposta");
+
+      // Limpa a resposta anterior
+      respostaDiv.innerHTML = "Carregando...";
+
+      try {
+        // Faz a solicitação ao backend
+        const response = await fetch("http://localhost:3000/api/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ prompt }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Erro ao obter resposta do servidor.");
+        }
+
+        const data = await response.json();
+
+        // Exibe a resposta no frontend
+        respostaDiv.innerHTML = `<p><strong>Resposta:</strong> ${data.resposta}</p>`;
+      } catch (error) {
+        respostaDiv.innerHTML = `<p style="color: red;">Erro: ${error.message}</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
