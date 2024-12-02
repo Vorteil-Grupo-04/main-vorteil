@@ -304,6 +304,10 @@
         
        </div>
        <div class="close" id="closeIcon" onclick="closeMod()">   <nav id="nav" class="lateralNav">
+        <input id="saida" type="text">
+        <input id="destino" type="text">
+        <button onclick="enviarPrompt()">API</button>
+        <div id="resposta"></div>
      </nav></div>
      <div class="lateralDireita hidden" id="latDir">
        <div class="formContent">
@@ -776,8 +780,7 @@ function atrasosAeroportos() {
 
 
           console.log(empresaUmNome, empresaUmCancelamentos);
-          
-          
+      
         })
         
 
@@ -1280,6 +1283,39 @@ function deletarToken() {
     
   })
   }
+
+
+  async function enviarPrompt() {
+      const saida = document.getElementById("saida").value;
+      const destino = document.getElementById("destino").value;
+      const prompt = `Fale sobre a viagem aérea de ${saida} a ${destino}` 
+      const respostaDiv = document.getElementById("resposta");
+
+      // Limpa a resposta anterior
+      respostaDiv.innerHTML = "Carregando...";
+
+      try {
+        // Faz a solicitação ao backend
+        const response = await fetch("http://localhost:3000/api/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ prompt }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Erro ao obter resposta do servidor.");
+        }
+
+        const data = await response.json();
+
+    
+        respostaDiv.innerHTML = `<p><strong>Resposta:</strong> ${data.resposta}</p>`;
+      } catch (error) {
+        respostaDiv.innerHTML = `<p style="color: red;">Erro: ${error.message}</p>`;
+      }
+    }
 
 
 

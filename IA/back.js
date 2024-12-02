@@ -11,9 +11,9 @@ app.use(cors()); // Permite requisições de qualquer origem
 
 // descomente e coloque a APIKEY:
 
-//const openai = new OpenAI({
-//  apiKey: , 
-// });
+const openai = new OpenAI({
+ apiKey: "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", 
+});
 
 // Middleware para permitir JSON no corpo das requisições
 app.use(express.json());
