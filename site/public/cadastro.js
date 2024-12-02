@@ -29,8 +29,8 @@ function exibirMsgErro(mensagem) {
 function validarNome(params) {
   let nome = input_nome.value;
   let mensagemNome = "";
-  if (nome.length > 20){
-      mensagemNome = 'O nome não pode ter mais de 20 caracteres.';
+  if (nome.length > 45){
+      mensagemNome = 'O nome não pode ter mais de 45 caracteres.';
       exibirMsgErro(mensagemNome)
   }else{
       return true;

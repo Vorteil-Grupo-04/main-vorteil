@@ -100,7 +100,7 @@ function btnCadastroEmpresa() {
 
 
   async function listarDados(){
-    var idEmpresa = sessionStorage.ID_USUARIO; //não é o ideal, mas funciona o crud empresa
+    var idEmpresa = sessionStorage.ID_EMPRESA; //não é o ideal, mas funciona o crud empresa
 
     await fetch(`/empresa/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -223,7 +223,7 @@ function btnCadastroEmpresa() {
   };
 
   function removerEmpresa(idEmpresa) {
-    var idEmpresa = sessionStorage.ID_USUARIO; //não é o ideal, mas funciona o crud empresa
+    var idEmpresa = sessionStorage.ID_EMPRESA; //não é o ideal, mas funciona o crud empresa
     
     console.log("Criar função de apagar empresa escolhida - ID" + idEmpresa);
         fetch(`/empresa/removerEmpresa/${idEmpresa}`, {

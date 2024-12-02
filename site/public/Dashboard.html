@@ -29,11 +29,11 @@
               <div class="profilePai">
                   <img src="./assets/gray-user-profile-icon-png-fP8Q1P.png" alt="" class="profile">
               </div>
-              <p class="textoDefault">Olá, usuario</p>
+              <p class="textoDefault">Bem vindo, <span id="usuarioNome">usuario</span></p>
           </div>
-          <div  onclick="modalUm()"  class="botaoAcesso" id="botaoUm"><p class="textoDefault">cancelamentos</p> </div>
-          <div  onclick="modalDois()" class="botaoAcesso"  id="botaoDois"><p class="textoDefault">Filtro</p> </div>
-          <div  onclick="modalTres()" class="botaoAcesso" id="botaoTres"><p class="textoDefault" >Clima</p> </div>
+          <div  onclick="modalUm()"  class="botaoAcesso" id="botaoUm"><p class="textoDefault">Dashboard</p> </div>
+          <div  onclick="modalDois()" class="botaoAcesso"  id="botaoDois"><p class="textoDefault">Clima</p> </div>
+          <div  onclick="modalTres()" class="botaoAcesso" id="botaoTres"><p class="textoDefault" >Tirar</p> </div>
         </div>
         <div class="iconAlert"></div>
         <div class="contLat">
@@ -176,11 +176,10 @@
                      <div class="changeMode list" onclick="ediToken(),listarDados()" style="border: 1px solid white;"><p class="textoDefault">Editar token</p></div>
                      <div class="changeMode exclu" onclick="delToken(),listarDados()" style="border: 1px solid white;"><p class="textoDefault" >Deletar token</p></div>
                      </div>
-                     <div class="changeMode"  onclick="userHidden()" style="border: 1px solid white;" ><p class="textoDefault">Usuário</p></div>
+                     <div class="changeMode"  onclick="userHidden(), listarDadosUsuario()" style="border: 1px solid white;" ><p class="textoDefault">Usuário</p></div>
                      <div class="hidden dis" id="userHidden" style="width: 50%;">
-                        <div class="changeMode list" onclick="editUser()"style="border: 1px solid white;"><p class="textoDefault" >editar usuario</p></div>
-                     <div class="changeMode exclu"  onclick="delUser()" style="border: 1px solid white;"><p class="textoDefault">excluir usuario</p></div>
-   
+                      <div class="changeMode list" onclick="mostrarModalCrud(4)" style="border: 1px solid white;"><p class="textoDefault" >Editar usuário</p></div>
+                      <div class="changeMode exclu"  onclick="delUser(), listarDadosUsuario()" style="border: 1px solid white;"><p class="textoDefault">Remover usuário</p></div>
                      </div>
                     
                    </div>
@@ -379,6 +378,14 @@
 </html>
 
 <script>
+//para atribuir o nome ao usuario quando fizer login
+const usuarioNomeCompleto = sessionStorage.getItem('NOME_USUARIO');
+
+if (usuarioNomeCompleto) {
+  const primeiraPalavra = usuarioNomeCompleto.split(" ")[0];
+  document.getElementById('usuarioNome').textContent = primeiraPalavra + '!';
+}
+
   var empresaUmCancelamentos;
   var empresaUmNome;
   var empresaDoisCancelamentos;
