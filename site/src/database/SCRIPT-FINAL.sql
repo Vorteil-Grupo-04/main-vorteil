@@ -24,7 +24,7 @@ CREATE TABLE usuario (
     email VARCHAR(45) NOT NULL UNIQUE,
     senha VARCHAR(45) NOT NULL,
     fkEmpresa INT DEFAULT NULL,
-	FOREIGN KEY (fkEmpresa) REFERENCES empresaTuristica(idEmpresa),
+	FOREIGN KEY (fkEmpresa) REFERENCES empresaTuristica(idEmpresa) ON DELETE CASCADE,
     fkCargo INT NOT NULL,
     FOREIGN KEY (fkCargo) REFERENCES cargo(id)
 );

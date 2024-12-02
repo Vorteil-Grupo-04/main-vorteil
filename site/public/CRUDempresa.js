@@ -100,7 +100,7 @@ function btnCadastroEmpresa() {
 
 
   async function listarDados(){
-    var idEmpresa = sessionStorage.ID_EMPRESA; //não é o ideal, mas funciona o crud empresa
+    var idEmpresa = sessionStorage.ID_EMPRESA;
 
     await fetch(`/empresa/${idEmpresa}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
@@ -168,10 +168,8 @@ function btnCadastroEmpresa() {
     document.getElementById('btnEnviar').style.background = 'rgb(23, 126, 237)';
   }
 
-
-  //mexendo
   function enviarEdicao(){
-    var idEmpresa = sessionStorage.ID_USUARIO;  //não é o ideal, mas funciona o crud empresa
+    var idEmpresa = sessionStorage.ID_USUARIO;  //verificar pois se mudar aqui, nao funciona o session storage
 
     var nome_empresa_input_att  = input_nome_empresa_editar.value;
     var razao_social_input_att  = input_razao_social_editar.value;
@@ -223,7 +221,7 @@ function btnCadastroEmpresa() {
   };
 
   function removerEmpresa(idEmpresa) {
-    var idEmpresa = sessionStorage.ID_EMPRESA; //não é o ideal, mas funciona o crud empresa
+    var idEmpresa = sessionStorage.ID_EMPRESA;
     
     console.log("Criar função de apagar empresa escolhida - ID" + idEmpresa);
         fetch(`/empresa/removerEmpresa/${idEmpresa}`, {
