@@ -13,4 +13,8 @@ router.post("/deleteToken", function (req, res) {
     tokenController.deleteToken(req, res);
 })
 
+router.put("/updateToken", function (req, res) {
+    tokenController.updateToken(req, res);
+})
+
 module.exports = router;

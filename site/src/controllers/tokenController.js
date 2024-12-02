@@ -27,6 +27,39 @@ function insertToken(req, res) {
     }
 }
 
+
+
+
+function updateToken(req, res) {
+    var tokenCodigo = req.body.tokenServer;
+    var idEmpresa = req.body.idEmpresaServer;
+    var status = req.body.statusServer
+
+    if (tokenCodigo == undefined) {
+        res.status(400).send("Seu Codigo token está undefined!");
+    } else if (idEmpresa == undefined) {
+        res.status(400).send("Seu id de empresa está undefined!");
+    }else if (status == undefined) {
+        res.status(400).send("Seu status do token  está undefined!");
+    }else {
+        tokenModel.updateToken(tokenCodigo, idEmpresa, status)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+            }
+        );
+    }
+}
+
 function deleteToken(req, res) {
     var tokenCodigo = req.body.codigoServer;
     var idEmpresa = req.body.empresaServer;
@@ -56,5 +89,6 @@ function deleteToken(req, res) {
 
 module.exports = {
     insertToken,
-    deleteToken
+    deleteToken,
+    updateToken,
 }

@@ -292,8 +292,9 @@
                   </div>
                   <div class="cadastroEmp" id="ediToken">
                     <h1 class="titulo">editar token</h1>
-                    <input type="text">
-                    <button id="editToken" class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;">adicionar</button>
+                    <input type="text" id="input_updateToken">
+                    <button id="ativarToken" class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="ativarToken()">Ativar</button>
+                    <button id="desativarToken" class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="desativarToken()">Desativar</button>
 
                   </div>
                </div>
@@ -1317,8 +1318,66 @@ function deletarToken() {
       }
     }
 
+    function ativarToken(params) {
+      const idEmpresa = sessionStorage.getItem('ID_EMPRESA');
+      const codigoToken =  input_updateToken.value;
+      fetch(`./token/updateToken`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        codigoTokenServer: codigoToken,
+        idEmpresaServer: idEmpresa,
+        statusServer: "Ativo"
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+  
+        if (resposta.ok) {
+          setTimeout(() => {
+            alert("Token ativado com sucesso")
+          }, 1000);
+        } else {
+          throw new Error("Houve um erro ao tentar atualiizar o token!");
+        }
+      })
+      .catch(function (erro) {
+        console.error("#ERRO: ", erro);
+      });
+    }
 
-
+    function desativarToken(params) {
+      const idEmpresa = sessionStorage.getItem('ID_EMPRESA');
+      const codigoToken =  input_updateToken.value;
+      fetch(`./token/updateToken`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        codigoTokenServer: codigoToken,
+        idEmpresaServer: idEmpresa,
+        statusServer: "Inativo"
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+  
+        if (resposta.ok) {
+          setTimeout(() => {
+            alert("Token inativo ")
+          }, 1000);
+        } else {
+          throw new Error("Houve um erro ao tentar atualiizar o token!");
+        }
+      })
+      .catch(function (erro) {
+        console.error("#ERRO: ", erro);
+      });
+    }
+    
 
 
 

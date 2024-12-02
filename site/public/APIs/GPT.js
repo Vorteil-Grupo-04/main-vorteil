@@ -4,7 +4,7 @@ const { OpenAI } = require("openai");
 require("dotenv").config();
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 // Configuração do CORS
 app.use(cors()); // Permite requisições de qualquer origem

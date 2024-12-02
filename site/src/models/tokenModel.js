@@ -1,3 +1,4 @@
+
 var database = require("../database/config");
 
 function insertToken(token, idEmpresa) {
@@ -21,7 +22,22 @@ function deleteToken(tokenCodigo, idEmpresa) {
 };
 
 
+function updateToken(tokenCodigo, idEmpresa, status) {
+    console.log("ACESSEI O EMPRESA MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrarEmpresa():", tokenCodigo, idEmpresa, status);
+    
+    var instrucaoSql = `
+        UPDATE token
+        SET statusToken =  "${status}"
+        WHERE codigo = "${tokenCodigo}" 
+        AND fkEmpresa = ${idEmpresa};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+};
+
+
 module.exports = {
     insertToken,
-    deleteToken
+    deleteToken,
+    updateToken,
 };
