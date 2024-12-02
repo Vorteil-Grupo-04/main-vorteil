@@ -9,10 +9,11 @@ const port = 3000;
 // Configuração do CORS
 app.use(cors()); // Permite requisições de qualquer origem
 
-// Configuração da API da OpenAI
-const openai = new OpenAI({
-  apiKey: "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", // Utilizando variável de ambiente para segurança
-});
+// descomente e coloque a APIKEY:
+
+//const openai = new OpenAI({
+//  apiKey: , 
+// });
 
 // Middleware para permitir JSON no corpo das requisições
 app.use(express.json());
