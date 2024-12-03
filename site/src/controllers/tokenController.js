@@ -31,7 +31,7 @@ function insertToken(req, res) {
 
 
 function updateToken(req, res) {
-    var tokenCodigo = req.body.tokenServer;
+    var tokenCodigo = req.body.codigoTokenServer;
     var idEmpresa = req.body.idEmpresaServer;
     var status = req.body.statusServer
 

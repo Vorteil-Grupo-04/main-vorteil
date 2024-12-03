@@ -1208,6 +1208,7 @@ function delToken() {
 
 
 document.getElementById('insertToken').addEventListener('click', function() {
+    console.log("Token entrou")
     // Enviar a requisição para o backend para obter o token
     fetch('http://localhost:3000/enviar-email', {
         method: 'POST',
@@ -1247,6 +1248,7 @@ document.getElementById('insertToken').addEventListener('click', function() {
                 console.log('Cadastro do token realizado:', cadastroData);  // Logando os dados de sucesso do cadastro
                 document.getElementById('resultado').innerText = 'Token cadastrado com sucesso!';
                 alert("Token Cadastrado com sucesso, verifique seu email!")
+
   
             })
             .catch(error => {
