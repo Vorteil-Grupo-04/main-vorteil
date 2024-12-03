@@ -89,29 +89,32 @@
     <div class="alinhator" style="flex-direction: row;">
       <div class="alinhator">
         <label for="">saida</label>
-        <input type="text" name="" id="">
+        <input type="text" name="" id="input_saida_clima">
       </div>
       <div class="alinhator">
         <label for="">destino</label>
-        <input type="text" name="" id="">
+        <input type="text" name="" id="input_destino_clima">
       </div>
     </div>
+    <button onclick="climaAPI()">CLIMA API</button>
       <div class="alinhator">
       <p>Previsões</p>
      <div class="alignCard" style="width: auto; gap: 2.5rem; height: auto; display: flex; align-items: center; justify-content: center;">
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
+      <div id="saida1" class="card"></div>
+      <div id="saida2" class="card"></div>
+      <div id="saida3" class="card"></div>
+      <div id="saida4" class="card"></div>
+      <div id="saida5" class="card"></div>
      </div>
     </div>
     <div class="alinhator">
       <p>Previsões</p>
      <div class="alignCard" style="width: auto; gap: 2.5rem; height: auto; display: flex; flex-direction: row; align-items: center; justify-content: center;">
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
-      <div class="card"></div>
+      <div id="destino1" class="card"></div>
+      <div id="destino2" class="card"></div>
+      <div id="destino3" class="card"></div>
+      <div id="destino4" class="card"></div>
+      <div id="destino5" class="card"></div>
      </div>
     </div>
          </div>
@@ -1399,86 +1402,151 @@ function deletarToken() {
 
 
 
+function climaAPI(params) {
+  const chaveApi = '61a63f60759671b91f52c72ecfa66019';
+const saidaClima = document.getElementById("input_saida_clima").value;
+const destinoClima = document.getElementById("input_destino_clima").value;
 
-// const chaveApi = '61a63f60759671b91f52c72ecfa66019';
-//         const cidade = 'Amapa, BR';
+const traducoesTempo = {
+    "clear sky": "céu limpo",
+    "few clouds": "poucas nuvens",
+    "scattered clouds": "nuvens dispersas",
+    "broken clouds": "nuvens quebradas",
+    "shower rain": "chuva rápida",
+    "rain": "chuva",
+    "thunderstorm": "tempestade",
+    "snow": "neve",
+    "mist": "neblina",
+    "drizzle": "chuvisco",
+    "light rain": "chuva leve",
+    "overcast clouds": "nuvens cobertas",
+};
 
-//         const traducoesTempo = {
-//             "clear sky": "céu limpo",
-//             "few clouds": "poucas nuvens",
-//             "scattered clouds": "nuvens dispersas",
-//             "broken clouds": "nuvens quebradas",
-//             "shower rain": "chuva rápida",
-//             "rain": "chuva",
-//             "thunderstorm": "tempestade",
-//             "snow": "neve",
-//             "mist": "neblina",
-//             "drizzle": "chuvisco",
-//             "light rain": "chuva leve",
-//             "overcast clouds": "nuvens cobertas",
-//         };
+const obterPrevisao = () => {
+    const urlPrevisao = `https://api.openweathermap.org/data/2.5/forecast?q=${saidaClima}&appid=${chaveApi}&units=metric`;
 
-     
-//         const obterPrevisao = () => {
-//             const urlPrevisao = `https://api.openweathermap.org/data/2.5/forecast?q=${cidade}&appid=${chaveApi}&units=metric`;
+    return fetch(urlPrevisao)
+        .then(resposta => {
+            if (!resposta.ok) {
+                throw new Error('Erro na requisição da previsão: ' + resposta.status);
+            }
+            return resposta.json();
+        });
+};
 
-//             return fetch(urlPrevisao)
-//                 .then(resposta => {
-//                     if (!resposta.ok) {
-//                         throw new Error('Erro na requisição da previsão: ' + resposta.status);
-//                     }
-//                     return resposta.json();
-//                 });
-//         };
+const obterClimaAtualSaida = () => {
+    const urlClimaAtual = `https://api.openweathermap.org/data/2.5/weather?q=${saidaClima}&appid=${chaveApi}&units=metric`;
+
+    return fetch(urlClimaAtual)
+        .then(resposta => {
+            if (!resposta.ok) {
+                throw new Error('Erro na requisição do clima atual: ' + resposta.status);
+            }
+            return resposta.json();
+        });
+};
+
+Promise.all([obterPrevisao(), obterClimaAtualSaida()])
+    .then(([dadosPrevisao, dadosClimaAtual]) => {
+        let resultado = `<h2>Previsão do Tempo em ${saidaClima}</h2>`;
+        
+        // Filtra as previsões para as 15:00h (15:00:00)
+        const previsoesDiarias = dadosPrevisao.list.filter(item => item.dt_txt.endsWith('15:00:00')).slice(0, 5);
+        
+        // Preenche as divs existentes para cada dia
+        previsoesDiarias.forEach((dia, index) => {
+            const data = new Date(dia.dt * 1000);
+            const dataFormatada = `${data.getDate().toString().padStart(2, '0')}/${(data.getMonth() + 1).toString().padStart(2, '0')}`;
+            const temperatura = dia.main.temp;
+            const descricaoTempo = dia.weather[0].description;
+            const descricaoTraduzida = traducoesTempo[descricaoTempo] || descricaoTempo;
+            const velocidadeVento = (dia.wind.speed * 3.6).toFixed(2);
+            const icone = dia.weather[0].icon;
+
+            // Aqui, preenchendo as divs já existentes no front-end
+            document.getElementById(`saida${index + 1}`).innerHTML = `
+                <h4>${dataFormatada}</h4>
+                <p><strong>Temperatura:</strong> ${temperatura}°C</p>
+                <p><strong>Condição:</strong> ${descricaoTraduzida}</p>
+                <p><strong>Velocidade do Vento:</strong> ${velocidadeVento} km/h</p>
+                <img src="https://openweathermap.org/img/wn/${icone}.png" alt="Ícone do tempo">
+            `;
+        });
+
+    })
+    .catch(erro => {
+        console.error('Erro:', erro);
+        document.getElementById('divClima').innerHTML = 'Erro ao buscar dados do tempo.';
+    });
 
 
-//         const obterClimaAtual = () => {
-//             const urlClimaAtual = `https://api.openweathermap.org/data/2.5/weather?q=${cidade}&appid=${chaveApi}&units=metric`;
 
-//             return fetch(urlClimaAtual)
-//                 .then(resposta => {
-//                     if (!resposta.ok) {
-//                         throw new Error('Erro na requisição do clima atual: ' + resposta.status);
-//                     }
-//                     return resposta.json();
-//                 });
-//         };
 
-   
-//         Promise.all([obterPrevisao(), obterClimaAtual()])
-//             .then(([dadosPrevisao, dadosClimaAtual]) => {
-//                 let resultado = `<h2>Previsão do Tempo em ${cidade}</h2>`;
-//                 const previsoesDiarias = dadosPrevisao.list.filter(item => item.dt_txt.endsWith('15:00:00')).slice(0, 5);
 
-       
-//                 const visibilidade = dadosClimaAtual.visibility;
 
-//                 previsoesDiarias.forEach(dia => {
-//                     const data = new Date(dia.dt * 1000).toLocaleDateString();
-//                     const temperatura = dia.main.temp;
-//                     const descricaoTempo = dia.weather[0].description;
-//                     const descricaoTraduzida = traducoesTempo[descricaoTempo] || descricaoTempo;
-//                     const velocidadeVento = (dia.wind.speed * 3.6).toFixed(2);
-//                     const icone = dia.weather[0].icon;
+      // DESTINO
 
-//                     resultado += `
-//                         <div>
-//                             <h4>${data}</h4>
-//                             <p>Temperatura: ${temperatura}°C</p>
-//                             <p>Condição: ${descricaoTraduzida}</p>
-//                             <p>Velocidade do Vento: ${velocidadeVento} km/h</p>
-//                             <p>Visibilidade: ${visibilidade} metros</p>
-//                             <img src="https://openweathermap.org/img/wn/${icone}.png" alt="Ícone do tempo">
-//                         </div>
-//                     `;
-//                 });
 
-//                 document.getElementById('divJ').innerHTML = resultado;
-//             })
-//             .catch(erro => {
-//                 console.error('Erro:', erro);
-//                 document.getElementById('divJ').innerHTML = 'Erro ao buscar dados do tempo.';
-//             });
+
+    const obterPrevisao2 = () => {
+    const urlPrevisao = `https://api.openweathermap.org/data/2.5/forecast?q=${destinoClima}&appid=${chaveApi}&units=metric`;
+
+    return fetch(urlPrevisao)
+        .then(resposta => {
+            if (!resposta.ok) {
+                throw new Error('Erro na requisição da previsão: ' + resposta.status);
+            }
+            return resposta.json();
+        });
+};
+
+const obterClimaAtualDestino = () => {
+    const urlClimaAtual = `https://api.openweathermap.org/data/2.5/weather?q=${destinoClima}&appid=${chaveApi}&units=metric`;
+
+    return fetch(urlClimaAtual)
+        .then(resposta => {
+            if (!resposta.ok) {
+                throw new Error('Erro na requisição do clima atual: ' + resposta.status);
+            }
+            return resposta.json();
+        });
+};
+
+Promise.all([obterPrevisao2(), obterClimaAtualDestino()])
+    .then(([dadosPrevisao, dadosClimaAtual]) => {
+        let resultado = `<h2>Previsão do Tempo em ${destinoClima}</h2>`;
+        
+        const previsoesDiarias = dadosPrevisao.list.filter(item => item.dt_txt.endsWith('15:00:00')).slice(0, 5);
+        
+        // Preenche as divs existentes para cada dia
+        previsoesDiarias.forEach((dia, index) => {
+            const data = new Date(dia.dt * 1000);
+            const dataFormatada = `${data.getDate().toString().padStart(2, '0')}/${(data.getMonth() + 1).toString().padStart(2, '0')}`;
+            const temperatura = dia.main.temp;
+            const descricaoTempo = dia.weather[0].description;
+            const descricaoTraduzida = traducoesTempo[descricaoTempo] || descricaoTempo;
+            const velocidadeVento = (dia.wind.speed * 3.6).toFixed(2);
+            const icone = dia.weather[0].icon;
+
+            // Aqui, preenchendo as divs já existentes no front-end
+            document.getElementById(`destino${index + 1}`).innerHTML = `
+                <h4>${dataFormatada}</h4>
+                <p><strong>Temperatura:</strong> ${temperatura}°C</p>
+                <p><strong>Condição:</strong> ${descricaoTraduzida}</p>
+                <p><strong>Velocidade do Vento:</strong> ${velocidadeVento} km/h</p>
+                <img src="https://openweathermap.org/img/wn/${icone}.png" alt="Ícone do tempo">
+            `;
+        });
+
+    })
+    .catch(erro => {
+        console.error('Erro:', erro);
+        document.getElementById('divClima').innerHTML = 'Erro ao buscar dados do tempo.';
+    });
+
+
+  
+}
 
    
 </script>
