@@ -1,0 +1,13 @@
+
+03/12/2024 19:17:02 Erro ao enviar a mensagem para o slack: URI with undefined scheme
+03/12/2024 19:17:02 Erro ao enviar a mensagem para o slack: URI with undefined scheme
+03/12/2024 19:17:02 Erro ao enviar a mensagem para o slack: URI with undefined scheme
+03/12/2024 19:17:03 Erro ao enviar a mensagem para o slack: URI with undefined scheme
+03/12/2024 19:17:03 Erro ao enviar a mensagem para o slack: URI with undefined scheme
+03/12/2024 19:17:32 Erro ao enviar a mensagem para o slack: URI with undefined scheme
+03/12/2024 19:17:32 Erro ao enviar a mensagem para o slack: URI with undefined scheme
+03/12/2024 19:17:32 Erro ao enviar a mensagem para o slack: URI with undefined scheme
+03/12/2024 19:17:32 Erro ao enviar a mensagem para o slack: URI with undefined scheme
+03/12/2024 19:18:39 Erro ao enviar a mensagem para o slack: URI with undefined scheme
+03/12/2024 19:18:39 Erro ao enviar a mensagem para o slack: URI with undefined scheme
+03/12/2024 19:18:39 Erro ao enviar a mensagem para o slack: URI with undefined scheme

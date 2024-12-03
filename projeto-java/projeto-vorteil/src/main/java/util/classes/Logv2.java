@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 
 public class Logv2 {
     private LocalDateTime dataAtual;
-    private String repositorio = "/app/logs/Logs.txt";
+    private String repositorio = "src/main/java/util/logs/Logs.txt";
 
     //caminho ec2 /app/logs/Logs.log
 
@@ -16,7 +16,7 @@ public class Logv2 {
 
     public Logv2(String nomeArquivo){
 
-        this.repositorio = "/app/logs/%s".formatted(nomeArquivo);
+        this.repositorio = "src/main/java/util/logs/%s".formatted(nomeArquivo);
 
     }
 

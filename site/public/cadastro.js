@@ -194,7 +194,7 @@ function btnCadastro() {
       if (resposta.ok) {
         setTimeout(() => {
           alert("Usuário Cadastrado!")
-         
+          location.reload()
         }, "2000");
 
 

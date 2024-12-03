@@ -40,3 +40,9 @@
 26/11/2024 18:32:15 Arquivo Excel Reclamações foi aberto.
 26/11/2024 18:32:15 Planilha Reclamações acessada!
 26/11/2024 18:32:15 Todas as linhas das reclamações foram processadas.
+03/12/2024 19:17:03 Arquivo Excel foi aberto.
+03/12/2024 19:17:03 Planilha acessada!
+03/12/2024 19:17:03 Todas as linhas foram processadas.
+03/12/2024 19:17:32 Arquivo Excel Reclamações foi aberto.
+03/12/2024 19:17:32 Planilha Reclamações acessada!
+03/12/2024 19:17:32 Todas as linhas das reclamações foram processadas.

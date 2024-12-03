@@ -32,7 +32,7 @@ public class Main {
         Conexao conexao = new Conexao();
         JdbcTemplate conexaoDoBanco = conexao.getConexaoDoBanco();
 
-        ConexaoS3.baixarBucket();
+  //      ConexaoS3.baixarBucket();
 
         enviarMensagemSlack("Conexão com Banco e S3 realizada, iniciando tratamento dos dados...");
 

@@ -872,7 +872,7 @@ function atrasosAeroportos() {
 
   function empHidden(){
     var caixaEmp = document.getElementById('empHidden')
-  !isOpenEmp ? mostrarModalCrud(1) : mostrarModalCrud(0)
+  !isOpenEmp ? Crud(1) : mostrarModalCrud(0)
     caixaEmp.classList.toggle('dis')
     if(caixaEmp.classList.value == "hidden"){
    isOpenEmp = true
