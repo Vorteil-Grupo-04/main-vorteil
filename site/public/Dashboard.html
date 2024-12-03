@@ -1211,13 +1211,15 @@ function delToken() {
 
 
 document.getElementById('insertToken').addEventListener('click', function() {
-    console.log("Token entrou")
+    const destinatario = sessionStorage.getItem('EMAIL_USUARIO');
+    console.log('Destinatário do sessionStorage:', destinatario); 
     // Enviar a requisição para o backend para obter o token
     fetch('http://localhost:3000/enviar-email', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
-        }
+        },
+        body: JSON.stringify({ destinatario: destinatario }) 
     })
     .then(response => {
         console.log('Resposta do envio de e-mail:', response);  // Logando a resposta bruta
@@ -1228,6 +1230,7 @@ document.getElementById('insertToken').addEventListener('click', function() {
         if (data.token) {
             // Pega o ID_EMPRESA do sessionStorage
             const idEmpresa = sessionStorage.getItem('ID_EMPRESA');
+            const destinatario = sessionStorage.getItem('EMAIL_USUARIO');
             console.log('ID da empresa do sessionStorage:', idEmpresa);  // Logando o ID da empresa
             console.log("Token", data.token)
             console.log("Empresa", idEmpresa)
@@ -1249,23 +1252,23 @@ document.getElementById('insertToken').addEventListener('click', function() {
             })
             .then(cadastroData => {
                 console.log('Cadastro do token realizado:', cadastroData);  // Logando os dados de sucesso do cadastro
-                document.getElementById('resultado').innerText = 'Token cadastrado com sucesso!';
+          
                 alert("Token Cadastrado com sucesso, verifique seu email!")
 
   
             })
             .catch(error => {
                 console.error('Erro ao cadastrar o token:', error);
-                document.getElementById('resultado').innerText = 'Erro ao cadastrar a empresa.';
+               
             });
         } else {
             console.error('Token não encontrado na resposta:', data);
-            document.getElementById('resultado').innerText = 'Erro ao obter o token.';
+            
         }
     })
     .catch(error => {
         console.error('Erro ao enviar e-mail:', error);
-        document.getElementById('resultado').innerText = 'Erro ao enviar e-mail.';
+        
     });
 });
 
