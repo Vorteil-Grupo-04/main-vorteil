@@ -19,6 +19,7 @@ var usuarioRouter = require("./src/routes/usuarios");
 var tokenRouter = require("./src/routes/token");
 var empresaRouter = require("./src/routes/empresa");
 var dashboardRouter = require("./src/routes/dashboard");
+var notificacaoRouter = require("./src/routes/notificacao");
 
 
 app.use(express.json());
@@ -32,6 +33,7 @@ app.use("/usuarios", usuarioRouter);
 app.use("/empresa", empresaRouter);
 app.use("/dashboard", dashboardRouter);
 app.use("/token", tokenRouter);
+app.use("/notificacao", notificacaoRouter);
 
 
 

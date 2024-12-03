@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gloock&display=swap" rel="stylesheet">
     <script src="cadastro.js"></script>
     <script src="CRUDempresa.js"></script>
+    <script src="./alertas.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gloock&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +22,7 @@
     <title>Dashboard</title>
 </head>
       
-<body>
+<body onload="puxarGraficos(), scriptInicializacao()">
   <div class="container" id="pai">
       <div class="lateral">
         <div class="contLat">
@@ -377,7 +378,9 @@
    
       </div>
      
-      
+      <div id="alertaNotify" class="alertaNotify">
+        <div id="textoDentro" class="textoDentro">Teste</div>
+      </div>
  
 </body>
 </html>
@@ -389,6 +392,16 @@ const usuarioNomeCompleto = sessionStorage.getItem('NOME_USUARIO');
 if (usuarioNomeCompleto) {
   const primeiraPalavra = usuarioNomeCompleto.split(" ")[0];
   document.getElementById('usuarioNome').textContent = primeiraPalavra + '!';
+}
+
+function scriptInicializacao(){
+
+sessionStorage.tamanhoListaNotificacao = 0;
+
+setInterval( () => {
+   chamarNotificar()
+}, 20000);
+
 }
 
   var empresaUmCancelamentos;
@@ -917,14 +930,16 @@ function atrasosAeroportos() {
 
   }
 
-  cancelamentosEmpresa()
-  cancelamentosAeroporto()
-  atrasosAeroportos()
-  atrasosEmpresa()
-  puxarDadosKPI()
-  puxarDadosKPIAero()
-  comoComprou()
-  faixaEtaria()
+  function puxarGraficos(){
+    cancelamentosEmpresa()
+    cancelamentosAeroporto()
+    atrasosAeroportos()
+    atrasosEmpresa()
+    puxarDadosKPI()
+    puxarDadosKPIAero()
+    comoComprou()
+    faixaEtaria()
+  }
 
 
 
