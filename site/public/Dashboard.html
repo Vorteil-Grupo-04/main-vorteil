@@ -1460,6 +1460,7 @@ Promise.all([obterPrevisao(), obterClimaAtualSaida()])
             const temperatura = dia.main.temp;
             const descricaoTempo = dia.weather[0].description;
             const descricaoTraduzida = traducoesTempo[descricaoTempo] || descricaoTempo;
+            const umidade = dia.main.humidity; 
             const velocidadeVento = (dia.wind.speed * 3.6).toFixed(2);
             const icone = dia.weather[0].icon;
 
@@ -1469,6 +1470,7 @@ Promise.all([obterPrevisao(), obterClimaAtualSaida()])
                 <p><strong>Temperatura:</strong> ${temperatura}°C</p>
                 <p><strong>Condição:</strong> ${descricaoTraduzida}</p>
                 <p><strong>Velocidade do Vento:</strong> ${velocidadeVento} km/h</p>
+                <p><strong>Umidade:</strong> ${umidade}%</p> 
                 <img src="https://openweathermap.org/img/wn/${icone}.png" alt="Ícone do tempo">
             `;
         });
@@ -1526,6 +1528,7 @@ Promise.all([obterPrevisao2(), obterClimaAtualDestino()])
             const descricaoTempo = dia.weather[0].description;
             const descricaoTraduzida = traducoesTempo[descricaoTempo] || descricaoTempo;
             const velocidadeVento = (dia.wind.speed * 3.6).toFixed(2);
+            const umidade = dia.main.humidity; 
             const icone = dia.weather[0].icon;
 
             // Aqui, preenchendo as divs já existentes no front-end
@@ -1534,6 +1537,7 @@ Promise.all([obterPrevisao2(), obterClimaAtualDestino()])
                 <p><strong>Temperatura:</strong> ${temperatura}°C</p>
                 <p><strong>Condição:</strong> ${descricaoTraduzida}</p>
                 <p><strong>Velocidade do Vento:</strong> ${velocidadeVento} km/h</p>
+                <p><strong>Umidade:</strong> ${umidade}%</p> 
                 <img src="https://openweathermap.org/img/wn/${icone}.png" alt="Ícone do tempo">
             `;
         });
