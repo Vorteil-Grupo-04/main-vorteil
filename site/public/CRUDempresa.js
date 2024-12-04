@@ -35,9 +35,10 @@ function btnCadastroEmpresa() {
         console.log("resposta: ", resposta);
   
         if (resposta.ok) {
+          mensagemm = 'Empresa cadastrada!';
+          exibirMsgErro(mensagemm);
           setTimeout(() => {
             sessionStorageEmpresa()
-            alert("Empresa Cadastrada!")
           }, "2000");
  
         } else {
@@ -208,9 +209,11 @@ function btnCadastroEmpresa() {
         console.log("resposta: ", resposta);
   
         if (resposta.ok) {
-          setTimeout(() => {
-            alert("Dados da empresa atualizados com sucesso")
-          }, 1000);
+          mensagemm = 'Dados da empresa atualizados com sucesso!';
+            exibirMsgErro(mensagemm);
+          // setTimeout(() => {
+          //   alert("Dados da empresa atualizados com sucesso")
+          // }, 1000);
         } else {
           throw new Error("Houve um erro ao tentar atualkizar a empresa!");
         }
@@ -232,9 +235,12 @@ function btnCadastroEmpresa() {
         }).then(function (resposta) {
 
             if (resposta.ok) {
+              mensagemm = 'Dados da empresa removidos com sucesso!';
+            exibirMsgErro(mensagemm);
               setTimeout(() => {
-                alert("Dados da empresa removidos com sucesso")
-              }, 1000);
+                // alert("Dados da empresa removidos com sucesso")
+              location.reload();
+              }, 2000);
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -244,5 +250,25 @@ function btnCadastroEmpresa() {
             console.log(`#ERRO: ${resposta}`);
         });  
 
-        location.reload();
+        
+  }
+
+  function exibirMsgErro(mensagem) {
+    const textoDentro = document.getElementById('textoDentro');
+    textoDentro.innerHTML = mensagem;
+    alter();
+  }
+
+  function alter(){
+    const notificacao = document.getElementById('alertaNotify');
+          notificacao.style.display = 'flex';
+          notificacao.style.animation = 'deslizarbaixo 1s ease-out forwards';
+
+          setTimeout(() => {
+              notificacao.style.animation = 'deslizarcima 1s ease-out forwards';
+              setTimeout(() => {
+                  notificacao.style.display = 'none';
+              }, 1000);
+          }, 2000);
+  
   }

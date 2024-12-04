@@ -201,9 +201,9 @@ function btnCadastro() {
       if (resposta.ok) {
         setTimeout(() => {
           alert("Usuário Cadastrado!")
-          location.reload()
+          
         }, "2000");
-
+        location.reload();
 
       } else {
         throw "Houve um erro ao tentar realizar o cadastro!";
@@ -238,6 +238,11 @@ function btnCadastro() {
           
           textoDentro.innerHTML = "Cadastro realizado com sucesso!";
           alter();  
+          
+          setTimeout(function () {             
+            location.reload();
+          }, 3000);
+           
 
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
@@ -342,9 +347,11 @@ function btnCadastro() {
         console.log("resposta: ", resposta);
 
         if (resposta.ok) {
-          setTimeout(() => {
-            alert("Dados do usuário atualizados com sucesso")
-          }, 1000);
+          mensagemm = 'Dados do usuário atualizados com sucesso!';
+          exibirMsgErro(mensagemm);
+          // setTimeout(() => {
+          //   alert("Dados do usuário atualizados com sucesso")
+          // }, 1000);
         } else {
           throw new Error("Houve um erro ao tentar atualizar o usuario!");
         }
@@ -366,9 +373,11 @@ function btnCadastro() {
         }).then(function (resposta) {
 
             if (resposta.ok) {
-              setTimeout(() => {
-                alert("Dados do usuario removidos com sucesso")
-              }, 1000);
+              mensagemm = 'Usuario removido. Você será redirecionado';
+          exibirMsgErro(mensagemm);
+              // setTimeout(() => {
+              //   alert("Dados do usuario removidos com sucesso")
+              // }, 1000);
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -380,7 +389,7 @@ function btnCadastro() {
 
         setTimeout(() => {
          window.location = "index.html"
-        }, 2000)
+        }, 2200)
   }
 
   function alter(){

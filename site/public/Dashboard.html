@@ -291,11 +291,11 @@
                     <button  id="deleteToken" class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="deletarToken()">Excluir Código</button>
                   </div>
                   <div class="cadastroEmp" id="addToken">
-                    <h1 class="titulo">adicionar token</h1>
-                    <button id="insertToken" class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;">adicionar</button>
+                    <h1 class="titulo">Adicionar token</h1>
+                    <button id="insertToken" class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;">Adicionar</button>
                   </div>
                   <div class="cadastroEmp" id="ediToken">
-                    <h1 class="titulo">editar token</h1>
+                    <h1 class="titulo">Editar token</h1>
                     <input type="text" id="input_updateToken">
                     <button id="ativarToken" class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="ativarToken()">Ativar</button>
                     <button id="desativarToken" class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="desativarToken()">Desativar</button>
@@ -382,7 +382,7 @@
       </div>
      
       <div id="alertaNotify" class="alertaNotify">
-        <div id="textoDentro" class="textoDentro">Teste</div>
+        <div id="textoDentro" class="textoDentro">div inicial</div>
       </div>
  
 </body>
@@ -1303,7 +1303,10 @@ function deletarToken() {
           resposta.json().then(json => {
               console.log(json);
               console.log(JSON.stringify(json));
-              alert("Token deletado com sucesso!")
+              // alert("Token deletado com sucesso!")
+
+              mensagemm = 'Token deletado com sucesso!';
+          exibirMsgErro(mensagemm);
   
                
           });
@@ -1366,9 +1369,11 @@ function deletarToken() {
         console.log("resposta: ", resposta);
   
         if (resposta.ok) {
-          setTimeout(() => {
-            alert("Token ativado com sucesso")
-          }, 1000);
+          mensagemm = 'Token ativado com sucesso!';
+          exibirMsgErro(mensagemm);
+          // setTimeout(() => {
+          //   alert("Token ativado com sucesso")
+          // }, 1000);
         } else {
           throw new Error("Houve um erro ao tentar atualiizar o token!");
         }
@@ -1396,9 +1401,11 @@ function deletarToken() {
         console.log("resposta: ", resposta);
   
         if (resposta.ok) {
-          setTimeout(() => {
-            alert("Token inativo ")
-          }, 1000);
+          mensagemm = 'Token inativo!';
+          exibirMsgErro(mensagemm);
+          // setTimeout(() => {
+          //   alert("Token inativo ")
+          // }, 1000);
         } else {
           throw new Error("Houve um erro ao tentar atualiizar o token!");
         }
@@ -1562,5 +1569,27 @@ Promise.all([obterPrevisao2(), obterClimaAtualDestino()])
   
 }
 
-   
+//comentar abaixo
+function exibirMsgErro(mensagem) {
+    const textoDentro = document.getElementById('textoDentro');
+    textoDentro.innerHTML = mensagem;
+    alter();
+  }
+
+  function alter(){
+    const notificacao = document.getElementById('alertaNotify');
+          notificacao.style.display = 'flex';
+          notificacao.style.animation = 'deslizarbaixo 1s ease-out forwards';
+
+          setTimeout(() => {
+              notificacao.style.animation = 'deslizarcima 1s ease-out forwards';
+              setTimeout(() => {
+                  notificacao.style.display = 'none';
+              }, 1000);
+          }, 2000);
+  
+  }
+
+
 </script>
+

@@ -24,3 +24,5 @@
 04/12/2024 00:08:49 Todos os dados inseridos no Banco de Dados.
 04/12/2024 00:09:52 Todos os dados inseridos no Banco de Dados.
 04/12/2024 00:10:43 Todos os dados inseridos no Banco de Dados.
+04/12/2024 01:21:10 Todos os dados inseridos no Banco de Dados.
+04/12/2024 01:35:28 Todos os dados inseridos no Banco de Dados.
