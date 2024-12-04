@@ -23,14 +23,16 @@ function formatarCNPJ(input_cpnj_cadastro) {
 }
 
 function exibirMsgErro(mensagem) {
-  alert(mensagem)
+  const textoDentro = document.getElementById('textoDentro');
+  textoDentro.innerHTML = mensagem;
+  alter();
 }
 
 function validarNome(params) {
   let nome = input_nome.value;
   let mensagemNome = "";
-  if (nome.length > 45){
-      mensagemNome = 'O nome não pode ter mais de 45 caracteres.';
+  if (nome.length == 0){
+      mensagemNome = 'O nome não pode estar vazio.';
       exibirMsgErro(mensagemNome)
   }else{
       return true;
@@ -45,7 +47,7 @@ let input_email = document.getElementById('input_email');
     let emailCom = email.endsWith('.com');
     let emailArroba = email.indexOf("@");
     if (emailCom == false || emailArroba == -1) {
-        mensagemEmail = 'Email inválido';
+        mensagemEmail = 'Email inválido - <span style="color: gray;"> Ex: email@gmail.com</span>';
         exibirMsgErro(mensagemEmail)
     } else {
         return true;
@@ -90,6 +92,8 @@ function entrarLogin() {
   let senha_input = input_log_senha.value;
   
   if (email_input == "" || senha_input == "") {
+    mensagemSenha = 'Erro ao realizar o login. Tente novamente.';
+    exibirMsgErro(mensagemSenha);
       return false;
   }
   
@@ -122,10 +126,12 @@ function entrarLogin() {
               sessionStorage.ID_EMPRESA = json.fkEmpresa;
               sessionStorage.FK_CARGO = json.fkCargo;
 
-              setTimeout(function () {
-                alert("login realizado com sucesso");
+              mensagemNome = 'Login realizado com sucesso!';
+                exibirMsgErro(mensagemNome)
+
+              setTimeout(function () {             
                 window.location = "Dashboard.html"
-              }, 1000);
+              }, 3000);
           });
   
       } else {
@@ -229,14 +235,13 @@ function btnCadastro() {
         console.log("resposta: ", resposta);
   
         if (resposta.ok) {
-          setTimeout(() => {
-            alert("Responsável fiscal cadastrado com sucesso!")
-            location.reload();
-          }, "2000");
-  
-  
+          
+          textoDentro.innerHTML = "Cadastro realizado com sucesso!";
+          alter();  
+
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
+    
         }
       })
       .catch(function (resposta) {
@@ -376,4 +381,18 @@ function btnCadastro() {
         setTimeout(() => {
          window.location = "index.html"
         }, 2000)
+  }
+
+  function alter(){
+    const notificacao = document.getElementById('alertaNotify');
+          notificacao.style.display = 'flex';
+          notificacao.style.animation = 'deslizarbaixo 1s ease-out forwards';
+
+          setTimeout(() => {
+              notificacao.style.animation = 'deslizarcima 1s ease-out forwards';
+              setTimeout(() => {
+                  notificacao.style.display = 'none';
+              }, 1000);
+          }, 2000);
+  
   }
