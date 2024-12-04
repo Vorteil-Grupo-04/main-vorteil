@@ -13,6 +13,10 @@ router.post("/deleteToken", function (req, res) {
     tokenController.deleteToken(req, res);
 })
 
+router.post("/selectToken", function (req, res) {
+    tokenController.selectToken(req, res);
+})
+
 router.put("/updateToken", function (req, res) {
     tokenController.updateToken(req, res);
 })

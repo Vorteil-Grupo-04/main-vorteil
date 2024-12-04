@@ -302,6 +302,14 @@
                     <button id="desativarToken" class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="desativarToken()">Desativar</button>
 
                   </div>
+                  <div class="cadastroEmp" id="selectToken">
+                    <h1 class="titulo">Select token</h1>
+                    <input type="text" id="input_selectToken">
+                    <button  id="selectToken" class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="selectToken()">Mostrar informações</button>
+                    <div id="expiracaoExibir"></div>
+                    <div id="statusExibir"></div>
+                    
+                  </div>
                </div>
                     
                </div>
@@ -414,8 +422,8 @@ function scriptInicializacao(){
       validarUsuario()
       puxarGraficos()
   setInterval( () => {
-    chamarNotificar()
-  }, 3000);
+  //chamarNotificar()
+  }, 350000000000);
 
 }
 
@@ -1377,6 +1385,43 @@ function deletarToken() {
         respostaDiv.innerHTML = `<p style="color: red;">Erro: ${error.message}</p>`;
       }
     }
+
+    function selectToken() {
+      const idEmpresa = sessionStorage.getItem('ID_EMPRESA');
+      const codigoToken = input_selectToken.value;
+      alert("CAIU: " + codigoToken)
+      console.log("TESTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE: " +codigoToken)
+      fetch(`/token/selectToken`, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        codigoTokenServer: codigoToken,
+        idEmpresaServer: idEmpresa
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+  
+        if (resposta.ok) {
+          mensagemm = 'Token info puxada com sucesso!';
+          exibirMsgErro(mensagemm);
+
+          document.getElementById("expiracaoExibir").innerHTML = json.dataExpiracao;
+          document.getElementById("statusExibir").innerHTML = json.statusToken;
+
+
+        } else {
+          throw new Error("Houve um erro ao tentar atualiizar o token!");
+        }
+      })
+      .catch(function (erro) {
+        console.error("#ERRO: ", erro);
+      });
+    }
+
+
 
     function ativarToken(params) {
       const idEmpresa = sessionStorage.getItem('ID_EMPRESA');
