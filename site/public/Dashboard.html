@@ -309,10 +309,20 @@
            </div>
         
        </div>
+
+
+
+
+
+
+
        <div class="close" id="closeIcon" onclick="closeMod()">   <nav id="nav" class="lateralNav">
         <input id="saida" type="text">
         <input id="destino" type="text">
-        <button onclick="enviarPrompt()">API</button>
+        
+        <button onclick="enviarPrompt(1)">API Quest 1</button>
+        <button onclick="enviarPrompt(2)">API Quest 2</button>
+        <button onclick="enviarPrompt(3)">API Quest 3</button>
         <div id="resposta"></div>
      </nav></div>
      <div class="lateralDireita hidden" id="latDir">
@@ -1320,10 +1330,26 @@ function deletarToken() {
   }
 
 
-  async function enviarPrompt() {
+  async function enviarPrompt(pergunta) {
       const saida = document.getElementById("saida").value;
       const destino = document.getElementById("destino").value;
-      const prompt = `Fale sobre a viagem aérea de ${saida} a ${destino}` 
+      const prompt1 =  `Com base no histórico de voos entre ${saida} e ${destino}, quais são as chances de atrasos para diferentes companhias aéreas? Quais delas têm o melhor histórico de pontualidade`
+      const prompt2 = `Qual a faixa etaria de pessoas que costumam fazer viagens aéreas para ${destino}`
+      const prompt3 = `Quais empresas aéreas fazem o voo com a rota ${saida} para ${destino}`
+      let prompt = ""
+      switch (pergunta) {
+        case 1:
+          prompt = prompt1
+          break;
+        case 2:
+          prompt = prompt2
+          break
+        case 3:
+          prompt = prompt3
+          break  
+        default:
+          break;
+      }
       const respostaDiv = document.getElementById("resposta");
 
       // Limpa a resposta anterior
@@ -1331,7 +1357,7 @@ function deletarToken() {
 
       try {
         // Faz a solicitação ao backend
-        const response = await fetch("http://localhost:3000/api/chat", {
+        const response = await fetch("http://localhost:3001/api/chat", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
