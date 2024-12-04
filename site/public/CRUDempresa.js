@@ -76,7 +76,7 @@ function btnCadastroEmpresa() {
                 sessionStorage.ID_EMPRESA = json.fkEmpresa;
                 
             });
-            window.location = "Dashboard.html"
+            // window.location = "Dashboard.html"
         } else {
     
             console.log("Houve um erro ao tentar realizar o cadastro do session storage da empresa!");

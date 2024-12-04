@@ -22,7 +22,7 @@
     <title>Dashboard</title>
 </head>
       
-<body onload="puxarGraficos(), scriptInicializacao()">
+<body onload="scriptInicializacao()">
   <div class="container" id="pai">
       <div class="lateral">
         <div class="contLat">
@@ -400,7 +400,8 @@ if (usuarioNomeCompleto) {
 function scriptInicializacao(){
 
 sessionStorage.tamanhoListaNotificacao = 0;
-
+    validarUsuario()
+    puxarGraficos()
 setInterval( () => {
    chamarNotificar()
 }, 20000);
@@ -931,6 +932,12 @@ function atrasosAeroportos() {
     }
 
 
+  }
+
+  function validarUsuario(){
+      if(sessionStorage.ID_EMPRESA == 'null'){
+            modalCinco();
+      }
   }
 
   function puxarGraficos(){

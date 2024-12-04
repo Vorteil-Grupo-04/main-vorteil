@@ -7,7 +7,7 @@ function autenticar(email, senha) {
       senha
     );
     var instrucaoSql = `
-          SELECT idUsuario, usuario.nome, email, fkEmpresa FROM usuario WHERE email = '${email}' AND senha = '${senha}';
+          SELECT idUsuario, usuario.nome, email, fkEmpresa, fkCargo FROM usuario WHERE email = '${email}' AND senha = '${senha}';
       `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -20,7 +20,8 @@ function autenticar(email, senha) {
     );
     var instrucaoSql = `
           SELECT fkEmpresa FROM usuario WHERE idUsuario = '${idUsuario}';
-      `;
+      `
+
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
   }
@@ -121,6 +122,11 @@ function removerUsuario(idUsuario){
     return database.executar(instrucaoSql);
 }
 
+function atualizarEmpresaDoUsuario(idUsuario, fkEmpresa){
+    const instrucaoSql = `UPDATE usuario set fkEmpresa = ${fkEmpresa} where idUsuario = ${idUsuario};`
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrar, 
@@ -130,5 +136,6 @@ module.exports = {
     atualizarUsuario,
     removerUsuario,
     sessionEmpresa,
-    cadastrarFuncionario
+    cadastrarFuncionario,
+    atualizarEmpresaDoUsuario
 };

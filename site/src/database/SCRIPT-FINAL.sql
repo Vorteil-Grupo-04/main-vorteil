@@ -16,7 +16,7 @@ CREATE TABLE cargo(
     nome VARCHAR(45)
 );
 
-INSERT INTO cargo (nome) VALUES ('Responsável Fiscal'); 
+INSERT INTO cargo (nome) VALUES ('Responsável Fiscal');
 INSERT INTO cargo (nome) VALUES ('Funcionario');
 
 CREATE TABLE usuario (

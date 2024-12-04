@@ -24,7 +24,8 @@ function autenticar(req, res) {
               email: resultadoAutenticar[0].email,
               nome: resultadoAutenticar[0].nome,
               senha: resultadoAutenticar[0].senha,
-              fkEmpresa: resultadoAutenticar[0].fkEmpresa
+              fkEmpresa: resultadoAutenticar[0].fkEmpresa,
+              fkCargo: resultadoAutenticar[0].fkCargo
             });
         
           } else if (resultadoAutenticar.length == 0) {
@@ -96,9 +97,17 @@ function sessionEmpresa(req, res) {
 
         if (resultadoAutenticar.length == 1) {
           console.log(resultadoAutenticar);
-          res.json({
-            fkEmpresa: resultadoAutenticar[0].fkEmpresa
-          });
+
+
+           var fkEmpresaValor = resultadoAutenticar[0].fkEmpresa
+            usuarioModel.atualizarEmpresaDoUsuario(idUsuario, fkEmpresaValor).then((resposta) =>{
+                retornar = {
+                    fkEmpresa: fkEmpresaValor
+                }
+                res.json(retornar);
+            }
+            )
+
       
         } else if (resultadoAutenticar.length == 0) {
           res.status(403).send("idUsuario inválido(s)");
