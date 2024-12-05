@@ -135,7 +135,8 @@ function entrarLogin() {
           });
   
       } else {
-  
+
+          exibirMsgErro("Dados incorretos!");
           console.log("Houve um erro ao tentar realizar o login!");
   
           

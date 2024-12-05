@@ -27,7 +27,7 @@
       
 <body onload="scriptInicializacao()">
   <div class="container" id="pai">
-      <div class="lateral">
+      <div class="lateral" >
         <div class="contLat">
           <div class="userCont">
               <div class="profilePai">
@@ -47,13 +47,13 @@
       </div>
       <div class="conteudo" id="conteudoUm" >
           <div class="conjuntoKPI" style="font-size: 22px;">
-              <div class="kpi" style="width:calc((100% / 2 ))"><h2  id="piorEmpresa">TAM</h2><h1>Empresa com pior desempenho</h1> <h1 id="dadosEmpresa"></h1></div>
-              <div class="kpi" style="width:calc((100% / 2 ))"><h2  id="piorAeroporto">GOL</h2><h1>Aeroporto com pior desempenho</h1> <h1 id="dadosAeroporto"></h1></div>
+              <div class="kpi" style="width:calc((100% / 2 ))"><h2  id="piorEmpresa">TAM</h2><h1>É a empresa com o maior índice de cancelamentos.</h1> <h1 id="dadosEmpresa"></h1></div>
+              <div class="kpi" style="width:calc((100% / 2 ))"><h2  id="piorAeroporto">GOL</h2><h1>É o Aeroporto com o maior índice de cancelamentos.</h1> <h1 id="dadosAeroporto"></h1></div>
              
           </div>
          <div class="conjuntoFinal">
           <div class="dashAlign">
-            <p class="sub" style="font-weight: 500;">Teste de label</p>
+            <p class="sub" style="font-weight: 500; margin-left: 40%">Maiores índices registrados por empresa</p>
 <div class="conjuntoDashboard" style="flex-direction: row; gap: 0;" >
 <div class="dashAreasDois" style="border-radius: 0;">
   <canvas style="width: 600px; border-radius: 0;" class="grafic" id="myChart"></canvas>
@@ -66,7 +66,15 @@
 </div>
           </div>
           <div class="dashAlign">
-            <p class="sub" style="font-weight: 500;">Teste de label</p>
+              <div style="
+              align-content: space-between;
+              justify-content: space-between;
+              display: flex;
+              width: 100%;
+                ">
+                <p class="sub" style="font-weight: 500; margin-left: 15%">Índice de reclamações registradas</p>
+                <p class="sub" style="font-weight: 500; margin-right: 15%">Meio de envio das reclamações</p>
+              </div>
 
           <div class="conjuntoDashboard"  style="flex-direction: row;" >
             <div class="dashAreasDois">
@@ -422,7 +430,7 @@ function scriptInicializacao(){
       validarUsuario()
       puxarGraficos()
   setInterval( () => {
-  //chamarNotificar()
+  chamarNotificar()
   }, 350000000000);
 
 }
@@ -630,7 +638,6 @@ console.log('aqui'+fxCinco, fxUm)
   
   }
 
-  setTimeout(() => {
     function puxarDadosKPI() {
     
     fetch("../dashboard/puxarDadosKPI", {
@@ -649,15 +656,15 @@ console.log('aqui'+fxCinco, fxUm)
         resposta.json().then(json => {
           console.log(json);
           console.log('atrasos aeroporto')
-          piorEmpresa.innerHTML = json[0].empresaAerea.slice(0, 4)
-          dadosEmpresa.innerHTML = `${json[0].mediaCancelamentos.toFixed(1)}% de cancelamento`
+          piorEmpresa.innerHTML = json[0].empresaAerea.slice(0, 3)
+          dadosEmpresa.innerHTML = `Tendo <span style="font-size: 20px; color: red">${json[0].mediaCancelamentos.toFixed(1)}%</span> dos seus voos registrados cancelados.`
           piorEmpresa = json[0].empresaAerea
           piorEmpresaDado = json[0].mediaCancelamentos
 
           
         })
         
-          }, 500);
+          }, 2000);
  
         } else {
           throw "Houve um erro ao trazer dados!";
@@ -689,14 +696,14 @@ console.log('aqui'+fxCinco, fxUm)
           console.log(json);
           console.log('atrasos aeroporto')
           piorAeroporto.innerHTML = json[0].nomeAeroportoSaida.slice(0, 14)
-          dadosAeroporto.innerHTML = `${json[0].mediaCancelamentos.toFixed(1)}% de cancelamento`
+          dadosAeroporto.innerHTML = ` Tendo <span style="font-size: 20px; color: red">${json[0].mediaCancelamentos.toFixed(1)}%</span> dos seus voos registrados cancelados.`
           piorEmpresa = json[0].empresaAerea
           piorEmpresaDado = json[0].mediaCancelamentos
 
           
         })
         
-          }, 500);
+          }, 2000);
  
         } else {
           throw "Houve um erro ao trazer dados!";
@@ -709,7 +716,7 @@ console.log('aqui'+fxCinco, fxUm)
     return false;
   
   }
-  }, 1000)
+
   
 
 function atrasosAeroportos() {
@@ -900,7 +907,7 @@ function atrasosAeroportos() {
     if(clos.classList.value != 'close active')
     clos.classList.toggle('notification')
 
-  }, 2000)
+  }, 3000)
 
   function empHidden(){
     var caixaEmp = document.getElementById('empHidden')
@@ -976,14 +983,14 @@ setTimeout(() => {
   }
 
   function puxarGraficos(){
-    // cancelamentosEmpresa()
-    // cancelamentosAeroporto()
-    // atrasosAeroportos()
-    // atrasosEmpresa()
-    // puxarDadosKPI()
-    // puxarDadosKPIAero()
-    // comoComprou()
-    // faixaEtaria()
+    cancelamentosEmpresa()
+    cancelamentosAeroporto()
+    atrasosAeroportos()
+    atrasosEmpresa()
+      puxarDadosKPI()
+    puxarDadosKPIAero()
+    comoComprou()
+    faixaEtaria()
   }
   cargo()
 
@@ -1088,10 +1095,10 @@ function mostrarModal(modal) {
   new Chart(ctx, {
   type: 'bar',
  data: {
-  labels:  [empresaUmNome.slice(0, 5), empresaDoisNome.slice(0, 5), empresaTresNome.slice(0, 5), empresaQuatroNome.slice(0, 5), empresaCincoNome.slice(0, 5), empresaSeisNome.slice(0, 5)],
+  labels:  [empresaUmNome.slice(0, 4), empresaDoisNome.slice(0, 4), empresaTresNome.slice(0, 4), empresaQuatroNome.slice(0, 4), empresaCincoNome.slice(0, 4), empresaSeisNome.slice(0, 4)],
   datasets: [
     {
-      label: 'Cancelamentos',
+      label: 'Cancelamentos (%)',
       data: [empresaUmCancelamentos, empresaDoisCancelamentos, empresaTresCancelamentos, empresaQuatroCancelamentos, empresaCincoCancelamentos, empresaSeisCancelamentos],
       borderColor: 'red',
       backgroundColor: 'red',
@@ -1104,11 +1111,11 @@ function mostrarModal(modal) {
 new Chart(ctxDois, {
   type: 'bar',
  data: {
-  labels:  [empresaAereaAtrasoNomeUm.slice(0, 5), empresaAereaAtrasoNomeDois.slice(0, 5), empresaAereaAtrasoNomeTres.slice(0, 5), empresaAereaAtrasoNomeQuatro.slice(0, 5), empresaAereaAtrasoNomeCinco.slice(0, 5), empresaAereaAtrasoNomeSeis.slice(0, 5)],
+  labels:  [empresaAereaAtrasoNomeUm.slice(0, 4), empresaAereaAtrasoNomeDois.slice(0, 4), empresaAereaAtrasoNomeTres.slice(0, 4), empresaAereaAtrasoNomeQuatro.slice(0, 4), empresaAereaAtrasoNomeCinco.slice(0, 4), empresaAereaAtrasoNomeSeis.slice(0, 4)],
   datasets: [
     
   {
-      label: 'Atrasos',
+      label: 'Atrasos (%)',
       data:  [empresaUmAtrasos, empresaDoisAtrasos, empresaTresAtrasos, empresaQuatroAtrasos, empresaCincoAtrasos, empresaSeisAtrasos],
       borderColor: 'orange',
       backgroundColor: 'orange',
@@ -1116,7 +1123,7 @@ new Chart(ctxDois, {
   ]
 }
     });
-}, 1000)
+}, 2500)
 
 
 
@@ -1167,7 +1174,7 @@ new Chart(ctxTres, {
     }
   }
 });
-}, 1000)
+}, 3000)
        
     } else if (modal === 2) {
         contDois.classList.remove('dis');

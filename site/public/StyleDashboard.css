@@ -504,7 +504,7 @@ body {
     border-radius: 20px 0px 0px 20px;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 20rem;
     align-items: center;
     justify-content: center;
 }

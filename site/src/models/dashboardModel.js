@@ -102,12 +102,18 @@ SELECT
     AVG(porcentAtrasoSuperior60) AS mediaAtrasos60Min
 FROM 
     atrasoCancelamento
+
+WHERE nomeAeroportoSaida NOT LIKE 'GUA%'
+AND 
+    nomeAeroportoSaida NOT LIKE 'ARAGUA%'
+
 GROUP BY 
     nomeAeroportoSaida
+
 ORDER BY 
     mediaCancelamentos DESC, 
     mediaAtrasos30Min DESC, 
-    mediaAtrasos60Min DESC
+    mediaAtrasos60Min DESC    
 LIMIT 1;
 
     `;
