@@ -188,8 +188,9 @@
                      <div class="changeMode"  onclick="tokenHidden()" style="border: 1px solid white;" ><p class="textoDefault">Token</p></div>
                      <div class="hidden dis" id="tokenHidden" style="width: 50%;">
                         <div class="changeMode list"  onclick="addToken()" style="border: 1px solid white;" ><p class="textoDefault">Adicionar token</p></div>
-                     <div class="changeMode list" onclick="ediToken(),listarDados()" style="border: 1px solid white;"><p class="textoDefault">Editar token</p></div>
-                     <div class="changeMode exclu" onclick="delToken(),listarDados()" style="border: 1px solid white;"><p class="textoDefault" >Deletar token</p></div>
+                     <div class="changeMode list" onclick="ediToken()" style="border: 1px solid white;"><p class="textoDefault">Editar token</p></div>
+                     <div class="changeMode list" onclick="selectTokenMod()" style="border: 1px solid white;"><p class="textoDefault" >ver token</p></div>
+                     <div class="changeMode exclu" onclick="delToken()" style="border: 1px solid white;"><p class="textoDefault" >Deletar token</p></div>
                      </div>
                      <div class="changeMode"  onclick="userHidden(), listarDadosUsuario()" style="border: 1px solid white;" ><p class="textoDefault">Usuário</p></div>
                      <div class="hidden dis" id="userHidden" style="width: 50%;">
@@ -299,7 +300,7 @@
                    <div class="cadastroEmp" id="delToken">
                     <h1 class="titulo">Excluir token</h1>
                     <input type="text" id="input_deleteToken">
-                    <button  id="deleteToken" class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="deletarToken()">Excluir Código</button>
+                    <button  id="deleteToken" class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="deletarToken()">Excluir</button>
                   </div>
                   <div class="cadastroEmp" id="addToken">
                     <h1 class="titulo">Adicionar token</h1>
@@ -315,9 +316,12 @@
                   <div class="cadastroEmp" id="selectToken">
                     <h1 class="titulo">Select token</h1>
                     <input type="text" id="input_selectToken">
-                    <button  id="selectToken" class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="selectToken()">Mostrar informações</button>
-                    <div id="expiracaoExibir"></div>
-                    <div id="statusExibir"></div>
+                    <button  id="selectToken" class="btnConfirmar" style="width: 100px; height: 35px; margin-top: 8px; cursor: pointer;" onclick="selectToken()">Mostrar</button>
+                    <div class="align">
+                      <p id="expiracaoExibir"></p>
+                      <p id="statusExibir"></p>
+
+                    </div>
                     
                   </div>
                </div>
@@ -334,13 +338,15 @@
 
 
 
-       <div class="close" id="closeIcon" onclick="closeMod()">   <nav id="nav" style="display: flex; align-items: center; justify-content: center; flex-direction: column;" class="lateralNav">
-        <input id="saida " style="display: none;" type="text">
-        <input id="destino" style="display: none;" type="text">
-        
-        <button id="APIquest1" onclick="enviarPrompt(1)" style="display: none;">API Quest 1</button>
-        <button id="APIquest2" onclick="enviarPrompt(2)" style="display: none;">API Quest 2</button>
-        <button id="APIquest3" onclick="enviarPrompt(3)" style="display: none;">API Quest 3</button>
+       <div class="close" id="closeIcon" onclick="closeMod()">   <nav id="nav" class="nav invi" style="align-items: center; gap: 1rem; justify-content: center; flex-direction: column;" >
+        <input id="saida " type="text">
+        <input id="destino" type="text">
+        <div class="align" style="display: flex; flex-direction: row; gap: 1rem;">
+          <button id="APIquest1" onclick="enviarPrompt(1)" class="btnConfirmar" style="width: 100px; height: 50px;">API Quest 1</button>
+          <button id="APIquest2" onclick="enviarPrompt(2)" class="btnConfirmar" style="width: 100px; height: 50px;">API Quest 2</button>
+          <button id="APIquest3" onclick="enviarPrompt(3)" class="btnConfirmar" style="width: 100px; height: 50px;">API Quest 3</button>
+        </div>
+       
         <div id="resposta"></div>
      </nav></div>
      <div class="lateralDireita hidden" id="latDir">
@@ -907,8 +913,11 @@ function atrasosAeroportos() {
   var isOpenUser = false
 
   function closeMod() {
-    var clos = document.getElementById('closeIcon')
+
+    var navItem = document.getElementById('nav')
     clos.classList.toggle('active')
+    navItem.classList.toggle('invi')
+
   }
   setInterval(() => {
     var clos = document.getElementById('closeIcon')
@@ -944,6 +953,8 @@ setTimeout(() => {
   function closeMod() {
     var clos = document.getElementById('closeIcon')
     clos.classList.toggle('active')
+    var navItem = document.getElementById('nav')
+    navItem.classList.toggle('invi')
   }
   setInterval(() => {
     var clos = document.getElementById('closeIcon')
@@ -1032,7 +1043,8 @@ var contUserEdit = document.getElementById('editUser')
 var contUserDel = document.getElementById('delUser') 
 var contTokenDel = document.getElementById('delToken')  
 var contTokenAdd = document.getElementById('addToken')  
-var contTokeneEdi = document.getElementById('ediToken')  
+var contTokeneEdi = document.getElementById('ediToken') 
+var contTokeneSelect = document.getElementById('selectToken')  
 var contUm = document.getElementById('conteudoUm');
 var contDois = document.getElementById('conteudoDois');
 var contQuatro = document.getElementById('conteudoQuatro');
@@ -1052,6 +1064,7 @@ function mostrarModalCrud(modal) {
     contTokenAdd.classList.add('dis')
     contTokenDel.classList.add('dis')
     contTokeneEdi.classList.add('dis')
+    contTokeneSelect.classList.add('dis')
     if (modal === 1) {
         contEmpAdd.classList.remove('dis');
   }
@@ -1075,6 +1088,9 @@ function mostrarModalCrud(modal) {
   }
   if (modal === 8) {
         contTokenDel.classList.remove('dis');
+  }
+  if (modal === 9) {
+        contTokeneSelect.classList.remove('dis');
   }
 }
 mostrarModal(1)
@@ -1269,6 +1285,10 @@ function addToken() {
 function ediToken() {
     mostrarModalCrud(7);
     console.log('delUser')
+
+}
+function selectTokenMod() {
+    mostrarModalCrud(9);
 
 }
 function delToken() {
