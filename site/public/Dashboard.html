@@ -1334,7 +1334,7 @@ document.getElementById('insertToken').addEventListener('click', function() {
     const destinatario = sessionStorage.getItem('EMAIL_USUARIO');
     console.log('Destinatário do sessionStorage:', destinatario); 
     // Enviar a requisição para o backend para obter o token
-    fetch('http://44.221.1.203:3000/enviar-email', {
+    fetch('http://localhost:3000/enviar-email', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -1459,7 +1459,7 @@ function deletarToken() {
 
       try {
         // Faz a solicitação ao backend
-        const response = await fetch("http://44.221.1.203:3001/api/chat", {
+        const response = await fetch("http://localhost:3001/api/chat", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
