@@ -335,12 +335,12 @@
 
 
        <div class="close" id="closeIcon" onclick="closeMod()">   <nav id="nav" style="display: flex; align-items: center; justify-content: center; flex-direction: column;" class="lateralNav">
-        <input id="saida" type="text">
-        <input id="destino" type="text">
+        <input id="saida " style="display: none;" type="text">
+        <input id="destino" style="display: none;" type="text">
         
-        <button onclick="enviarPrompt(1)">API Quest 1</button>
-        <button onclick="enviarPrompt(2)">API Quest 2</button>
-        <button onclick="enviarPrompt(3)">API Quest 3</button>
+        <button id="APIquest1" onclick="enviarPrompt(1)" style="display: none;">API Quest 1</button>
+        <button id="APIquest2" onclick="enviarPrompt(2)" style="display: none;">API Quest 2</button>
+        <button id="APIquest3" onclick="enviarPrompt(3)" style="display: none;">API Quest 3</button>
         <div id="resposta"></div>
      </nav></div>
      <div class="lateralDireita hidden" id="latDir">
@@ -418,6 +418,12 @@
 </html>
 
 <script>
+
+  function exibirIA(params) {
+    document.getElementById('userHidden').style.display = 'flex ';
+    var caixaUser = document.getElementById('userHidden')
+    var caixaUser = document.getElementById('userHidden')
+  }
 //para atribuir o nome ao usuario quando fizer login
 const usuarioNomeCompleto = sessionStorage.getItem('NOME_USUARIO');
 
