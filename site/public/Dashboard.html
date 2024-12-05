@@ -336,15 +336,16 @@
 
 
 
+       <div id="botaoFechar" class="fechar none" style="background-color: red; width: 50px; height: 50px; border-radius: 100px; justify-content: center; position: absolute; z-index: 1000; right: 50px;" onclick="fecharModals()"><p>fechar</p></div>
 
 
        <div class="close" id="closeIcon" onclick="closeMod()">   <nav id="nav" class="nav invi" style="align-items: center; gap: 1rem; justify-content: center; flex-direction: column;" >
-        <input id="saida " type="text">
+        <input id="saida" type="text">
         <input id="destino" type="text">
         <div class="align" style="display: flex; flex-direction: row; gap: 1rem;">
-          <button id="APIquest1" onclick="enviarPrompt(1)" class="btnConfirmar" style="width: 100px; height: 50px;">API Quest 1</button>
-          <button id="APIquest2" onclick="enviarPrompt(2)" class="btnConfirmar" style="width: 100px; height: 50px;">API Quest 2</button>
-          <button id="APIquest3" onclick="enviarPrompt(3)" class="btnConfirmar" style="width: 100px; height: 50px;">API Quest 3</button>
+          <button id="APIquest1" onclick="enviarPrompt(1)" class="btnConfirmar" style="width: 600px; height: 100px;">Com base no histórico de voos entre a saida e o destino, quais são as chances de atrasos para diferentes companhias aéreas? Quais delas têm o melhor histórico de pontualidad</button>
+          <button id="APIquest2" onclick="enviarPrompt(2)" class="btnConfirmar" style="width: 600px; height: 100px;">Qual a faixa etaria de pessoas que costumam fazer viagens aéreas para destino</button>
+          <button id="APIquest3" onclick="enviarPrompt(3)" class="btnConfirmar" style="width: 600px; height: 100px;">Quais empresas aéreas fazem o voo com a rota saida para destino</button>
         </div>
        
         <div id="resposta"></div>
@@ -498,7 +499,8 @@ function exit(){
 
 
 }
-
+var status;
+var expiration;
   var aeroportoUmCancelamentos;
   var aeroportoUmNome;
   var aeroportoDoisCancelamentos;
@@ -914,9 +916,29 @@ function atrasosAeroportos() {
 
   function closeMod() {
 
+
     var navItem = document.getElementById('nav')
-    clos.classList.toggle('active')
-    navItem.classList.toggle('invi')
+    var fechar = document.getElementById('botaoFechar')
+
+    fechar.classList.remove('none')
+
+
+
+
+    clos.classList.add('active')
+    navItem.classList.remove('invi')
+
+  }
+  function fecharModals(){
+    var fechar = document.getElementById('botaoFechar')
+    fechar.classList.add('none')
+
+    var navItem = document.getElementById('nav')
+    var clos = document.getElementById('closeIcon')
+
+    clos.classList.remove('active')
+    navItem.classList.add('invi')
+
 
   }
   setInterval(() => {
@@ -951,10 +973,16 @@ setTimeout(() => {
   var isOpenUser = false
 
   function closeMod() {
+    var fechar = document.getElementById('botaoFechar')
+    fechar.classList.remove('none')
+
     var clos = document.getElementById('closeIcon')
-    clos.classList.toggle('active')
     var navItem = document.getElementById('nav')
-    navItem.classList.toggle('invi')
+    clos.classList.add('active')
+    navItem.classList.remove('invi')
+
+    var navItem = document.getElementById('nav')
+    navItem.classList.remove('invi')
   }
   setInterval(() => {
     var clos = document.getElementById('closeIcon')
@@ -1455,9 +1483,8 @@ function deletarToken() {
     function selectToken() {
       const idEmpresa = sessionStorage.getItem('ID_EMPRESA');
       const codigoToken = input_selectToken.value;
-      alert("CAIU: " + codigoToken)
       console.log("TESTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE: " +codigoToken)
-      fetch(`/token/selectToken`, {
+      fetch(`./token/selectToken`, {
       method: "post",
       headers: {
         "Content-Type": "application/json",
@@ -1473,9 +1500,14 @@ function deletarToken() {
         if (resposta.ok) {
           mensagemm = 'Token info puxada com sucesso!';
           exibirMsgErro(mensagemm);
+          alert(json.dataExpiracao)
+          console.log(json.dataExpiracao)
+            status =  json.statusToken
+            expiration =  json.dataExpiracao
+            console.log(status, expiration);
+            
+            
 
-          document.getElementById("expiracaoExibir").innerHTML = json.dataExpiracao;
-          document.getElementById("statusExibir").innerHTML = json.statusToken;
 
 
         } else {

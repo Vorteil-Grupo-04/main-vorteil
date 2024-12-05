@@ -12,7 +12,7 @@ app.use(cors()); // Permite requisições de qualquer origem
 // descomente e coloque a APIKEY:
 
 const openai = new OpenAI({
- apiKey: "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", 
+ apiKey: "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", 
 });
 
 // Middleware para permitir JSON no corpo das requisições

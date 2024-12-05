@@ -705,14 +705,23 @@ gap: 16px;
 
 }
 .close.active {
-    background-color: rgb(23, 126, 237);
-    width: 600px;
-    height: 400px;
+    background-color: rgb(105, 105, 105);
+    width: 95vw;
+    height: 600px;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
 
+}
+.fechar.none {
+    display: none;
+}
+.fechar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
 }
 .close.notification {
     width: 250px;
