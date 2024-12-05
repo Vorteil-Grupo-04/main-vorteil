@@ -18,11 +18,14 @@ body {
     gap: 8px;
 }
 .card {
-    height: 150px;
+    min-height: 170px;
     width: 150px;
-    background-color: #1d1d1d;
-    padding: 8px;
+    background-color: white;
+    padding: 12px;
     border-radius: 8px;
+    /* border: 3px solid black; */
+    border: solid 1px rgb(133, 133, 133);
+    opacity: 0;
 }
 .container {
     width: 98%;
@@ -924,4 +927,85 @@ input:disabled{
     margin-top: 3px;
     color: black;
     font-weight: 600;
+}
+
+.card-header-previsao-do-tempo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-main-content-previsao-do-tempo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.half-width{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+
+.content{
+    font-size: small;
+}
+
+.card-secundary-content-previsao-do-tempo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-divide-box{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.right-line{
+    border-right: solid 1px rgb(133, 133, 133);
+}
+
+.half-header-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.half-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clima-api-button{
+    height: 30px;
+    padding: 0px 10px 0px 10px;
+    border-radius: 8px;
+    background-color: rgb(23, 126, 237);
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.card-inicial{
+    opacity: 1;
+    animation-name: animacao_conteudo;
+    animation-duration: 2s;
+    animation-direction: normal;
+}
+
+@keyframes animacao_conteudo {
+    from {
+        scale: 0.8;
+        opacity: 0;
+    }
+    to {
+        scale: 1;
+        opacity: 1;
+    }
 }

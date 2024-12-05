@@ -94,20 +94,22 @@
       </div>
       <div class="conteudo dis" id="conteudoDois" style="align-items: center; justify-content: center; ">
        
-     <div class="conjuntoFinal modify" style="flex-direction: column; align-items: center;">
+        <div class="conjuntoFinal modify" style="flex-direction: column; align-items: center;"><br><br>
     <div class="alinhator" style="flex-direction: row;">
       <div class="alinhator">
-        <label for="">saida</label>
+        <label for="">Saída</label>
         <input type="text" name="" id="input_saida_clima">
       </div>
       <div class="alinhator">
-        <label for="">destino</label>
+        <label for="">Destino</label>
         <input type="text" name="" id="input_destino_clima">
       </div>
+      <div style="justify-content: flex-end; height: 100%;" class="alinhator">
+        <button class="clima-api-button" onclick="climaAPI()">Consultar</button>
     </div>
-    <button onclick="climaAPI()">CLIMA API</button>
+    </div><br>
       <div class="alinhator">
-      <p>Previsões</p>
+      <p>Previsões - Saídas</p>
      <div class="alignCard" style="width: auto; gap: 2.5rem; height: auto; display: flex; align-items: center; justify-content: center;">
       <div id="saida1" class="card"></div>
       <div id="saida2" class="card"></div>
@@ -117,7 +119,7 @@
      </div>
     </div>
     <div class="alinhator">
-      <p>Previsões</p>
+      <p>Previsões - Destino</p>
      <div class="alignCard" style="width: auto; gap: 2.5rem; height: auto; display: flex; flex-direction: row; align-items: center; justify-content: center;">
       <div id="destino1" class="card"></div>
       <div id="destino2" class="card"></div>
@@ -1547,6 +1549,7 @@ const traducoesTempo = {
     "drizzle": "chuvisco",
     "light rain": "chuva leve",
     "overcast clouds": "nuvens cobertas",
+    "moderate rain": "chuva moderada"
 };
 
 const obterPrevisao = () => {
@@ -1573,6 +1576,18 @@ const obterClimaAtualSaida = () => {
         });
 };
 
+document.getElementById("saida1").classList.add("card-inicial")
+document.getElementById("saida2").classList.add("card-inicial")
+document.getElementById("saida3").classList.add("card-inicial")
+document.getElementById("saida4").classList.add("card-inicial")
+document.getElementById("saida5").classList.add("card-inicial")
+
+document.getElementById("destino1").classList.add("card-inicial")
+document.getElementById("destino2").classList.add("card-inicial")
+document.getElementById("destino3").classList.add("card-inicial")
+document.getElementById("destino4").classList.add("card-inicial")
+document.getElementById("destino5").classList.add("card-inicial")
+
 Promise.all([obterPrevisao(), obterClimaAtualSaida()])
     .then(([dadosPrevisao, dadosClimaAtual]) => {
         let resultado = `<h2>Previsão do Tempo em ${saidaClima}</h2>`;
@@ -1593,12 +1608,40 @@ Promise.all([obterPrevisao(), obterClimaAtualSaida()])
 
             // Aqui, preenchendo as divs já existentes no front-end
             document.getElementById(`saida${index + 1}`).innerHTML = `
-                <h4>${dataFormatada}</h4>
-                <p><strong>Temperatura:</strong> ${temperatura}°C</p>
-                <p><strong>Condição:</strong> ${descricaoTraduzida}</p>
-                <p><strong>Velocidade do Vento:</strong> ${velocidadeVento} km/h</p>
-                <p><strong>Umidade:</strong> ${umidade}%</p> 
-                <img src="https://openweathermap.org/img/wn/${icone}.png" alt="Ícone do tempo">
+              <div class="card-header-previsao-do-tempo">
+                <h4>${dataFormatada}</h4><br>
+              </div>
+              <div class="card-main-content-previsao-do-tempo">
+                <div class="half-width">
+                  <img src="https://openweathermap.org/img/wn/${icone}.png" alt="Ícone do tempo">
+                </div>
+                <div class="half-width">
+                  <p><strong>Clima:</strong> ${temperatura}°C</p>
+                </div>  
+              </div><br>
+              <div class="card-secundary-content-previsao-do-tempo">
+                <div class="card-divide-box">
+                  <div class="half-width right-line">
+                    <div class="half-width half-header-content">
+                      <strong class="content">Condição:</strong>
+                    </div>
+                    <div class="half-width half-content">
+                      <p class="content">${descricaoTraduzida}</p><br>                    
+                    </div>
+                  </div>
+                  <div class="half-width">
+                    <div class="half-width half-header-content">
+                      <strong class="content">Umidade:</strong>
+                    </div>
+                    <div class="half-width half-content">
+                      <p class="content">${umidade}%</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <p><strong class="content">Velocidade do Vento:</strong></p>
+                <p class="content">${velocidadeVento} km/h</p>
+              </div>   
             `;
         });
 
@@ -1658,14 +1701,44 @@ Promise.all([obterPrevisao2(), obterClimaAtualDestino()])
             const umidade = dia.main.humidity; 
             const icone = dia.weather[0].icon;
 
+            
+
             // Aqui, preenchendo as divs já existentes no front-end
             document.getElementById(`destino${index + 1}`).innerHTML = `
-                <h4>${dataFormatada}</h4>
-                <p><strong>Temperatura:</strong> ${temperatura}°C</p>
-                <p><strong>Condição:</strong> ${descricaoTraduzida}</p>
-                <p><strong>Velocidade do Vento:</strong> ${velocidadeVento} km/h</p>
-                <p><strong>Umidade:</strong> ${umidade}%</p> 
-                <img src="https://openweathermap.org/img/wn/${icone}.png" alt="Ícone do tempo">
+                <div class="card-header-previsao-do-tempo">
+                <h4>${dataFormatada}</h4><br>
+              </div>
+              <div class="card-main-content-previsao-do-tempo">
+                <div class="half-width">
+                  <img src="https://openweathermap.org/img/wn/${icone}.png" alt="Ícone do tempo">
+                </div>
+                <div class="half-width">
+                  <p><strong>Clima:</strong> ${temperatura}°C</p>
+                </div>
+              </div>
+              <div class="card-secundary-content-previsao-do-tempo">
+                <div class="card-divide-box">
+                  <div class="half-width right-line">
+                    <div class="half-width half-header-content">
+                      <strong class="content">Condição:</strong>
+                    </div>
+                    <div class="half-width half-content">
+                      <p class="content">${descricaoTraduzida}</p><br>
+                    </div>
+                  </div>
+                  <div class="half-width">
+                    <div class="half-width half-header-content">
+                      <strong class="content">Umidade:</strong>
+                    </div>
+                    <div class="half-width half-content">
+                      <p class="content">${umidade}%</p>
+                    </div>
+                  </div>
+                </div>
+
+                <p><strong class="content">Velocidade do Vento:</strong></p>
+                <p class="content">${velocidadeVento} km/h</p>
+              </div>
             `;
         });
 
