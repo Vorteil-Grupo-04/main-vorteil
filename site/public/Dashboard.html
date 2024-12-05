@@ -6,6 +6,8 @@
     
     <link rel="stylesheet" href="StyleDashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gloock&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
@@ -35,13 +37,11 @@
           </div>
           <div  onclick="modalUm()"  class="botaoAcesso" id="botaoUm"><p class="textoDefault">Dashboard</p> </div>
           <div  onclick="modalDois()" class="botaoAcesso"  id="botaoDois"><p class="textoDefault">Clima</p> </div>
-          <div  onclick="modalTres()" class="botaoAcesso" id="botaoTres"><p class="textoDefault" >Tirar</p> </div>
         </div>
-        <div class="iconAlert"></div>
         <div class="contLat">
          
           <div onclick="modalCinco()" class="botaoAcesso"  id="botaoCinco"><p class="textoDefault">Configurações</p> </div>
-          <div  onclick="modalSeis()" class="botaoAcesso" id="botaoSeis"><p class="textoDefault" >Sair</p> </div>
+          <div  onclick="exit()" class="botaoAcesso" id="botaoSeis"><p class="textoDefault" >Sair</p> </div>
         </div>
 
       </div>
@@ -324,7 +324,7 @@
 
 
 
-       <div class="close" id="closeIcon" onclick="closeMod()">   <nav id="nav" class="lateralNav">
+       <div class="close" id="closeIcon" onclick="closeMod()">   <nav id="nav" style="display: flex; align-items: center; justify-content: center; flex-direction: column;" class="lateralNav">
         <input id="saida" type="text">
         <input id="destino" type="text">
         
@@ -426,7 +426,7 @@ function scriptInicializacao(){
   }, 350000000000);
 
 }
-
+var hasASUDO = false;
   var empresaUmCancelamentos;
   var empresaUmNome;
   var empresaDoisCancelamentos;
@@ -470,7 +470,12 @@ var fxDois; // Exemplo de valor de dados para a faixa etária 25-34
 var fxTres; // Exemplo de valor de dados para a faixa etária 35-44
 var fxQuatro; // Exemplo de valor de dados para a faixa etária 45-54
 var fxCinco; // Exemplo de valor de dados para a faixa etária 55+
+function exit(){
+  sessionStorage.clear();
+  window.location = "Cadastro.html"
 
+
+}
 
   var aeroportoUmCancelamentos;
   var aeroportoUmNome;
@@ -490,6 +495,47 @@ var fxCinco; // Exemplo de valor de dados para a faixa etária 55+
   var aeroportoQuatroAtrasos;
   var aeroportoCincoAtrasos;
   var aeroportoSeisAtrasos;
+  var tipoCargo;
+  function cargo() {
+    
+    fetch("../usuarios/cargo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+          idServer: sessionStorage.ID_USUARIO,
+      })
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+        console.log('estou aqui');
+        
+  
+        if (resposta.ok) {
+      setTimeout(() => {
+        resposta.json().then(json => {
+          console.log(json);
+          tipoCargo = json[0].nome_cargo
+
+          
+        })
+        
+          }, 500);
+
+          
+ 
+        } else {
+          throw "Houve um erro ao trazer dados!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+  
+    return false;
+  
+  }
   function comoComprou() {
     
     fetch("../dashboard/comoComprou", {
@@ -522,6 +568,8 @@ var fxCinco; // Exemplo de valor de dados para a faixa etária 55+
         })
         
           }, 500);
+
+          
  
         } else {
           throw "Houve um erro ao trazer dados!";
@@ -582,7 +630,8 @@ console.log('aqui'+fxCinco, fxUm)
   
   }
 
-  function puxarDadosKPI() {
+  setTimeout(() => {
+    function puxarDadosKPI() {
     
     fetch("../dashboard/puxarDadosKPI", {
       method: "GET",
@@ -660,45 +709,8 @@ console.log('aqui'+fxCinco, fxUm)
     return false;
   
   }
-  function puxarDadosKPI() {
-    
-    fetch("../dashboard/puxarDadosKPI", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      }
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-        console.log('estou aqui');
-        
+  }, 1000)
   
-        if (resposta.ok) {
-      setTimeout(() => {
-        resposta.json().then(json => {
-          console.log(json);
-          console.log('atrasos aeroporto')
-          piorEmpresa.innerHTML = json[0].empresaAerea.slice(0, 4)
-          dadosEmpresa.innerHTML = `${json[0].mediaCancelamentos.toFixed(1)}% de cancelamento`
-          piorEmpresa = json[0].empresaAerea
-          piorEmpresaDado = json[0].mediaCancelamentos
-
-          
-        })
-        
-          }, 500);
- 
-        } else {
-          throw "Houve um erro ao trazer dados!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  
-    return false;
-  
-  }
 
 function atrasosAeroportos() {
     
@@ -905,7 +917,11 @@ function atrasosAeroportos() {
 
 
   }
-
+setTimeout(() => {
+  console.log(tipoCargo)
+ 
+  
+}, 1000)
   var isOpenEmp = false
   var isOpenToken = false
   var isOpenUser = false
@@ -960,15 +976,17 @@ function atrasosAeroportos() {
   }
 
   function puxarGraficos(){
-    cancelamentosEmpresa()
-    cancelamentosAeroporto()
-    atrasosAeroportos()
-    atrasosEmpresa()
-    puxarDadosKPI()
-    puxarDadosKPIAero()
-    comoComprou()
-    faixaEtaria()
+    // cancelamentosEmpresa()
+    // cancelamentosAeroporto()
+    // atrasosAeroportos()
+    // atrasosEmpresa()
+    // puxarDadosKPI()
+    // puxarDadosKPIAero()
+    // comoComprou()
+    // faixaEtaria()
   }
+  cargo()
+
 
 
 
@@ -1006,7 +1024,6 @@ var contQuatro = document.getElementById('conteudoQuatro');
 var contCinco = document.getElementById('conteudoSeis');
 var botaoUm = document.getElementById('botaoUm')
 var botaoDois = document.getElementById('botaoDois')
-var botaoTres = document.getElementById('botaoTres')
 var botaoCinco = document.getElementById('botaoCinco')
 var botaaoSeis = document.getElementById('botaoSeis')
 isOpenEmp ? mostrarModalCrud(1) : mostrarModalCrud(0)
@@ -1054,7 +1071,6 @@ function mostrarModal(modal) {
     contCinco.classList.add('dis');
     botaoUm.classList.add('inactive');
     botaoDois.classList.add('inactive');
-    botaoTres.classList.add('inactive');
     botaoCinco.classList.add('inactive');
     botaoSeis.classList.add('inactive');
 
@@ -1161,8 +1177,7 @@ new Chart(ctxTres, {
 
 
     }
-  else if (modal === 3) {
-        botaoTres.classList.remove('inactive');}
+ 
     else if (modal === 4) {
         contQuatro.classList.remove('dis');
     }
@@ -1189,8 +1204,24 @@ function modalQuatro() {
     mostrarModal(4);
 }
 function modalCinco() {
+  if(tipoCargo == 'Funcionario'){
+    hasASUDO = false
+  } else {
+    hasASUDO = true
+  }
+  if(hasASUDO){
     mostrarModal(5);
+
+  } else {
+
+    Swal.fire({
+  icon: "error",
+  title: "Oops...",
+  text: "Você não tem permissão para acessar as configurações, fale com um administrador",
+});
+  }
 }
+
 function addEmp() {
     mostrarModalCrud(1);
     console.log('addEmp')

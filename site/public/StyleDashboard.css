@@ -703,9 +703,12 @@ gap: 16px;
 }
 .close.active {
     background-color: rgb(23, 126, 237);
-    width: 350px;
+    width: 600px;
     height: 400px;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
 .close.notification {

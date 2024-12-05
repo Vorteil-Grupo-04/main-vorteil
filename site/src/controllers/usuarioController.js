@@ -219,6 +219,20 @@ function atualizarSenha(req, res) {
       res.status(500).json(erro.sqlMessage);
     });
 }
+function trazerCargo(req, res) {
+  var id = req.body.idServer;
+
+  
+  usuarioModel.cargo(id)
+    .then(function (resultado) {
+      res.json(resultado);
+    })
+    .catch(function (erro) {
+      console.error(erro);
+      console.error("Houve um erro ao realizar a troca de avatar! Erro: ", erro.sqlMessage);
+      res.status(500).json(erro.sqlMessage);
+    });
+}
 
 function listarDadosPorUsuario(req,res){
   var idUsuario = req.params.idUsuario;
@@ -293,5 +307,6 @@ module.exports = {
     atualizarUsuario,
     removerUsuario,
     sessionEmpresa,
-    cadastrarFuncionario
+    cadastrarFuncionario,
+    trazerCargo
 }
