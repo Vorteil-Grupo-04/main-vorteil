@@ -8,9 +8,11 @@
 
 #### Descubra os insights por trás dos cancelamentos e atrasos de voos e transforme dados em oportunidades para aprimorar a experiência dos passageiros.
 
-<div align="center">
-[![Vorteil Video](/site/public/assets/Vorteil-site.mp4)]
-</div>
+<img src="/site/public/assets/index1.png" width="100%">
+<img src="/site/public/assets/index2.png" width="100%">
+<img src="/site/public/assets/index3.png" width="100%">
+<img src="/site/public/assets/index4.png" width="100%">
+<img src="/site/public/assets/index5.png" width="100%">
 
 <br><br>
 
@@ -20,7 +22,7 @@
 
 <img src="/site/public/assets/dash.png" width="100%">
 
-<img src="/site/public/assets/clima.png.png" width="100%">
+<img src="/site/public/assets/clima.png" width="100%">
 
 ## 🚀 Tecnologias utilizadas
 
